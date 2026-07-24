@@ -86,7 +86,22 @@ a { color: inherit; }
   overflow: hidden; display: block;
   animation: sn-flicker 4s ease-in-out infinite;
 }
-.screen-surface .screen-inner { width: 100%; height: 100%; position: relative; transition: filter .45s ease; filter: brightness(.92); }
+.screen-surface .screen-inner {
+  width: 100%; height: 100%; position: relative;
+  transition: filter .45s ease; filter: brightness(.92);
+  /* startup: screens are off, then flash on (center first, sides after) */
+  animation: sn-power-on .95s ease-out;
+  animation-delay: var(--pon-delay, 0s);
+  animation-fill-mode: backwards;
+}
+@keyframes sn-power-on {
+  0%   { opacity: 0; filter: brightness(0); }
+  9%   { opacity: 1; filter: brightness(2.1); }
+  20%  { opacity: .5; filter: brightness(.45); }
+  34%  { opacity: 1; filter: brightness(1.55); }
+  58%  { opacity: 1; filter: brightness(.78); }
+  100% { opacity: 1; filter: brightness(.92); }
+}
 .screen-link { cursor: pointer; }
 .screen-link:hover .screen-inner, .screen-link:focus-visible .screen-inner { filter: brightness(1.12); }
 .screen-label {
@@ -425,6 +440,7 @@ a { color: inherit; }
 }
 .mh-ambient { position: absolute; inset: 0; pointer-events: none; }
 .mh-screen-logo {
+  animation: sn-power-on .95s ease-out .45s backwards;
   position: absolute; z-index: 1; display: grid; place-items: center; pointer-events: none;
 }
 .mh-screen-logo img {

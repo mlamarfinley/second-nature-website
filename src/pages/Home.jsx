@@ -129,9 +129,9 @@ function Stage() {
     if (!box) return []
     const px = (q) => q.map(([x, y]) => [(x / 100) * box.w, (y / 100) * box.h])
     return [
-      { key: 'left', to: '/business', label: 'ENTER BUSINESS SYSTEMS', ui: <BusinessScreenUI />, quad: px(HERO.quads.left) },
-      { key: 'center', to: null, label: null, ui: <CenterScreenUI />, quad: px(HERO.quads.center) },
-      { key: 'right', to: '/personal', label: 'ENTER PERSONAL SYSTEMS', ui: <PersonalScreenUI />, quad: px(HERO.quads.right) },
+      { key: 'left', to: '/business', label: 'ENTER BUSINESS SYSTEMS', ui: <BusinessScreenUI />, quad: px(HERO.quads.left), pon: 1.5 },
+      { key: 'center', to: null, label: null, ui: <CenterScreenUI />, quad: px(HERO.quads.center), pon: 0.45 },
+      { key: 'right', to: '/personal', label: 'ENTER PERSONAL SYSTEMS', ui: <PersonalScreenUI />, quad: px(HERO.quads.right), pon: 1.65 },
     ].map((s) => ({ ...s, matrix: matrix3dForQuad(SURFACE_W, SURFACE_H, s.quad) }))
   }, [box])
 
@@ -158,12 +158,12 @@ function Stage() {
                 aria-label={s.label}
                 onClick={(e) => { e.preventDefault(); navigate(s.to) }}
               >
-                <div className="screen-inner">{s.ui}</div>
+                <div className="screen-inner" style={{ '--pon-delay': `${s.pon}s` }}>{s.ui}</div>
                 <span className="screen-label">{s.label}</span>
               </a>
             ) : (
               <div key={s.key} className="screen-surface" style={{ width: SURFACE_W, height: SURFACE_H, transform: s.matrix }}>
-                <div className="screen-inner">{s.ui}</div>
+                <div className="screen-inner" style={{ '--pon-delay': `${s.pon}s` }}>{s.ui}</div>
               </div>
             ),
           )}
