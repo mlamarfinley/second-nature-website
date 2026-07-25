@@ -166,7 +166,7 @@ export default function Business() {
       <div className="grid-bg" aria-hidden="true" />
       <VeinSystem />
       <div className="page-inner">
-        <span className="pp-eyebrow mono-label" style={{ color: 'var(--pulse)' }}>Business Systems</span>
+        <span className="pp-eyebrow mono-label">Business Systems</span>
         <h1 className="bz-headline">
           Your business runs on two things: systems and&nbsp;people.
         </h1>

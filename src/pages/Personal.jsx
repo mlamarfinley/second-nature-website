@@ -161,7 +161,7 @@ function Orbit({ active, setActive, hot }) {
             exit={{ opacity: 0, scale: reduce ? 1 : 0.7, transition: { duration: 0.3 } }}
           >
             <button className="card-close" onClick={() => setActive(null)} aria-label="Close and restore orbit">CLOSE ✕</button>
-            <span className="mono-label" style={{ color: 'var(--teal)' }}>{activeCat.label}</span>
+            <span className="mono-label" style={{ color: 'var(--gold)' }}>{activeCat.label}</span>
             <h3 className="serif-display" style={{ fontSize: 'clamp(1.6rem, 3vw, 2.3rem)', margin: '0.8rem 0 1rem' }}>{activeCat.headline}</h3>
             <p style={{ color: 'var(--ink-dim)', fontSize: '.95rem', margin: '0 0 1.4rem' }}>{activeCat.narrative}</p>
             <div>
@@ -289,6 +289,16 @@ export default function Personal() {
               </p>
               <p className="orbit-caption-sub">Start with what feels hardest.</p>
             </div>
+          </div>
+          <div className="pp-spine" aria-label="Pressure points">
+            <span className="pp-spine-pulse" aria-hidden="true" />
+            {CATEGORIES.map((c) => (
+              <button key={c.slug} className="pp-spine-row" onClick={() => setActive(c.slug)}>
+                <span className="pp-spine-dot" aria-hidden="true" />
+                <span>{c.label}</span>
+                <span className="pp-spine-go" aria-hidden="true">Open</span>
+              </button>
+            ))}
           </div>
         </div>
 

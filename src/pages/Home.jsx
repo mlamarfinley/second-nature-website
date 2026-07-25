@@ -29,7 +29,7 @@ function BusinessScreenUI() {
 function PersonalScreenUI() {
   const rings = [
     { size: 292, color: 'rgba(142,124,195,.55)', dur: 26 },
-    { size: 224, color: 'rgba(63,163,154,.6)', dur: 19, rev: true },
+    { size: 224, color: 'rgba(142,124,195,.6)', dur: 19, rev: true },
     { size: 156, color: 'rgba(142,124,195,.75)', dur: 13 },
     { size: 88, color: 'rgba(240,240,236,.5)', dur: 9, rev: true },
   ]
