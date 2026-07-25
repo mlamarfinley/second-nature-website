@@ -148,6 +148,12 @@ function Stage() {
             }}
           />
           <Fireflies />
+          <div className="screen-caption" style={{ left: '25.4%', top: '52.8%' }} aria-hidden="true">
+            Business systems
+          </div>
+          <div className="screen-caption" style={{ left: '75.2%', top: '52.8%' }} aria-hidden="true">
+            Personal systems
+          </div>
           {surfaces.map((s) =>
             s.to ? (
               <a
@@ -234,6 +240,10 @@ export default function Home() {
         Second Nature, intelligent agent systems for personal and business use
       </h1>
       <Stage />
+      <p className="home-instruction">
+        <span className="home-instruction-dot" aria-hidden="true" />
+        Select a screen to enter
+      </p>
       <nav className="home-quiet-nav" aria-label="Site sections">
         <Link to="/business">Business</Link>
         <Link to="/personal">Personal</Link>
