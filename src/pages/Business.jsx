@@ -3,27 +3,30 @@ import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { BIZ } from '../data/content.js'
 
-function GridStreams() {
-  const streams = useMemo(
-    () => [
-      { cls: 'h', top: '18%', dur: 9, delay: 0 },
-      { cls: 'h', top: '52%', dur: 13, delay: -4 },
-      { cls: 'h', top: '78%', dur: 11, delay: -7 },
-      { cls: 'v', left: '24%', dur: 12, delay: -2 },
-      { cls: 'v', left: '71%', dur: 10, delay: -6 },
-    ],
-    [],
-  )
+/* The page's circulatory system: a midrib and branching veins, with sap
+   pulses flowing through them. Organic replacement for grid linework. */
+const VEINS = [
+  { d: 'M -40 120 C 320 260, 620 520, 900 820 S 1300 1500, 1500 1750', dur: 16 },
+  { d: 'M 420 360 C 300 520, 220 760, 180 1050', dur: 11 },
+  { d: 'M 640 540 C 560 760, 540 980, 560 1240', dur: 13 },
+  { d: 'M 900 820 C 1040 900, 1180 940, 1360 960', dur: 9 },
+  { d: 'M 760 660 C 900 640, 1080 600, 1300 520', dur: 10 },
+  { d: 'M 300 250 C 380 300, 430 380, 470 470', dur: 8 },
+]
+
+function VeinSystem() {
   return (
-    <div className="grid-bg" aria-hidden="true">
-      {streams.map((s, i) => (
-        <span
-          key={i}
-          className={`data-stream ${s.cls}`}
-          style={{ top: s.top, left: s.left, '--st-dur': `${s.dur}s`, '--st-delay': `${s.delay}s` }}
+    <svg className="bz-veins" viewBox="0 0 1440 1800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      {VEINS.map((v, i) => (
+        <path key={`s${i}`} d={v.d} className="bz-vein-static" />
+      ))}
+      {VEINS.map((v, i) => (
+        <path
+          key={`f${i}`} d={v.d} className="bz-vein-flow"
+          style={{ animationDuration: `${v.dur}s`, animationDelay: `${-i * 2.7}s` }}
         />
       ))}
-    </div>
+    </svg>
   )
 }
 
@@ -140,7 +143,8 @@ export default function Business() {
   return (
     <main className="page" style={{ '--accent': 'var(--pulse)' }}>
       <div className="bz-leaf" aria-hidden="true" />
-      <GridStreams />
+      <div className="grid-bg" aria-hidden="true" />
+      <VeinSystem />
       <div className="page-inner">
         <span className="pp-eyebrow mono-label" style={{ color: 'var(--pulse)' }}>Business Systems</span>
         <h1 className="bz-headline">
@@ -152,16 +156,17 @@ export default function Business() {
           business run more clearly, move faster, and stay connected where it counts.
         </p>
         <p className="bz-dim">
-          We split this page across the two forces that shape how a business performs: the
+          Like the veins in a leaf, everything in a business flows through two networks: the
           operational side that keeps work moving, and the people side that keeps teams, clients,
-          and communication aligned. Explore both, then tell us where it hurts most.
+          and communication aligned. When both flow, the whole thing stays alive. Explore both,
+          then tell us where it hurts most.
         </p>
 
         <div className="bz-section">
           <h2 className="pp-prompt">Where is your business feeling the most friction?</h2>
           <p className="pp-instruction mono-label">
             <span className="pp-pulse bz-pulse" aria-hidden="true" />
-            Explore both sides of the system
+            Follow both veins of the system
           </p>
         </div>
 
