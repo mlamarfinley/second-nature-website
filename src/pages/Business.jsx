@@ -127,10 +127,30 @@ function Pillar({ data, flavor, live, setLive, moduleTitle, children, footer }) 
         {footer && <p className="bz-module-foot mono-label">{footer}</p>}
       </div>
       <ul className="bz-items">
-        {data.items.map((name) => (
+        {data.items.map((name, i) => (
           <li key={name} className="bz-item">
-            <span className={`bz-marker bz-marker-${flavor}`} aria-hidden="true" />
-            {name}
+            <motion.span
+              className="bz-item-line" aria-hidden="true" style={{ originX: 0 }}
+              initial={reduce ? false : { scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true, margin: '-30px' }}
+              transition={{ duration: 0.7, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
+            />
+            <motion.span
+              className={`bz-marker bz-marker-${flavor}`} aria-hidden="true"
+              initial={reduce ? false : { scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true, margin: '-30px' }}
+              transition={{ delay: i * 0.09 + 0.35, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            />
+            <motion.span
+              initial={reduce ? false : { opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: '-30px' }}
+              transition={{ delay: i * 0.09 + 0.2, duration: 0.5 }}
+            >
+              {name}
+            </motion.span>
           </li>
         ))}
       </ul>

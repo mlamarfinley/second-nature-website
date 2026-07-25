@@ -42,7 +42,19 @@ function Orbit({ active, setActive, hot }) {
   const nodeRefs = useRef([])
   const lineRefs = useRef([])
   const angles = useRef(CATEGORIES.map((_, i) => (Math.PI * 2 * i) / CATEGORIES.length + i * 0.9))
+  const settleStart = useRef(null)
   const [, force] = useState(0)
+
+  // On touch screens there is no hover, so the orbit demonstrates itself:
+  // one node at a time glows with its label brightened.
+  const [cycle, setCycle] = useState(-1)
+  useEffect(() => {
+    if (reduce || active) return
+    if (!window.matchMedia('(pointer: coarse)').matches) return
+    const id = setInterval(() => setCycle((c) => (c + 1) % CATEGORIES.length), 4000)
+    return () => clearInterval(id)
+  }, [active, reduce])
+  const shownHot = hot ?? (cycle >= 0 ? CATEGORIES[cycle].slug : null)
 
   useEffect(() => {
     if (reduce) { force((n) => n + 1); return }
@@ -55,8 +67,11 @@ function Orbit({ active, setActive, hot }) {
         const wrap = wrapRef.current
         if (wrap) {
           const S = wrap.clientWidth
+          if (settleStart.current == null) settleStart.current = now
+          const es = (now - settleStart.current) / 1000
+          const settle = 1 + 0.16 * Math.pow(Math.max(0, 1 - es / 1.6), 2)
           const pos = angles.current.map((a, i) => {
-            const r = (RADII[i] / 100) * S
+            const r = (RADII[i] / 100) * S * settle
             return [S / 2 + r * Math.cos(a), S / 2 + r * Math.sin(a)]
           })
           pos.forEach(([x, y], i) => {
@@ -116,7 +131,7 @@ function Orbit({ active, setActive, hot }) {
             <motion.button
               key={c.slug}
               ref={(el) => (nodeRefs.current[i] = el)}
-              className={`orbit-node${hot === c.slug ? ' is-hot' : ''}`}
+              className={`orbit-node${shownHot === c.slug ? ' is-hot' : ''}`}
               style={staticPos(i)}
               onClick={() => setActive(c.slug)}
               aria-label={`Open ${c.label}`}

@@ -2,11 +2,35 @@ import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { FOCUS_CHIPS, FORMSPREE_ID } from '../data/content.js'
 
+/* The intake's environment: roots that grow downward as the form fills in.
+   Every answered step extends the system taking hold. */
+const ROOTS = [
+  'M 500 620 C 470 800, 430 980, 380 1180 S 300 1500, 260 1650',
+  'M 520 620 C 540 820, 590 1000, 660 1180 S 790 1460, 860 1580',
+  'M 480 640 C 420 760, 330 860, 240 940 S 90 1080, 30 1150',
+  'M 540 640 C 620 760, 720 850, 830 920 S 1010 1030, 1090 1090',
+  'M 505 650 C 505 850, 515 1050, 520 1250 S 525 1550, 528 1700',
+]
+
+function RootSystem({ growth }) {
+  return (
+    <svg className="build-roots" viewBox="0 0 1100 1700" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+      {ROOTS.map((d, i) => (
+        <path
+          key={i} d={d} pathLength="1"
+          style={{ strokeDashoffset: Math.max(0, 1 - growth * (1 - i * 0.06)) }}
+        />
+      ))}
+    </svg>
+  )
+}
+
 export default function Build() {
   const [params] = useSearchParams()
   const [track, setTrack] = useState(params.get('track') === 'business' ? 'business' : 'personal')
   const [focus, setFocus] = useState(() => new Set(params.get('focus') ? [params.get('focus')] : []))
   const [status, setStatus] = useState('idle') // idle | sending | sent | error
+  const [filled, setFilled] = useState(0)
   const accent = track === 'business' ? 'var(--pulse)' : 'var(--nebula)'
   const connected = FORMSPREE_ID !== 'YOUR_FORMSPREE_ID'
 
@@ -16,6 +40,11 @@ export default function Build() {
       next.has(slug) ? next.delete(slug) : next.add(slug)
       return next
     })
+  }
+
+  const onFormInput = (e) => {
+    const f = e.currentTarget
+    setFilled(['name', 'email', 'message'].filter((n) => f.elements[n]?.value.trim()).length)
   }
 
   const onSubmit = async (e) => {
@@ -38,6 +67,7 @@ export default function Build() {
 
   return (
     <main className="page" style={{ '--accent': accent }}>
+      <RootSystem growth={status === 'sent' ? 1 : 0.18 + 0.75 * (((focus.size > 0 ? 1 : 0) + filled) / 4)} />
       <div className="poster-band" aria-hidden="true">
         <img src="./poster.jpg" alt="" loading="lazy" />
       </div>
@@ -65,7 +95,7 @@ export default function Build() {
             )}
           </div>
         ) : (
-          <form onSubmit={onSubmit} style={{ marginTop: '2.4rem' }}>
+          <form onSubmit={onSubmit} onInput={onFormInput} style={{ marginTop: '2.4rem' }}>
             <div className="track-panels" role="group" aria-label="Choose a track">
               <button
                 type="button" className="track-panel" aria-pressed={track === 'personal'}
