@@ -59,7 +59,7 @@ function PersonalScreenUI() {
 function CenterScreenUI() {
   return (
     <div className="sui" aria-hidden="true" style={{ display: 'grid', placeItems: 'center', background: '#0b0f0b' }}>
-      <img className="sui-center-logo" src="./logo.png" alt="" />
+      <img className="sui-center-logo" src="./logo.webp" width="384" height="384" alt="" />
     </div>
   )
 }
@@ -139,7 +139,14 @@ function Stage() {
     <div className={`stage-viewport${box?.letterboxed ? ' letterboxed' : ''}`} ref={viewportRef}>
       {box && (
         <div className="stage" style={{ width: box.w, height: box.h }}>
-          <img className="stage-img" src="./hero.jpg" alt="Three monitors on a table in a sunset forest, the Second Nature systems" />
+          <picture>
+            <source type="image/webp" srcSet="./hero-800.webp 800w, ./hero-1456.webp 1456w" sizes="100vw" />
+            <img
+              className="stage-img" src="./hero.jpg" width="1456" height="816"
+              loading="eager" fetchPriority="high"
+              alt="Three monitors on a table in a sunset forest, the Second Nature systems"
+            />
+          </picture>
           <div
             className="sun-bloom"
             style={{
@@ -212,11 +219,14 @@ function MobileHome() {
 
   return (
     <div className="mobile-home" ref={wrapRef}>
-      <img className="mh-bg" src="./hero.jpg" alt="" aria-hidden="true" />
+      <picture>
+        <source type="image/webp" srcSet="./hero-800.webp 800w, ./hero-1456.webp 1456w" sizes="100vw" />
+        <img className="mh-bg" src="./hero.jpg" width="1456" height="816" loading="eager" fetchPriority="high" alt="" aria-hidden="true" />
+      </picture>
       <div className="mh-scrim" aria-hidden="true" />
       {screenRect && (
         <div className="mh-screen-logo" style={screenRect} aria-hidden="true">
-          <img src="./logo.png" alt="" />
+          <img src="./logo.webp" width="384" height="384" alt="" />
         </div>
       )}
       <div className="mh-ambient" aria-hidden="true">
@@ -235,8 +245,8 @@ function MobileHome() {
 
 export default function Home() {
   return (
-    <main aria-label="Second Nature home">
-      <h1 style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clipPath: 'inset(50%)' }}>
+    <main id="main" tabIndex={-1} aria-label="Second Nature home">
+      <h1 className="sr-only">
         Second Nature, intelligent agent systems for personal and business use
       </h1>
       <Stage />

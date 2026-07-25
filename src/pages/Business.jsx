@@ -161,7 +161,7 @@ function Pillar({ data, flavor, live, setLive, moduleTitle, children, footer }) 
 export default function Business() {
   const [live, setLive] = useState(null)
   return (
-    <main className="page" style={{ '--accent': 'var(--pulse)' }}>
+    <main id="main" tabIndex={-1} className="page" style={{ '--accent': 'var(--pulse)' }}>
       <div className="bz-leaf" aria-hidden="true" />
       <div className="grid-bg" aria-hidden="true" />
       <VeinSystem />

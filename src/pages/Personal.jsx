@@ -122,7 +122,7 @@ function Orbit({ active, setActive, hot }) {
         animate={active ? { x: '-50%', y: '-50%', scale: [1, 1.35, 0.9], opacity: [1, 1, 0] } : { x: '-50%', y: '-50%', scale: 1, opacity: 1 }}
         transition={{ duration: reduce ? 0 : 0.5 }}
       >
-        <img src="./logo.png" alt="" />
+        <img src="./logo.webp" width="384" height="384" alt="" />
       </motion.div>
 
       <AnimatePresence>
@@ -203,7 +203,7 @@ export default function Personal() {
   const [active, setActive] = useState(null)
   const [hot, setHot] = useState(null)
   return (
-    <main className="page" style={{ '--accent': 'var(--nebula)' }}>
+    <main id="main" tabIndex={-1} className="page" style={{ '--accent': 'var(--nebula)' }}>
       <Cosmos />
       <div className="page-inner">
         <div className="personal-grid">

@@ -66,7 +66,7 @@ export default function Build() {
   }
 
   return (
-    <main className="page" style={{ '--accent': accent }}>
+    <main id="main" tabIndex={-1} className="page" style={{ '--accent': accent }}>
       <RootSystem growth={status === 'sent' ? 1 : 0.18 + 0.75 * (((focus.size > 0 ? 1 : 0) + filled) / 4)} />
       <div className="poster-band" aria-hidden="true">
         <img src="./poster.jpg" alt="" loading="lazy" />
@@ -96,6 +96,7 @@ export default function Build() {
           </div>
         ) : (
           <form onSubmit={onSubmit} onInput={onFormInput} style={{ marginTop: '2.4rem' }}>
+            <h2 className="sr-only">Choose a track</h2>
             <div className="track-panels" role="group" aria-label="Choose a track">
               <button
                 type="button" className="track-panel" aria-pressed={track === 'personal'}
@@ -126,17 +127,18 @@ export default function Build() {
               ))}
             </div>
 
-            <label className="field">
+            <h2 className="sr-only">Contact details</h2>
+            <label className="field" htmlFor="intake-name">
               <span className="mono-label">Name</span>
-              <input name="name" required autoComplete="name" />
+              <input id="intake-name" name="name" required autoComplete="name" />
             </label>
-            <label className="field">
+            <label className="field" htmlFor="intake-email">
               <span className="mono-label">Email</span>
-              <input name="email" type="email" required autoComplete="email" />
+              <input id="intake-email" name="email" type="email" inputMode="email" required autoComplete="email" />
             </label>
-            <label className="field">
+            <label className="field" htmlFor="intake-message">
               <span className="mono-label">What should stop taking your time?</span>
-              <textarea name="message" rows="4" />
+              <textarea id="intake-message" name="message" rows="4" autoComplete="off" />
             </label>
 
             <button type="submit" className="cta-button" disabled={status === 'sending'} style={{ cursor: 'pointer', background: 'none' }}>

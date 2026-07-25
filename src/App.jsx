@@ -9,6 +9,13 @@ import Build from './pages/Build.jsx'
 // Page slide directions: Personal enters from the right, Business from the left.
 const SLIDE = { '/personal': 60, '/business': -60, '/build': 0, '/': 0 }
 
+// Hash routing owns href="#..." — the skip link moves focus manually instead.
+function skipToMain(e) {
+  e.preventDefault()
+  const main = document.getElementById('main')
+  if (main) { main.focus(); main.scrollIntoView() }
+}
+
 function Shell() {
   const location = useLocation()
   const reduce = useReducedMotion()
@@ -18,17 +25,22 @@ function Shell() {
 
   return (
     <>
+      <a className="skip-link" href="#main" onClick={skipToMain}>Skip to content</a>
       {!isHome && (
-        <Link
-          to="/"
-          className={`wordmark${location.pathname === '/business' ? ' wordmark-right' : ''}`}
-          aria-label="Back to home"
-        >
-          {location.pathname !== '/business' && <span className="wordmark-arrow" aria-hidden="true">←</span>}
-          <img src="./logo.png" alt="" />
-          <span>SECOND&nbsp;NATURE</span>
-          {location.pathname === '/business' && <span className="wordmark-arrow" aria-hidden="true">→</span>}
-        </Link>
+        <header className="site-header">
+          <nav aria-label="Site">
+            <Link
+              to="/"
+              className={`wordmark${location.pathname === '/business' ? ' wordmark-right' : ''}`}
+              aria-label="Back to home"
+            >
+              {location.pathname !== '/business' && <span className="wordmark-arrow" aria-hidden="true">←</span>}
+              <img src="./logo.webp" width="384" height="384" alt="" />
+              <span>SECOND&nbsp;NATURE</span>
+              {location.pathname === '/business' && <span className="wordmark-arrow" aria-hidden="true">→</span>}
+            </Link>
+          </nav>
+        </header>
       )}
       <motion.div
         key={location.pathname}
@@ -43,6 +55,18 @@ function Shell() {
           <Route path="/build" element={<Build />} />
         </Routes>
       </motion.div>
+      {isHome ? (
+        <footer className="home-footnote">
+          <a href="mailto:hello@secondnature.ai">hello@secondnature.ai</a>
+          <span>© 2026 Second Nature</span>
+        </footer>
+      ) : (
+        <footer className="site-footer">
+          <span className="site-footer-mark">SECOND&nbsp;NATURE</span>
+          <a href="mailto:hello@secondnature.ai">hello@secondnature.ai</a>
+          <span>© 2026 Second Nature</span>
+        </footer>
+      )}
     </>
   )
 }
