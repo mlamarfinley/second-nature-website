@@ -303,10 +303,10 @@ a { color: inherit; }
   position: absolute; inset: 0; z-index: 0; pointer-events: none;
   background: url('./leaf-bg.jpg') center 30% / cover no-repeat;
   background-attachment: fixed;
-  opacity: .6;
+  opacity: .78;
 }
 .grid-bg { position: absolute; inset: 0; z-index: 0;
-  background: linear-gradient(180deg, rgba(6,10,8,.86) 0%, rgba(6,10,8,.62) 38%, rgba(5,8,6,.9) 100%);
+  background: linear-gradient(180deg, rgba(6,10,8,.8) 0%, rgba(6,10,8,.42) 38%, rgba(5,8,6,.84) 100%);
 }
 .grid-bg::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 0 180px 60px rgba(0,0,0,.55); }
 /* Circulatory overlay: faint veins plus flowing sap pulses */
@@ -314,9 +314,9 @@ a { color: inherit; }
   position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%;
   pointer-events: none; opacity: .8;
 }
-.bz-vein-static { fill: none; stroke: rgba(89,217,160,.10); stroke-width: 1.4; }
+.bz-vein-static { fill: none; stroke: rgba(89,217,160,.20); stroke-width: 1.7; }
 .bz-vein-flow {
-  fill: none; stroke: rgba(89,217,160,.45); stroke-width: 1.4; stroke-linecap: round;
+  fill: none; stroke: rgba(120,235,180,.75); stroke-width: 1.8; stroke-linecap: round;
   stroke-dasharray: 5 34;
   animation-name: sn-vein-flow; animation-timing-function: linear; animation-iteration-count: infinite;
 }
