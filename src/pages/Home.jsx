@@ -148,10 +148,10 @@ function Stage() {
             }}
           />
           <Fireflies />
-          <div className="screen-caption" style={{ left: '25.4%', top: '52.8%' }} aria-hidden="true">
+          <div className="screen-caption" style={{ left: '25.4%', top: '57.6%' }} aria-hidden="true">
             Business systems
           </div>
-          <div className="screen-caption" style={{ left: '75.2%', top: '52.8%' }} aria-hidden="true">
+          <div className="screen-caption" style={{ left: '75.2%', top: '57.6%' }} aria-hidden="true">
             Personal systems
           </div>
           {surfaces.map((s) =>
