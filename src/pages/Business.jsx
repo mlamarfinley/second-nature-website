@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { BIZ } from '../data/content.js'
+import leafBg from '../assets/leaf-bg-1456.webp'
 
 /* The page's circulatory system: a midrib and branching veins, with sap
    pulses flowing through them. Organic replacement for grid linework. */
@@ -162,7 +163,7 @@ export default function Business() {
   const [live, setLive] = useState(null)
   return (
     <main id="main" tabIndex={-1} className="page" style={{ '--accent': 'var(--pulse)' }}>
-      <div className="bz-leaf" aria-hidden="true" />
+      <div className="bz-leaf" style={{ backgroundImage: `url(${leafBg})` }} aria-hidden="true" />
       <div className="grid-bg" aria-hidden="true" />
       <VeinSystem />
       <div className="page-inner">

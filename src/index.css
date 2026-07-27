@@ -351,8 +351,7 @@ main:focus { outline: none; }
    beneath the business machine. Copy stays the readable layer via the scrim. */
 .bz-leaf {
   position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background: url('./leaf-bg.jpg') center 30% / cover no-repeat;
-  background-image: image-set(url('./leaf-bg-1456.webp') type('image/webp'), url('./leaf-bg.jpg') type('image/jpeg'));
+  background-position: center 30%; background-size: cover; background-repeat: no-repeat;
   background-attachment: fixed;
   opacity: .78;
 }
