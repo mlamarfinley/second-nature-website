@@ -47,7 +47,29 @@ a { color: inherit; }
   transition: top .2s ease;
 }
 .skip-link:focus-visible { top: 1rem; }
-.site-header { display: contents; }
+.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 40; }
+.site-header::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(5,5,5,.94) 0%, rgba(5,5,5,.7) 60%, transparent 100%);
+}
+.topnav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem clamp(1.25rem, 4vw, 3rem);
+}
+.topnav-mark { display: flex; align-items: center; gap: .65rem; text-decoration: none; }
+.topnav-mark img { width: 28px; height: 28px; object-fit: contain; }
+.topnav-mark span { font-family: var(--grotesk); font-size: .8rem; letter-spacing: .3em; color: var(--ink); }
+.topnav-links { display: flex; align-items: center; gap: clamp(1.2rem, 3vw, 2.2rem); }
+.topnav-links a {
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink-dim); text-decoration: none; transition: color .3s;
+}
+.topnav-links a:hover, .topnav-links a[aria-current="page"] { color: var(--ink); }
+.topnav-cta {
+  padding: .6rem 1.1rem; border: 1px solid var(--gold);
+  color: var(--gold) !important; transition: background .3s, color .3s !important;
+}
+.topnav-cta:hover { background: var(--gold); color: var(--base) !important; }
 main:focus { outline: none; }
 .site-footer {
   position: relative; z-index: 2;
@@ -202,27 +224,12 @@ main:focus { outline: none; }
 /* ─── Interior pages ─────────────────────────────────────────── */
 .page { min-height: 100vh; min-height: 100dvh; position: relative; overflow-x: clip; }
 .page-inner { position: relative; z-index: 2; max-width: 1460px; margin: 0 auto; padding: clamp(5.5rem, 10vh, 8rem) clamp(1.25rem, 5vw, 4.5rem) 6rem; }
-.wordmark {
-  position: fixed; top: 2rem; left: clamp(1.25rem, 4vw, 3rem); z-index: 40;
-  display: flex; align-items: center; gap: .7rem; text-decoration: none;
-}
-/* Scrim behind the fixed nav so scrolling copy fades under it instead of colliding */
+/
 .wordmark::before {
   content: ""; position: fixed; top: 0; left: 0; right: 0; height: 5.4rem;
   z-index: -1; pointer-events: none;
   background: linear-gradient(180deg, rgba(5,5,5,.96) 0%, rgba(5,5,5,.72) 52%, transparent 100%);
 }
-.wordmark img { width: 30px; height: 30px; object-fit: contain; }
-.wordmark span { font-family: var(--grotesk); font-size: .82rem; letter-spacing: .34em; color: var(--ink-dim); transition: color .3s; }
-.wordmark .wordmark-arrow {
-  font-family: var(--mono); font-size: 1rem; letter-spacing: 0;
-  color: var(--accent, var(--gold));
-  transition: transform .3s ease;
-}
-.wordmark:hover span { color: var(--ink); }
-.wordmark:hover .wordmark-arrow { transform: translateX(-4px); }
-.wordmark-right { left: auto; right: clamp(1.25rem, 4vw, 3rem); }
-.wordmark-right:hover .wordmark-arrow { transform: translateX(4px); }
 .crosslink { font-family: var(--mono); font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--ink-faint); text-decoration: none; }
 .crosslink:hover { color: var(--ink); }
 
