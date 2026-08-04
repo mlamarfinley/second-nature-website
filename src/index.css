@@ -211,13 +211,6 @@ main:focus { outline: none; }
   animation-delay: var(--fly-delay, 0s);
   mix-blend-mode: screen;
 }
-.screen-caption {
-  position: absolute; transform: translateX(-50%);
-  font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
-  color: rgba(240,240,236,.58); text-shadow: 0 1px 12px rgba(0,0,0,.95);
-  pointer-events: none; white-space: nowrap;
-  animation: sn-fade-in 1s ease 2.9s backwards;
-}
 @keyframes sn-fade-in { from { opacity: 0; } to { opacity: 1; } }
 
 /* ─── In-screen UIs (authored at 640×360, warped by matrix3d) ── */

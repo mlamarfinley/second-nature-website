@@ -155,12 +155,6 @@ function Stage() {
             }}
           />
           <Fireflies />
-          <div className="screen-caption" style={{ left: '25.4%', top: '56.2%' }} aria-hidden="true">
-            Business systems
-          </div>
-          <div className="screen-caption" style={{ left: '75.2%', top: '56.2%' }} aria-hidden="true">
-            Personal systems
-          </div>
           {surfaces.map((s) =>
             s.to ? (
               <a
@@ -256,6 +250,27 @@ function DailyBriefUI() {
   )
 }
 
+function FollowUpsUI() {
+  const rows = [
+    ['Client reply', 'drafted · awaiting OK'],
+    ['Invoice #204', 'reminder sent'],
+    ['New lead', 'call scheduled · Thu'],
+    ['Quiet thread', 'nudge queued'],
+  ]
+  return (
+    <div className="sui" aria-hidden="true">
+      <div className="sui-pad">
+        <div className="sui-title"><span className="sui-dot" />FOLLOW-UPS · LIVE</div>
+        <div className="sui-hr" />
+        {rows.map(([name, status]) => (
+          <div className="sui-row" key={name}><span>{name}</span><b>{status.toUpperCase()}</b></div>
+        ))}
+        <div className="sui-typeline">&gt; 3 threads kept warm today_</div>
+      </div>
+    </div>
+  )
+}
+
 export default function Home() {
   return (
     <main id="main" tabIndex={-1} aria-label="Second Nature home">
@@ -319,7 +334,7 @@ export default function Home() {
           <p className="hb-body hb-proof-body">{HOME_COPY.proof.body}</p>
           <div className="hb-proof-screens" aria-hidden="true">
             <div className="hb-screen"><DailyBriefUI /></div>
-            <div className="hb-screen"><BusinessScreenUI /></div>
+            <div className="hb-screen"><FollowUpsUI /></div>
           </div>
         </section>
 
