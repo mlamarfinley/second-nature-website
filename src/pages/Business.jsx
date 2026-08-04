@@ -1,35 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
-import { BIZ } from '../data/content.js'
-import leafBg from '../assets/leaf-bg-1456.webp'
-
-/* The page's circulatory system: a midrib and branching veins, with sap
-   pulses flowing through them. Organic replacement for grid linework. */
-const VEINS = [
-  { d: 'M -40 120 C 320 260, 620 520, 900 820 S 1300 1500, 1500 1750', dur: 16 },
-  { d: 'M 420 360 C 300 520, 220 760, 180 1050', dur: 11 },
-  { d: 'M 640 540 C 560 760, 540 980, 560 1240', dur: 13 },
-  { d: 'M 900 820 C 1040 900, 1180 940, 1360 960', dur: 9 },
-  { d: 'M 760 660 C 900 640, 1080 600, 1300 520', dur: 10 },
-  { d: 'M 300 250 C 380 300, 430 380, 470 470', dur: 8 },
-]
-
-function VeinSystem() {
-  return (
-    <svg className="bz-veins" viewBox="0 0 1440 1800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      {VEINS.map((v, i) => (
-        <path key={`s${i}`} d={v.d} className="bz-vein-static" />
-      ))}
-      {VEINS.map((v, i) => (
-        <path
-          key={`f${i}`} d={v.d} className="bz-vein-flow"
-          style={{ animationDuration: `${v.dur}s`, animationDelay: `${-i * 2.7}s` }}
-        />
-      ))}
-    </svg>
-  )
-}
+import { BIZ, CALENDLY_URL } from '../data/content.js'
 
 function Counter({ n, suffix, cap }) {
   const reduce = useReducedMotion()
@@ -100,17 +71,12 @@ function CommThread() {
   )
 }
 
-function Pillar({ data, flavor, live, setLive, moduleTitle, children, footer }) {
+function Pillar({ data, flavor, moduleTitle, children, footer }) {
   const reduce = useReducedMotion()
-  const state = live === flavor ? ' is-live' : live ? ' is-rest' : ''
   return (
     <motion.section
-      className={`bz-pillar bz-${flavor}${state}`}
+      className={`bz-pillar bz-${flavor}`}
       aria-label={data.title}
-      onMouseEnter={() => setLive(flavor)}
-      onMouseLeave={() => setLive(null)}
-      onFocusCapture={() => setLive(flavor)}
-      onBlurCapture={() => setLive(null)}
       initial={reduce ? false : { opacity: 0, y: 22 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
@@ -160,12 +126,8 @@ function Pillar({ data, flavor, live, setLive, moduleTitle, children, footer }) 
 }
 
 export default function Business() {
-  const [live, setLive] = useState(null)
   return (
-    <main id="main" tabIndex={-1} className="page" style={{ '--accent': 'var(--pulse)' }}>
-      <div className="bz-leaf" style={{ backgroundImage: `url(${leafBg})` }} aria-hidden="true" />
-      <div className="grid-bg" aria-hidden="true" />
-      <VeinSystem />
+    <main id="main" tabIndex={-1} className="page page-quiet" style={{ '--accent': 'var(--pulse)' }}>
       <div className="page-inner">
         <span className="pp-eyebrow mono-label">Business Systems</span>
         <h1 className="bz-headline">
@@ -177,17 +139,16 @@ export default function Business() {
           business run more clearly, move faster, and stay connected where it counts.
         </p>
         <p className="bz-dim">
-          Like the veins in a leaf, everything in a business flows through two networks: the
-          operational side that keeps work moving, and the people side that keeps teams, clients,
-          and communication aligned. When both flow, the whole thing stays alive. Explore both,
-          then tell us where it hurts most.
+          Everything in a business flows through two networks: the operational side that keeps
+          work moving, and the people side that keeps teams, clients, and communication aligned.
+          Explore both, then tell us where it hurts most.
         </p>
 
         <div className="bz-section">
           <h2 className="pp-prompt">Where is your business feeling the most friction?</h2>
           <p className="pp-instruction mono-label">
             <span className="pp-pulse bz-pulse" aria-hidden="true" />
-            Follow both veins of the system
+            Explore both sides of the system
           </p>
         </div>
 
@@ -195,8 +156,6 @@ export default function Business() {
           <Pillar
             data={BIZ.ops}
             flavor="ops"
-            live={live}
-            setLive={setLive}
             moduleTitle="Operations · Live"
             footer="AI support that works like an extra employee. Always on, never behind."
           >
@@ -211,8 +170,6 @@ export default function Business() {
           <Pillar
             data={BIZ.team}
             flavor="team"
-            live={live}
-            setLive={setLive}
             moduleTitle="Communication · Live"
             footer={BIZ.outcomes.join(' · ')}
           >
@@ -226,9 +183,9 @@ export default function Business() {
           <p className="bz-transition-body">
             Once the work is clearer and the communication is stronger, the next step is the
             interface those systems live inside. A dashboard, portal, or workflow layer that gives
-            your business a calm place to operate. That&rsquo;s what we build next.
+            your business a calm place to operate. That&rsquo;s where we start on a call.
           </p>
-          <Link to="/build?track=business" className="cta-button">Build your system</Link>
+          <a className="cta-button hero-cta" href={CALENDLY_URL} target="_blank" rel="noopener">Book a call</a>
         </div>
       </div>
     </main>

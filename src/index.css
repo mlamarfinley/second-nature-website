@@ -506,6 +506,12 @@ main:focus { outline: none; }
 .bz-transition-rule, .page-transition-rule { width: 64px; margin: 0 auto 1.8rem; }
 .bz-transition-headline, .page-transition-headline { font-size: clamp(2rem, 4.4vw, 3.2rem); margin: 0 0 1.2rem; }
 .bz-transition-body, .page-transition-body { max-width: 38rem; margin: 0 auto 2.2rem; font-size: .95rem; line-height: 1.75; color: var(--ink-dim); }
+.page-quiet { background: radial-gradient(800px 560px at 90% -4%, rgba(232,168,76,.05), transparent 70%); }
+.detail-inner { max-width: 860px; }
+.detail-block { margin-top: clamp(2.6rem, 6vh, 4rem); padding-top: clamp(1.8rem, 4vh, 2.6rem); border-top: 1px solid rgba(240,240,236,.09); }
+.detail-label { color: var(--gold); }
+.detail-headline { font-size: clamp(1.5rem, 2.6vw, 2rem); margin: .7rem 0 .8rem; }
+.detail-body { color: var(--ink-dim); max-width: 42rem; margin: 0 0 1.2rem; }
 
 /* Build page */
 .build-roots {
