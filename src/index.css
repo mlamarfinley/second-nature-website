@@ -70,6 +70,10 @@ a { color: inherit; }
   color: var(--gold) !important; transition: background .3s, color .3s !important;
 }
 .topnav-cta:hover { background: var(--gold); color: var(--base) !important; }
+@media (max-width: 880px) {
+  .topnav-links a:not(.topnav-cta) { display: none; }
+  .topnav { padding: 1rem 1.25rem; }
+}
 main:focus { outline: none; }
 .site-footer {
   position: relative; z-index: 2;
