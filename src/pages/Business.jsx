@@ -147,7 +147,7 @@ export default function Business() {
         <div className="bz-section">
           <h2 className="pp-prompt">Where is your business feeling the most friction?</h2>
           <p className="pp-instruction mono-label">
-            <span className="pp-pulse bz-pulse" aria-hidden="true" />
+            <span className="pp-pulse" aria-hidden="true" />
             Explore both sides of the system
           </p>
         </div>
