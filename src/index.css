@@ -112,6 +112,10 @@ main:focus { outline: none; }
   position: absolute; inset: 0; overflow: hidden; background: var(--base);
 }
 .hero-band { position: relative; height: min(78vh, 820px); min-height: 540px; }
+.hero-band::before {
+  content: ""; position: absolute; inset: 0; z-index: 5; pointer-events: none;
+  background: linear-gradient(100deg, rgba(5,5,5,.74) 10%, rgba(5,5,5,.44) 34%, transparent 58%);
+}
 .hero-band::after {
   content: ""; position: absolute; inset: 40% 0 0 0; z-index: 5; pointer-events: none;
   background: linear-gradient(180deg, transparent, rgba(5,5,5,.82) 78%, var(--base) 100%);
