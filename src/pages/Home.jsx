@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { matrix3dForQuad } from '../lib/homography.js'
-import { HERO, CALENDLY_URL } from '../data/content.js'
+import { HERO, CALENDLY_URL, HOME_COPY } from '../data/content.js'
 
 /* In-screen UIs, authored at a fixed 640×360 design size and warped
    onto the photographed screens with matrix3d. All loops are CSS. */
@@ -236,6 +236,26 @@ function MobileHome() {
   )
 }
 
+function DailyBriefUI() {
+  const rows = [
+    ['07:30', 'Morning check-in call', 'done'],
+    ['09:00', 'Deep work: proposal draft', 'now'],
+    ['12:30', 'Follow-up: 2 replies drafted', 'queued'],
+    ['17:00', 'Day review + carry-over', 'queued'],
+  ]
+  return (
+    <div className="sui" aria-hidden="true">
+      <div className="sui-pad">
+        <div className="sui-title"><span className="sui-dot" style={{ background: 'var(--gold)' }} />TODAY · PERSONAL SYSTEM</div>
+        <div className="sui-hr" />
+        {rows.map(([t, label, st]) => (
+          <div className="sui-row" key={label}><span>{t} · {label}</span><b>{st.toUpperCase()}</b></div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function Home() {
   return (
     <main id="main" tabIndex={-1} aria-label="Second Nature home">
@@ -261,6 +281,65 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <div className="home-body">
+        <section className="hb-section hb-reframe" aria-label="The idea">
+          <p className="serif-display hb-line">{HOME_COPY.reframe.line}</p>
+          <p className="hb-body">{HOME_COPY.reframe.body}</p>
+        </section>
+
+        <section className="hb-section" aria-label="What we build">
+          <span className="mono-label hb-eyebrow">What we build</span>
+          <div className="hb-tracks">
+            {[HOME_COPY.tracks.life, HOME_COPY.tracks.business].map((t) => (
+              <div className="hb-track" key={t.title}>
+                <h2>{t.title}</h2>
+                <ul>{t.items.map((it) => <li key={it}>{it}</li>)}</ul>
+                <Link className="crosslink" to={t.to}>Explore {t.title === 'For your life' ? 'personal' : 'business'} →</Link>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="how" className="hb-section" aria-label="How it works">
+          <span className="mono-label hb-eyebrow">How it works</span>
+          <div className="hb-steps">
+            {HOME_COPY.steps.map(([title, body], i) => (
+              <div className="hb-step" key={title}>
+                <span className="hb-step-num">{String(i + 1).padStart(2, '0')}</span>
+                <h3>{title}</h3>
+                <p>{body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="hb-section" aria-label="Proof">
+          <span className="mono-label hb-eyebrow">{HOME_COPY.proof.title}</span>
+          <p className="hb-body hb-proof-body">{HOME_COPY.proof.body}</p>
+          <div className="hb-proof-screens" aria-hidden="true">
+            <div className="hb-screen"><DailyBriefUI /></div>
+            <div className="hb-screen"><BusinessScreenUI /></div>
+          </div>
+        </section>
+
+        <section className="hb-section" aria-label="Why Second Nature">
+          <span className="mono-label hb-eyebrow">Why Second Nature</span>
+          <div className="hb-truths">
+            {HOME_COPY.truths.map(([title, body]) => (
+              <div className="hb-truth" key={title}>
+                <h3>{title}</h3>
+                <p>{body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="hb-section hb-close" aria-label="Get started">
+          <p className="serif-display hb-line">Technology that becomes second&nbsp;nature.</p>
+          <a className="cta-button hero-cta" href={CALENDLY_URL} target="_blank" rel="noopener">Book a call</a>
+        </section>
+      </div>
     </main>
   )
 }
