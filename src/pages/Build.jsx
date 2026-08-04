@@ -1,3 +1,5 @@
+import { CALENDLY_URL } from '../data/content.js'
+
 /* The intake's environment: roots reaching down, holding steady until the
    full intake experience is built. */
 const ROOTS = [
@@ -44,8 +46,8 @@ export default function Build() {
             We&rsquo;re building the full intake experience now. Until it&rsquo;s live, reach us
             directly and we&rsquo;ll take it from there.
           </p>
-          <a className="cta-button" href="mailto:hello@secondnature.ai" style={{ marginTop: '.6rem' }}>
-            Email us
+          <a className="cta-button" href={CALENDLY_URL} target="_blank" rel="noopener" style={{ marginTop: '.6rem' }}>
+            Book a call
           </a>
         </div>
       </div>

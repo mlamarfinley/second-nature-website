@@ -107,5 +107,40 @@ export const FOCUS_CHIPS = {
   ],
 }
 
-// Replace with a real Formspree form ID to connect the intake form.
-export const FORMSPREE_ID = 'YOUR_FORMSPREE_ID'
+export const CALENDLY_URL = 'https://calendly.com/mlamarfinley/30min'
+
+export const HOME_COPY = {
+  reframe: {
+    line: 'You don\u2019t need more apps. You need a system.',
+    body:
+      'Most days leak through the gaps between tools: the task in one place, the follow-up in another, the reminder that never fires. We connect the pieces into one system that quietly runs the repetitive parts of your day.',
+  },
+  tracks: {
+    life: {
+      title: 'For your life',
+      items: ['A daily planner that builds itself', 'Check-in calls that keep you on track', 'Inbox triage and task extraction', 'Money that reports to you'],
+      to: '/personal',
+    },
+    business: {
+      title: 'For your business',
+      items: ['Operations automation, end to end', 'AI support that works like an extra employee', 'Client follow-up that never goes cold', 'Team communication, summarized and routed'],
+      to: '/business',
+    },
+  },
+  steps: [
+    ['Map the friction', 'A short call. We find where your time actually goes, and which parts a system should carry.'],
+    ['We build your system', 'Custom agents shaped to how you already work. No templates, no dashboards for their own sake.'],
+    ['It runs with you', 'Your system works in the background every day, and we tune it as your life or business changes.'],
+  ],
+  proof: {
+    title: 'Running right now',
+    body:
+      'We\u2019re our own first client. The systems on this page run our own days: the morning check-in call, the task carry-over, the follow-ups that never slip.',
+  },
+  truths: [
+    ['Fully custom', 'Built around how you actually work, not a template with your logo on it.'],
+    ['Life and business, one philosophy', 'The same calm-systems thinking at home and at work.'],
+    ['Calm by design', 'Less noise, fewer dashboards. Systems that reduce pressure instead of adding it.'],
+    ['We run on our own systems', 'Every system we sell, we live on daily. We feel the rough edges before you do.'],
+  ],
+}
