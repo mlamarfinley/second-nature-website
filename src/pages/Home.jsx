@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { matrix3dForQuad } from '../lib/homography.js'
-import { HERO, TAGLINE } from '../data/content.js'
+import { HERO, CALENDLY_URL } from '../data/content.js'
 
 /* In-screen UIs, authored at a fixed 640×360 design size and warped
    onto the photographed screens with matrix3d. All loops are CSS. */
@@ -129,9 +129,9 @@ function Stage() {
     if (!box) return []
     const px = (q) => q.map(([x, y]) => [(x / 100) * box.w, (y / 100) * box.h])
     return [
-      { key: 'left', to: '/business', label: 'ENTER BUSINESS SYSTEMS', ui: <BusinessScreenUI />, quad: px(HERO.quads.left), pon: 1.5 },
-      { key: 'center', to: null, label: null, ui: <CenterScreenUI />, quad: px(HERO.quads.center), pon: 0.45 },
-      { key: 'right', to: '/personal', label: 'ENTER PERSONAL SYSTEMS', ui: <PersonalScreenUI />, quad: px(HERO.quads.right), pon: 1.65 },
+      { key: 'left', to: '/business', label: 'ENTER BUSINESS SYSTEMS', ui: <BusinessScreenUI />, quad: px(HERO.quads.left), pon: 0.75 },
+      { key: 'center', to: null, label: null, ui: <CenterScreenUI />, quad: px(HERO.quads.center), pon: 0.2 },
+      { key: 'right', to: '/personal', label: 'ENTER PERSONAL SYSTEMS', ui: <PersonalScreenUI />, quad: px(HERO.quads.right), pon: 0.9 },
     ].map((s) => ({ ...s, matrix: matrix3dForQuad(SURFACE_W, SURFACE_H, s.quad) }))
   }, [box])
 
@@ -232,13 +232,6 @@ function MobileHome() {
       <div className="mh-ambient" aria-hidden="true">
         <Fireflies count={8} />
       </div>
-      <div className="mh-bottom">
-        <p className="mh-tagline">{TAGLINE}</p>
-        <nav className="mh-actions" aria-label="Enter Second Nature">
-          <Link to="/personal" className="mh-action">Enter Personal Systems</Link>
-          <Link to="/business" className="mh-action">Enter Business Systems</Link>
-        </nav>
-      </div>
     </div>
   )
 }
@@ -246,19 +239,28 @@ function MobileHome() {
 export default function Home() {
   return (
     <main id="main" tabIndex={-1} aria-label="Second Nature home">
-      <h1 className="sr-only">
-        Second Nature, intelligent agent systems for personal and business use
-      </h1>
-      <Stage />
-      <p className="home-instruction">
-        <span className="home-instruction-dot" aria-hidden="true" />
-        Select a screen to enter
-      </p>
-      <nav className="home-quiet-nav" aria-label="Site sections">
-        <Link to="/business">Business</Link>
-        <Link to="/personal">Personal</Link>
-      </nav>
-      <MobileHome />
+      <section className="hero-band">
+        <Stage />
+        <MobileHome />
+        <div className="hero-overlay">
+          <span className="mono-label hero-eyebrow">Second Nature · AI Systems</span>
+          <h1 className="serif-display hero-h1">We build AI systems that work with&nbsp;you.</h1>
+          <p className="hero-sub">
+            Custom agents that carry your schedule, your follow-ups, your admin, and your
+            operations, calmly, in the background, every day.
+          </p>
+          <div className="hero-actions">
+            <a className="cta-button hero-cta" href={CALENDLY_URL} target="_blank" rel="noopener">Book a call</a>
+            <a
+              className="hero-secondary"
+              href="#how"
+              onClick={(e) => { e.preventDefault(); document.getElementById('how')?.scrollIntoView({ behavior: 'smooth' }) }}
+            >
+              See how it works ↓
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
   )
 }

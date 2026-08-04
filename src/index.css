@@ -117,8 +117,29 @@ main:focus { outline: none; }
 
 /* ─── Home stage ─────────────────────────────────────────────── */
 .stage-viewport {
-  position: fixed; inset: 0; overflow: hidden; background: var(--base);
+  position: absolute; inset: 0; overflow: hidden; background: var(--base);
 }
+.hero-band { position: relative; height: min(78vh, 820px); min-height: 540px; }
+.hero-band::after {
+  content: ""; position: absolute; inset: 40% 0 0 0; z-index: 5; pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(5,5,5,.82) 78%, var(--base) 100%);
+}
+.hero-overlay {
+  position: absolute; left: clamp(1.25rem, 5vw, 4rem); bottom: clamp(1.6rem, 5vh, 3.2rem);
+  right: clamp(1.25rem, 5vw, 4rem); z-index: 6; max-width: 44rem;
+  text-shadow: 0 1px 14px rgba(0,0,0,.85);
+}
+.hero-eyebrow { color: var(--gold); }
+.hero-h1 { font-size: clamp(2.4rem, 4.6vw, 4.2rem); margin: .9rem 0 1rem; }
+.hero-sub { color: var(--ink-dim); max-width: 36rem; margin: 0 0 1.6rem; }
+.hero-actions { display: flex; align-items: center; gap: 1.6rem; flex-wrap: wrap; }
+.hero-cta { border-color: var(--gold); color: var(--gold); }
+.hero-cta:hover { background: var(--gold); color: var(--base); }
+.hero-secondary {
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink-dim); text-decoration: none;
+}
+.hero-secondary:hover { color: var(--ink); }
 .stage-viewport.letterboxed::before, .stage-viewport.letterboxed::after {
   content: ""; position: absolute; left: 0; right: 0; height: 24%;
   z-index: 2; pointer-events: none;
@@ -141,7 +162,7 @@ main:focus { outline: none; }
   width: 100%; height: 100%; position: relative;
   transition: filter .45s ease; filter: brightness(.92);
   /* startup: screens are off, then flash on (center first, sides after) */
-  animation: sn-power-on .95s ease-out;
+  animation: sn-power-on .7s ease-out;
   animation-delay: var(--pon-delay, 0s);
   animation-fill-mode: backwards;
 }
@@ -579,8 +600,8 @@ main:focus { outline: none; }
   .stage-viewport, .home-quiet-nav, .home-instruction { display: none; }
   .mobile-home {
     display: flex; flex-direction: column; justify-content: flex-end;
-    min-height: 100vh; min-height: 100dvh; position: relative; overflow: hidden;
-    padding: calc(2rem + env(safe-area-inset-top)) 1.35rem calc(1.5rem + env(safe-area-inset-bottom));
+    height: 100%; position: relative; overflow: hidden;
+    padding: 2.2rem;
   }
   .personal-grid { grid-template-columns: 1fr; }
   .orbit-cell { display: none; }
@@ -611,8 +632,8 @@ main:focus { outline: none; }
   .stage-viewport, .home-quiet-nav, .home-instruction, .home-footnote { display: none; }
   .mobile-home {
     display: flex; flex-direction: column; justify-content: flex-end;
-    min-height: 100vh; min-height: 100dvh; position: relative; overflow: hidden;
-    padding: 2.2rem 2.2rem calc(1.8rem + env(safe-area-inset-bottom));
+    height: 100%; position: relative; overflow: hidden;
+    padding: 2.2rem;
   }
   .mh-actions { max-width: 30rem; width: 100%; margin: 0 auto; }
   .mh-tagline { text-align: center; }
@@ -623,8 +644,8 @@ main:focus { outline: none; }
   .stage-viewport, .home-quiet-nav, .home-instruction, .home-footnote { display: none; }
   .mobile-home {
     display: flex; flex-direction: column; justify-content: flex-end;
-    min-height: 100vh; min-height: 100dvh; position: relative; overflow: hidden;
-    padding: 2.2rem 2.2rem calc(1.8rem + env(safe-area-inset-bottom));
+    height: 100%; position: relative; overflow: hidden;
+    padding: 2.2rem;
   }
   .mh-actions { max-width: 30rem; width: 100%; margin: 0 auto; }
   .mh-tagline { text-align: center; }
