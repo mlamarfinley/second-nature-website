@@ -17,13 +17,13 @@ export default function Nav() {
           <Link to="/personal" aria-current={pathname === '/personal' ? 'page' : undefined}>Personal</Link>
           {SAVANNAH_PHONE && (
             <a
-              className="topnav-phone"
+              className="topnav-cta topnav-cta-agent"
               href={`tel:${SAVANNAH_PHONE}`}
               aria-label={`Speak to an agent at ${formatPhone(SAVANNAH_PHONE)}`}
             >
               <span className="topnav-phone-dot" aria-hidden="true" />
               <span className="topnav-phone-label">Speak to an agent</span>
-              <span className="topnav-phone-num">{formatPhone(SAVANNAH_PHONE)}</span>
+              <span className="topnav-phone-num">Call</span>
             </a>
           )}
           <a className="topnav-cta" href={CALENDLY_URL} target="_blank" rel="noopener">Book a meeting</a>

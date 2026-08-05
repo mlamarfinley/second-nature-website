@@ -439,55 +439,47 @@ main:focus { outline: none; }
   .sys-row { grid-template-columns: 1fr; gap: .5rem; }
 }
 
-/* Two ways in: book it yourself, or talk to Savannah now. */
-.cta-pair { display: flex; align-items: center; gap: clamp(1.4rem, 4vw, 3rem); flex-wrap: wrap; margin-top: 1.6rem; }
-.cta-pair .cta-button { margin-top: 0; flex: 0 0 auto; }
-.cta-voice {
-  flex: 1 1 18rem; min-width: 0; max-width: 26rem;
-  display: block; text-decoration: none; color: inherit;
-  border-left: 1px solid rgba(232,168,76,.35); padding-left: clamp(1rem, 2.5vw, 1.6rem);
+/* Two separate buttons: speak to an agent, or book a meeting. */
+.cta-pair { display: flex; align-items: center; gap: .9rem; flex-wrap: wrap; margin-top: 1.6rem; }
+.cta-pair .cta-button { margin-top: 0; }
+.cta-button-agent {
+  display: inline-flex; align-items: center; gap: .6rem;
+  /* Gold has to be set here, not via .hero-cta — .cta-button is declared
+     later in this file at equal specificity and would override it. */
+  border-color: var(--gold); color: var(--gold);
 }
-.cta-voice-lead { display: flex; align-items: center; gap: .5rem; color: var(--ink-dim); font-size: .7rem; }
-.cta-voice-dot {
-  width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+.cta-button-agent:hover { background: var(--gold); color: var(--base); border-color: var(--gold); }
+.cta-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: currentColor;
   box-shadow: 0 0 0 0 rgba(232,168,76,.55); animation: ctaPulse 2.4s ease-out infinite;
 }
 @keyframes ctaPulse { 70% { box-shadow: 0 0 0 7px rgba(232,168,76,0); } 100% { box-shadow: 0 0 0 0 rgba(232,168,76,0); } }
-.cta-voice-num {
-  display: block; font-size: clamp(1.15rem, 2.4vw, 1.4rem); letter-spacing: .01em;
-  margin: .35rem 0 .4rem; color: var(--ink); font-variant-numeric: tabular-nums;
-  transition: color .25s ease;
-}
-.cta-voice:hover .cta-voice-num, .cta-voice:focus-visible .cta-voice-num { color: var(--gold); }
-.cta-voice-note { display: block; font-size: .8rem; line-height: 1.6; color: var(--ink-dim); }
-.cta-voice:focus-visible { outline: 2px solid var(--gold); outline-offset: 6px; }
+@media (prefers-reduced-motion: reduce) { .cta-dot { animation: none; } }
 .cta-pair-build { margin-top: 1.2rem; }
-@media (prefers-reduced-motion: reduce) { .cta-voice-dot { animation: none; } }
-@media (max-width: 620px) {
-  .cta-pair { gap: 1.6rem; }
-  .cta-voice { flex: 1 1 100%; }
+@media (max-width: 460px) {
+  .cta-pair { gap: .7rem; }
+  .cta-pair .cta-button { flex: 1 1 100%; justify-content: center; text-align: center; }
 }
 
-/* Nav: speak to an agent. Label on desktop, tappable number on mobile
-   (where a phone call is the most natural action and the other links hide). */
-.topnav-phone { display: inline-flex; align-items: center; gap: .5rem; white-space: nowrap; }
+/* Nav: two buttons. Full labels on desktop, compact on a phone where the
+   other nav links hide and both actions still have to fit. */
+.topnav-cta-agent { display: inline-flex; align-items: center; gap: .5rem; white-space: nowrap; }
 .topnav-phone-dot {
-  width: 5px; height: 5px; border-radius: 50%; background: var(--gold);
+  width: 5px; height: 5px; border-radius: 50%; background: currentColor;
   box-shadow: 0 0 0 0 rgba(232,168,76,.55); animation: ctaPulse 2.4s ease-out infinite;
 }
-.topnav-phone-num { display: none; font-variant-numeric: tabular-nums; }
+.topnav-phone-num { display: none; }
 @media (prefers-reduced-motion: reduce) { .topnav-phone-dot { animation: none; } }
 @media (max-width: 880px) {
-  .topnav-links a.topnav-phone { display: inline-flex; }
+  .topnav-links a.topnav-cta-agent { display: inline-flex; }
   .topnav-phone-label { display: none; }
   .topnav-phone-num { display: inline; }
 }
-@media (max-width: 480px) {
-  /* Both actions must survive on a phone: drop the wordmark, keep the mark. */
+@media (max-width: 520px) {
+  /* Both buttons must survive on a phone: drop the wordmark, keep the mark. */
   .topnav-mark span { display: none; }
-  .topnav-links { gap: .85rem; }
-  .topnav-cta { padding: .55rem .75rem; letter-spacing: .1em; }
-  .topnav-phone-num { font-size: .68rem; }
+  .topnav-links { gap: .6rem; }
+  .topnav-cta { padding: .55rem .8rem; letter-spacing: .1em; }
 }
 
 @media (min-width: 881px) and (max-aspect-ratio: 21/20) {
