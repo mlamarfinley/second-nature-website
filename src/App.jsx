@@ -1,12 +1,11 @@
 import { useEffect } from 'react'
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import Nav from './components/Nav.jsx'
 import Home from './pages/Home.jsx'
 import Personal from './pages/Personal.jsx'
 import Business from './pages/Business.jsx'
 import Systems from './pages/Systems.jsx'
-import Founder from './pages/Founder.jsx'
 import Build from './pages/Build.jsx'
 import { CALENDLY_URL } from './data/content.js'
 
@@ -36,8 +35,9 @@ function Shell() {
           <Route path="/personal" element={<Personal />} />
           <Route path="/business" element={<Business />} />
           <Route path="/systems" element={<Systems />} />
-          <Route path="/founder" element={<Founder />} />
           <Route path="/build" element={<Build />} />
+          {/* Unknown routes render nothing without this — send them home. */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </motion.div>
       <footer className="site-footer">

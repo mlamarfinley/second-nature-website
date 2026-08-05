@@ -163,28 +163,6 @@ export const CALENDLY_URL = 'https://calendly.com/mlamarfinley/30min'
 // Empty string hides the phone option site-wide.
 export const SAVANNAH_PHONE = '+14707489278'
 
-export const FOUNDER = {
-  name: 'Miles Finley',
-  role: 'Founder',
-  // NOTE: draft narrative built only from verifiable facts. Miles to edit —
-  // class year, major, hometown, and the "why" are his to fill in.
-  lead:
-    'I don\u2019t sell software I haven\u2019t lived on. Everything Second Nature builds started as something I needed first \u2014 and most of it still runs my own week.',
-  body: [
-    'I started building systems because I was losing hours to work that didn\u2019t need me. The plan I rebuilt every morning. The follow-up I meant to send. The thing I said I\u2019d handle three weeks ago. So I built something that carried it instead.',
-    'It worked well enough that I built one for my mom, one for my dad, and one for my brother. They still use them every day. That\u2019s the part I care about \u2014 not the demo, the Tuesday six months later when it\u2019s still running.',
-    'Second Nature is that, offered to everyone else. I\u2019m a student, I\u2019m early, and my pricing says so. What I won\u2019t do is hand you something I wouldn\u2019t run myself.',
-  ],
-  receipts: [
-    ['A voice agent that answers a real line', 'Not a demo. It picks up, answers questions, qualifies the caller, books the meeting, and sends me the transcript. It\u2019s the same product on the other end of the \u201cspeak to an agent\u201d button on this site.'],
-    ['A system that runs my mornings', 'A check-in call every day, tasks that carry themselves forward, follow-ups that don\u2019t slip. Built for me, then cloned for three members of my family, who have used it daily ever since.'],
-    ['Sites for real businesses', 'A cleaning company running on its own domain. A Jamaican restaurant with two locations. A national research firm. A student auto-service platform for the AUC.'],
-    ['Tools that had to be right', 'A presentation generator for exit-poll data where every number has to trace back to its source, because in that work a wrong figure is the whole problem.'],
-  ],
-  close:
-    'If any of that sounds like something your week needs, the fastest way to find out is to talk \u2014 either to me, or to the agent that answers for me.',
-}
-
 export const HOME_COPY = {
   reframe: {
     line: 'You don\u2019t need more apps. You need a system.',

@@ -25,7 +25,6 @@ export default function Nav() {
           <Link to="/business" aria-current={pathname === '/business' ? 'page' : undefined}>Business</Link>
           <Link to="/systems" aria-current={pathname === '/systems' ? 'page' : undefined}>Systems</Link>
           <Link to="/personal" aria-current={pathname === '/personal' ? 'page' : undefined}>Personal</Link>
-          <Link to="/founder" aria-current={pathname === '/founder' ? 'page' : undefined}>Founder</Link>
           <a className="topnav-cta" href={CALENDLY_URL} target="_blank" rel="noopener">Book a meeting</a>
         </div>
       </nav>
