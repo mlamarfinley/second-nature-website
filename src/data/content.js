@@ -157,10 +157,11 @@ export const FOCUS_CHIPS = {
 
 export const CALENDLY_URL = 'https://calendly.com/mlamarfinley/30min'
 
-// Savannah's inbound line. Set this once the Retell number is purchased
-// (SETUP.md step 6) and the second CTA turns on everywhere automatically.
-// Format: '+14045550134'. Empty string = phone option stays hidden.
-export const SAVANNAH_PHONE = ''
+// Savannah's inbound line — Jibri's old Odessa number, released and rebound.
+// Drives the "Speak to an agent" CTA everywhere. It must be bound to the
+// Savannah agent in Retell before this goes live, or callers reach nothing.
+// Empty string hides the phone option site-wide.
+export const SAVANNAH_PHONE = '+14707489278'
 
 export const HOME_COPY = {
   reframe: {
