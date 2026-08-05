@@ -462,7 +462,17 @@ main:focus { outline: none; }
 }
 
 /* Nav: two buttons, kept apart — the agent button leads, the page links
-   sit between it and the booking button. Full labels at every size. */
+   sit between it and the booking button. Full labels at every size.
+
+   The header is position:fixed, so at the page-end CTA both nav buttons and
+   the page buttons share the screen. The nav is a persistent utility and
+   stays quiet; the gold accent belongs to the page-end CTA, once. */
+.topnav-cta {
+  border-color: rgba(240,240,236,.28);
+  color: var(--ink-dim) !important;
+}
+.topnav-cta:hover { border-color: var(--gold); background: transparent; color: var(--gold) !important; }
+.topnav-cta-agent .topnav-phone-dot { background: var(--gold); }
 .topnav-cta-agent { display: inline-flex; align-items: center; gap: .5rem; white-space: nowrap; }
 .topnav-phone-dot {
   width: 5px; height: 5px; border-radius: 50%; background: currentColor;
