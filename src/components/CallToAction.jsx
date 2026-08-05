@@ -8,7 +8,7 @@ export function formatPhone(raw) {
   return d.length === 10 ? `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}` : raw
 }
 
-export default function CallToAction({ label = 'Book a call', className = '' }) {
+export default function CallToAction({ label = 'Book a meeting yourself', className = '' }) {
   return (
     <div className={`cta-pair ${className}`.trim()}>
       <a className="cta-button hero-cta" href={CALENDLY_URL} target="_blank" rel="noopener">
@@ -19,7 +19,7 @@ export default function CallToAction({ label = 'Book a call', className = '' }) 
         <a className="cta-voice" href={`tel:${SAVANNAH_PHONE}`}>
           <span className="cta-voice-lead mono-label">
             <span className="cta-voice-dot" aria-hidden="true" />
-            Or talk to someone now
+            Speak to an agent
           </span>
           <span className="cta-voice-num">{formatPhone(SAVANNAH_PHONE)}</span>
           <span className="cta-voice-note">
