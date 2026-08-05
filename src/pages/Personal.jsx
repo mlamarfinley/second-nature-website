@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { CATEGORIES, CALENDLY_URL } from '../data/content.js'
+import CallToAction from '../components/CallToAction.jsx'
 
 function Reveal({ i = 0, className, children }) {
   const reduce = useReducedMotion()
@@ -58,7 +59,7 @@ export default function Personal() {
           <p className="page-transition-body">
             Thirty minutes is enough to map where yours should start.
           </p>
-          <a className="cta-button hero-cta" href={CALENDLY_URL} target="_blank" rel="noopener">Book a call</a>
+          <CallToAction />
         </Reveal>
       </div>
     </main>

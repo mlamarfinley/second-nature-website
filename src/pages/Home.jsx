@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { matrix3dForQuad } from '../lib/homography.js'
 import { HERO, CALENDLY_URL, HOME_COPY } from '../data/content.js'
+import CallToAction from '../components/CallToAction.jsx'
 
 /* In-screen UIs, authored at a fixed 640×360 design size and warped
    onto the photographed screens with matrix3d. All loops are CSS. */
@@ -285,7 +286,7 @@ export default function Home() {
             operations, calmly, in the background, every day.
           </p>
           <div className="hero-actions">
-            <a className="cta-button hero-cta" href={CALENDLY_URL} target="_blank" rel="noopener">Book a call</a>
+            <CallToAction />
             <a
               className="hero-secondary"
               href="#how"
@@ -352,7 +353,7 @@ export default function Home() {
 
         <section className="hb-section hb-close" aria-label="Get started">
           <p className="serif-display hb-line">Technology that becomes second&nbsp;nature.</p>
-          <a className="cta-button hero-cta" href={CALENDLY_URL} target="_blank" rel="noopener">Book a call</a>
+          <CallToAction />
         </section>
       </div>
     </main>

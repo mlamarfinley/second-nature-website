@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { SYSTEMS, CALENDLY_URL } from '../data/content.js'
+import { SYSTEMS } from '../data/content.js'
+import CallToAction from '../components/CallToAction.jsx'
 
 export default function Systems() {
   const reduce = useReducedMotion()
@@ -38,7 +39,7 @@ export default function Systems() {
             Every build starts the same way: a short call where we find where your time actually
             goes and what a system should carry. You leave with that map whether you hire us or not.
           </p>
-          <a className="cta-button hero-cta" href={CALENDLY_URL} target="_blank" rel="noopener">Book a call</a>
+          <CallToAction />
         </div>
       </div>
     </main>

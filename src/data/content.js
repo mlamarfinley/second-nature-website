@@ -157,6 +157,11 @@ export const FOCUS_CHIPS = {
 
 export const CALENDLY_URL = 'https://calendly.com/mlamarfinley/30min'
 
+// Savannah's inbound line. Set this once the Retell number is purchased
+// (SETUP.md step 6) and the second CTA turns on everywhere automatically.
+// Format: '+14045550134'. Empty string = phone option stays hidden.
+export const SAVANNAH_PHONE = ''
+
 export const HOME_COPY = {
   reframe: {
     line: 'You don\u2019t need more apps. You need a system.',

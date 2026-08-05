@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { BIZ, CALENDLY_URL } from '../data/content.js'
+import CallToAction from '../components/CallToAction.jsx'
 
 function Counter({ n, suffix, cap }) {
   const reduce = useReducedMotion()
@@ -215,7 +216,7 @@ export default function Business() {
             systems live — a dashboard, a portal, a tool built to your process. That&rsquo;s
             Systems work, and it starts with a call.
           </p>
-          <a className="cta-button hero-cta" href={CALENDLY_URL} target="_blank" rel="noopener">Book a call</a>
+          <CallToAction />
         </div>
       </div>
     </main>
