@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
-import { CALENDLY_URL } from '../data/content.js'
+import { CALENDLY_URL, SAVANNAH_PHONE } from '../data/content.js'
+import { formatPhone } from './CallToAction.jsx'
 
 export default function Nav() {
   const { pathname } = useLocation()
@@ -14,7 +15,18 @@ export default function Nav() {
           <Link to="/business" aria-current={pathname === '/business' ? 'page' : undefined}>Business</Link>
           <Link to="/systems" aria-current={pathname === '/systems' ? 'page' : undefined}>Systems</Link>
           <Link to="/personal" aria-current={pathname === '/personal' ? 'page' : undefined}>Personal</Link>
-          <a className="topnav-cta" href={CALENDLY_URL} target="_blank" rel="noopener">Book a call</a>
+          {SAVANNAH_PHONE && (
+            <a
+              className="topnav-phone"
+              href={`tel:${SAVANNAH_PHONE}`}
+              aria-label={`Speak to an agent at ${formatPhone(SAVANNAH_PHONE)}`}
+            >
+              <span className="topnav-phone-dot" aria-hidden="true" />
+              <span className="topnav-phone-label">Speak to an agent</span>
+              <span className="topnav-phone-num">{formatPhone(SAVANNAH_PHONE)}</span>
+            </a>
+          )}
+          <a className="topnav-cta" href={CALENDLY_URL} target="_blank" rel="noopener">Book a meeting</a>
         </div>
       </nav>
     </header>

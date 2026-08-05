@@ -468,6 +468,28 @@ main:focus { outline: none; }
   .cta-voice { flex: 1 1 100%; }
 }
 
+/* Nav: speak to an agent. Label on desktop, tappable number on mobile
+   (where a phone call is the most natural action and the other links hide). */
+.topnav-phone { display: inline-flex; align-items: center; gap: .5rem; white-space: nowrap; }
+.topnav-phone-dot {
+  width: 5px; height: 5px; border-radius: 50%; background: var(--gold);
+  box-shadow: 0 0 0 0 rgba(232,168,76,.55); animation: ctaPulse 2.4s ease-out infinite;
+}
+.topnav-phone-num { display: none; font-variant-numeric: tabular-nums; }
+@media (prefers-reduced-motion: reduce) { .topnav-phone-dot { animation: none; } }
+@media (max-width: 880px) {
+  .topnav-links a.topnav-phone { display: inline-flex; }
+  .topnav-phone-label { display: none; }
+  .topnav-phone-num { display: inline; }
+}
+@media (max-width: 480px) {
+  /* Both actions must survive on a phone: drop the wordmark, keep the mark. */
+  .topnav-mark span { display: none; }
+  .topnav-links { gap: .85rem; }
+  .topnav-cta { padding: .55rem .75rem; letter-spacing: .1em; }
+  .topnav-phone-num { font-size: .68rem; }
+}
+
 @media (min-width: 881px) and (max-aspect-ratio: 21/20) {
   .mobile-home {
     display: flex; flex-direction: column; justify-content: flex-end;
