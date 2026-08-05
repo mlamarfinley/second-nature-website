@@ -75,19 +75,52 @@ export const CATEGORIES = [
 ]
 
 export const BIZ = {
-  ops: {
-    tag: 'Systems',
-    title: 'Operations Automation',
+  automations: {
+    tag: 'Automations',
+    title: 'Work that repeats shouldn\u2019t need you',
     body:
-      'Some work repeats, stalls, or quietly gets missed, and that drag adds up. We build systems that take on the reporting, the scheduling, the task routing, and the deadline tracking, so work keeps moving without you pushing it uphill.',
-    items: ['Admin reduction', 'Workflow automation', 'KPI visibility', 'Deadline tracking', 'AI operational support'],
+      'Some work repeats, stalls, or quietly gets missed, and that drag adds up. We build systems that take on the chasing, the routing, the paperwork and the follow-through, so the work keeps moving without anyone pushing it uphill.',
+    items: [
+      'Lead capture and routing',
+      'Quotes and proposals',
+      'Invoicing and payment chase',
+      'Scheduling and dispatch',
+      'Client onboarding',
+      'Document and data extraction',
+      'Reporting and KPI digests',
+      'Reviews and reputation',
+    ],
   },
-  team: {
-    tag: 'People',
-    title: 'Team & Community',
+  communication: {
+    tag: 'Communication',
+    title: 'Nothing waits on someone remembering',
     body:
-      'The other half of your business is people, and people need follow-through. We build systems that improve communication, accountability, and coordination, so your team, clients, and collaborators stay aligned without the constant chasing.',
-    items: ['Communication support', 'Meeting clarity', 'Team accountability', 'Client follow-up', 'Relationship tracking'],
+      'Most delay isn\u2019t people being slow. It\u2019s people not knowing it was their turn. We build the connective tissue that keeps your team, your clients, and your inbox moving in the same direction.',
+    items: [
+      'Client follow-up that never goes cold',
+      'Internal handoffs with clear owners',
+      'Meeting summaries and action items',
+      'Team check-ins without the standup',
+      'One inbox for every channel',
+      'A knowledge base that answers itself',
+      'Escalation that reaches the right person',
+    ],
+  },
+  employees: {
+    tag: 'AI Employees',
+    title: 'A role, not a chatbot',
+    body:
+      'An AI employee has a job description, a schedule, and a standard it\u2019s held to. It shows up, does the work, logs everything it did, and reports back to you. Every one starts under your review and earns its autonomy.',
+    items: [
+      'Receptionist \u2014 answers every call, books the work',
+      'Intake coordinator',
+      'Sales development',
+      'Account manager',
+      'Operations assistant',
+      'Bookkeeping assistant',
+      'Recruiter',
+      'Support agent',
+    ],
   },
   stats: [
     { n: 40, suffix: '', cap: 'hours saved per week' },
@@ -95,6 +128,21 @@ export const BIZ = {
     { n: 2, suffix: '\u00d7', cap: 'more deadlines hit' },
   ],
   outcomes: ['Faster client follow-up', 'Fewer dropped tasks', 'Better team response time', 'Greater workflow visibility'],
+}
+
+export const SYSTEMS = {
+  lead:
+    'Automations move work through the tools you already have. Sometimes the tool doesn\u2019t exist yet \u2014 this is where we build it.',
+  items: [
+    ['Websites', 'Your front door, built properly. Custom design, written with you, fast on a phone, with booking, intake, and payment wired in from day one.'],
+    ['Business dashboards', 'One screen that answers \u201chow are we doing\u201d \u2014 live numbers pulled from every tool you already use, built around the decisions you actually make.'],
+    ['Client portals', 'A professional front door for your customers: status, documents, approvals, invoices, and messages in one place, so they stop emailing you for updates.'],
+    ['Internal operations tools', 'The custom software your spreadsheet is pretending to be. Your real process, with roles, permissions, and a record of who did what.'],
+    ['Booking platforms', 'Services, staff, locations, and availability modeled properly, with deposits at booking and your cancellation policy enforced automatically.'],
+    ['Online storefronts', 'Selling, with the back office attached \u2014 checkout, inventory, fulfillment, and the follow-up that turns one order into the next.'],
+    ['Custom AI applications', 'Something only your business could use: your documents, your standards, your judgment \u2014 wrapped in an interface your team can actually operate.'],
+    ['Rebuilds and migrations', 'You have a system. It\u2019s the wrong one. We audit what exists, move the data without losing it, and rebuild on something maintainable.'],
+  ],
 }
 
 export const FOCUS_CHIPS = {
@@ -123,8 +171,13 @@ export const HOME_COPY = {
     },
     business: {
       title: 'For your business',
-      items: ['Operations automation, end to end', 'AI support that works like an extra employee', 'Client follow-up that never goes cold', 'Team communication, summarized and routed'],
+      items: ['Automations that carry the repeating work', 'Communication that never drops a thread', 'AI employees with a real job description', 'Follow-up that never goes cold'],
       to: '/business',
+    },
+    systems: {
+      title: 'Built from scratch',
+      items: ['Websites that work on a phone first', 'Dashboards and client portals', 'Internal tools your process actually fits', 'Custom AI applications'],
+      to: '/systems',
     },
   },
   steps: [
@@ -135,7 +188,7 @@ export const HOME_COPY = {
   proof: {
     title: 'Running right now',
     body:
-      'We\u2019re our own first client. The systems on this page run our own days: the morning check-in call, the task carry-over, the follow-ups that never slip.',
+      'We\u2019re our own first client. A voice agent answers a real intake line every day. A personal system runs our mornings \u2014 the check-in call, the task carry-over, the follow-ups that never slip. We feel the rough edges before you do.',
   },
   truths: [
     ['Fully custom', 'Built around how you actually work, not a template with your logo on it.'],

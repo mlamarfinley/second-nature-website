@@ -5,6 +5,7 @@ import Nav from './components/Nav.jsx'
 import Home from './pages/Home.jsx'
 import Personal from './pages/Personal.jsx'
 import Business from './pages/Business.jsx'
+import Systems from './pages/Systems.jsx'
 import Build from './pages/Build.jsx'
 import { CALENDLY_URL } from './data/content.js'
 
@@ -33,13 +34,13 @@ function Shell() {
           <Route path="/" element={<Home />} />
           <Route path="/personal" element={<Personal />} />
           <Route path="/business" element={<Business />} />
+          <Route path="/systems" element={<Systems />} />
           <Route path="/build" element={<Build />} />
         </Routes>
       </motion.div>
       <footer className="site-footer">
         <span className="site-footer-mark">SECOND&nbsp;NATURE</span>
         <a href={CALENDLY_URL} target="_blank" rel="noopener">Book a call</a>
-        <a href="mailto:hello@secondnature.ai">hello@secondnature.ai</a>
         <span>© 2026 Second Nature</span>
       </footer>
     </>

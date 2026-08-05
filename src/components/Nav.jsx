@@ -11,8 +11,9 @@ export default function Nav() {
           <span>SECOND&nbsp;NATURE</span>
         </Link>
         <div className="topnav-links">
-          <Link to="/personal" aria-current={pathname === '/personal' ? 'page' : undefined}>Personal</Link>
           <Link to="/business" aria-current={pathname === '/business' ? 'page' : undefined}>Business</Link>
+          <Link to="/systems" aria-current={pathname === '/systems' ? 'page' : undefined}>Systems</Link>
+          <Link to="/personal" aria-current={pathname === '/personal' ? 'page' : undefined}>Personal</Link>
           <a className="topnav-cta" href={CALENDLY_URL} target="_blank" rel="noopener">Book a call</a>
         </div>
       </nav>

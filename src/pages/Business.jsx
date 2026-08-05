@@ -71,6 +71,27 @@ function CommThread() {
   )
 }
 
+/* Employees module: a roster clocked in. */
+function Roster() {
+  const rows = [
+    ['Receptionist', 'on call · 24/7'],
+    ['Follow-up', 'working the pipeline'],
+    ['Bookkeeping', 'closing the month'],
+    ['Support', 'answering tier one'],
+  ]
+  return (
+    <div className="bz-comm" aria-hidden="true">
+      {rows.map(([name, status], i) => (
+        <div key={name} className="bz-comm-row">
+          <span className="bz-comm-dot" style={{ animationDelay: `${i * 0.55}s` }} />
+          <span className="bz-comm-name">{name}</span>
+          <span className="bz-comm-status">{status}</span>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 function Pillar({ data, flavor, moduleTitle, children, footer }) {
   const reduce = useReducedMotion()
   return (
@@ -131,33 +152,33 @@ export default function Business() {
       <div className="page-inner">
         <span className="pp-eyebrow mono-label">Business Systems</span>
         <h1 className="bz-headline">
-          Your business runs on two things: systems and&nbsp;people.
+          The gaps are where the money&nbsp;goes.
         </h1>
         <p className="bz-lead">
-          When either side breaks down, the whole business feels it. Deadlines slip. Communication
-          gets messy. Admin expands. Follow-through weakens. We build AI systems that help your
-          business run more clearly, move faster, and stay connected where it counts.
+          Most businesses don’t lose money on the big decisions. They lose it in the gaps — the
+          lead that never got called back, the invoice that never went out, the handoff that lived
+          in someone’s head. We build the connective tissue that closes those gaps.
         </p>
         <p className="bz-dim">
-          Everything in a business flows through two networks: the operational side that keeps
-          work moving, and the people side that keeps teams, clients, and communication aligned.
-          Explore both, then tell us where it hurts most.
+          Three kinds of help, depending on where it hurts: automations that carry the repeating
+          work, communication systems that keep nothing waiting on someone’s memory, and AI
+          employees that take a role outright.
         </p>
 
         <div className="bz-section">
           <h2 className="pp-prompt">Where is your business feeling the most friction?</h2>
           <p className="pp-instruction mono-label">
             <span className="pp-pulse" aria-hidden="true" />
-            Explore both sides of the system
+            Three ways in
           </p>
         </div>
 
-        <div className="biz-columns">
+        <div className="biz-stack">
           <Pillar
-            data={BIZ.ops}
+            data={BIZ.automations}
             flavor="ops"
-            moduleTitle="Operations · Live"
-            footer="AI support that works like an extra employee. Always on, never behind."
+            moduleTitle="Automations · Live"
+            footer="If it happens more than twice a week, it shouldn’t be a task. It should be a rule."
           >
             <div className="bz-metrics">
               {BIZ.stats.map((s) => (
@@ -168,12 +189,21 @@ export default function Business() {
           </Pillar>
 
           <Pillar
-            data={BIZ.team}
+            data={BIZ.communication}
             flavor="team"
             moduleTitle="Communication · Live"
             footer={BIZ.outcomes.join(' · ')}
           >
             <CommThread />
+          </Pillar>
+
+          <Pillar
+            data={BIZ.employees}
+            flavor="team"
+            moduleTitle="Roster · Clocked in"
+            footer="Every one starts under your review, logs what it does, and earns its autonomy."
+          >
+            <Roster />
           </Pillar>
         </div>
 
@@ -181,9 +211,9 @@ export default function Business() {
           <hr className="thin-rule bz-transition-rule" />
           <p className="serif-display bz-transition-headline">Your systems need a&nbsp;home.</p>
           <p className="bz-transition-body">
-            Once the work is clearer and the communication is stronger, the next step is the
-            interface those systems live inside. A dashboard, portal, or workflow layer that gives
-            your business a calm place to operate. That&rsquo;s where we start on a call.
+            Once the work is moving and the communication holds, the next question is where those
+            systems live — a dashboard, a portal, a tool built to your process. That&rsquo;s
+            Systems work, and it starts with a call.
           </p>
           <a className="cta-button hero-cta" href={CALENDLY_URL} target="_blank" rel="noopener">Book a call</a>
         </div>

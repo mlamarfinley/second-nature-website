@@ -306,7 +306,7 @@ export default function Home() {
         <section className="hb-section" aria-label="What we build">
           <span className="mono-label hb-eyebrow">What we build</span>
           <div className="hb-tracks">
-            {[HOME_COPY.tracks.life, HOME_COPY.tracks.business].map((t) => (
+            {[HOME_COPY.tracks.business, HOME_COPY.tracks.systems, HOME_COPY.tracks.life].map((t) => (
               <div className="hb-track" key={t.title}>
                 <h2>{t.title}</h2>
                 <ul>{t.items.map((it) => <li key={it}>{it}</li>)}</ul>

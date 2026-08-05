@@ -419,6 +419,26 @@ main:focus { outline: none; }
 
 /* Portrait-ish desktop windows: the wide scene can't work — poster layout wins.
    MUST stay at the end of the file so it overrides the base display rules. */
+/* Business: three families stacked, separated by thin rules. */
+.biz-stack { margin-top: 4rem; display: grid; gap: clamp(3rem, 6vw, 4.5rem); }
+.biz-stack > .bz-pillar + .bz-pillar {
+  border-top: 1px solid rgba(240,240,236,.09);
+  padding-top: clamp(3rem, 6vw, 4.5rem);
+}
+
+/* Systems: ruled rows, no boxes. */
+.sys-list { margin-top: 4rem; border-top: 1px solid rgba(240,240,236,.14); }
+.sys-row {
+  display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+  gap: clamp(1rem, 4vw, 3rem); align-items: baseline;
+  padding: 1.5rem 0; border-bottom: 1px solid rgba(240,240,236,.09);
+}
+.sys-name { font-size: 1.18rem; font-weight: 500; margin: 0; letter-spacing: -.01em; }
+.sys-body { font-size: .93rem; line-height: 1.72; color: var(--ink-dim); margin: 0; max-width: 46rem; }
+@media (max-width: 760px) {
+  .sys-row { grid-template-columns: 1fr; gap: .5rem; }
+}
+
 @media (min-width: 881px) and (max-aspect-ratio: 21/20) {
   .mobile-home {
     display: flex; flex-direction: column; justify-content: flex-end;
