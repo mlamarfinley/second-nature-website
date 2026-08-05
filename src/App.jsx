@@ -6,6 +6,7 @@ import Home from './pages/Home.jsx'
 import Personal from './pages/Personal.jsx'
 import Business from './pages/Business.jsx'
 import Systems from './pages/Systems.jsx'
+import Founder from './pages/Founder.jsx'
 import Build from './pages/Build.jsx'
 import { CALENDLY_URL } from './data/content.js'
 
@@ -35,6 +36,7 @@ function Shell() {
           <Route path="/personal" element={<Personal />} />
           <Route path="/business" element={<Business />} />
           <Route path="/systems" element={<Systems />} />
+          <Route path="/founder" element={<Founder />} />
           <Route path="/build" element={<Build />} />
         </Routes>
       </motion.div>

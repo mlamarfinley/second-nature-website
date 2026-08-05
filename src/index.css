@@ -461,25 +461,71 @@ main:focus { outline: none; }
   .cta-pair .cta-button { flex: 1 1 100%; justify-content: center; text-align: center; }
 }
 
-/* Nav: two buttons. Full labels on desktop, compact on a phone where the
-   other nav links hide and both actions still have to fit. */
+/* Nav: two buttons, kept apart — the agent button leads, the page links
+   sit between it and the booking button. Full labels at every size. */
 .topnav-cta-agent { display: inline-flex; align-items: center; gap: .5rem; white-space: nowrap; }
 .topnav-phone-dot {
   width: 5px; height: 5px; border-radius: 50%; background: currentColor;
   box-shadow: 0 0 0 0 rgba(232,168,76,.55); animation: ctaPulse 2.4s ease-out infinite;
 }
-.topnav-phone-num { display: none; }
 @media (prefers-reduced-motion: reduce) { .topnav-phone-dot { animation: none; } }
 @media (max-width: 880px) {
   .topnav-links a.topnav-cta-agent { display: inline-flex; }
-  .topnav-phone-label { display: none; }
-  .topnav-phone-num { display: inline; }
 }
-@media (max-width: 520px) {
-  /* Both buttons must survive on a phone: drop the wordmark, keep the mark. */
+@media (max-width: 620px) {
+  /* Both full labels have to fit beside the mark, so trade wordmark for room. */
   .topnav-mark span { display: none; }
-  .topnav-links { gap: .6rem; }
-  .topnav-cta { padding: .55rem .8rem; letter-spacing: .1em; }
+  .topnav-links { gap: .5rem; }
+  .topnav-cta { padding: .5rem .62rem; font-size: .6rem; letter-spacing: .06em; }
+  .topnav-cta-agent { gap: .38rem; }
+  .topnav-phone-dot { width: 4px; height: 4px; }
+}
+
+/* Founder: portrait-led, the one page that carries a face. */
+.fd-hero {
+  display: grid; grid-template-columns: minmax(0,1fr) minmax(0,.78fr);
+  gap: clamp(2rem, 6vw, 5rem); align-items: end; margin-top: 1rem;
+}
+.fd-intro { padding-bottom: clamp(0rem, 3vw, 2.5rem); }
+.fd-name {
+  font-size: clamp(3rem, 8vw, 6.2rem); font-weight: 500; line-height: .95;
+  letter-spacing: -.03em; margin: 1.1rem 0 1.6rem; text-wrap: balance;
+}
+.fd-lead { font-size: clamp(1.05rem, 1.6vw, 1.25rem); line-height: 1.62; color: var(--ink); max-width: 34rem; margin: 0; }
+.fd-portrait { position: relative; margin: 0; overflow: hidden; }
+.fd-portrait img {
+  display: block; width: 100%; height: auto;
+  filter: grayscale(.28) contrast(1.06) sepia(.14) saturate(1.05);
+}
+/* Film grain over the portrait — texture without touching the photo itself. */
+.fd-grain {
+  position: absolute; inset: 0; pointer-events: none; opacity: .16; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='.55'/></svg>");
+}
+.fd-body { margin: clamp(3.5rem, 8vw, 6rem) 0 0; max-width: 42rem; }
+.fd-para { font-size: 1.02rem; line-height: 1.8; color: var(--ink-dim); margin: 0 0 1.25rem; }
+.fd-para-first {
+  font-family: var(--serif, Georgia, serif); font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  line-height: 1.5; color: var(--ink); margin-bottom: 1.8rem;
+}
+.fd-receipts { margin-top: clamp(3.5rem, 8vw, 6rem); }
+.fd-receipts-head { color: var(--gold); display: block; margin-bottom: 1.8rem; }
+.fd-receipt-list { border-top: 1px solid rgba(240,240,236,.14); }
+.fd-receipt {
+  display: grid; grid-template-columns: 3rem minmax(0,15rem) minmax(0,1fr);
+  gap: clamp(.8rem, 3vw, 2.4rem); align-items: baseline;
+  padding: 1.6rem 0; border-bottom: 1px solid rgba(240,240,236,.09);
+}
+.fd-receipt-idx { color: var(--gold); font-size: .72rem; }
+.fd-receipt-title { font-size: 1.12rem; font-weight: 500; margin: 0; letter-spacing: -.01em; }
+.fd-receipt-body { font-size: .93rem; line-height: 1.72; color: var(--ink-dim); margin: 0; }
+@media (max-width: 900px) {
+  .fd-hero { grid-template-columns: 1fr; align-items: start; gap: 2.4rem; }
+  .fd-portrait { max-width: 26rem; }
+}
+@media (max-width: 760px) {
+  .fd-receipt { grid-template-columns: 2.2rem 1fr; gap: .6rem 1rem; }
+  .fd-receipt-body { grid-column: 2; }
 }
 
 @media (min-width: 881px) and (max-aspect-ratio: 21/20) {

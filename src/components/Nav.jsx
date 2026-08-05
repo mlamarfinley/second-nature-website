@@ -12,9 +12,6 @@ export default function Nav() {
           <span>SECOND&nbsp;NATURE</span>
         </Link>
         <div className="topnav-links">
-          <Link to="/business" aria-current={pathname === '/business' ? 'page' : undefined}>Business</Link>
-          <Link to="/systems" aria-current={pathname === '/systems' ? 'page' : undefined}>Systems</Link>
-          <Link to="/personal" aria-current={pathname === '/personal' ? 'page' : undefined}>Personal</Link>
           {SAVANNAH_PHONE && (
             <a
               className="topnav-cta topnav-cta-agent"
@@ -22,10 +19,13 @@ export default function Nav() {
               aria-label={`Speak to an agent at ${formatPhone(SAVANNAH_PHONE)}`}
             >
               <span className="topnav-phone-dot" aria-hidden="true" />
-              <span className="topnav-phone-label">Speak to an agent</span>
-              <span className="topnav-phone-num">Call</span>
+              Speak to an agent
             </a>
           )}
+          <Link to="/business" aria-current={pathname === '/business' ? 'page' : undefined}>Business</Link>
+          <Link to="/systems" aria-current={pathname === '/systems' ? 'page' : undefined}>Systems</Link>
+          <Link to="/personal" aria-current={pathname === '/personal' ? 'page' : undefined}>Personal</Link>
+          <Link to="/founder" aria-current={pathname === '/founder' ? 'page' : undefined}>Founder</Link>
           <a className="topnav-cta" href={CALENDLY_URL} target="_blank" rel="noopener">Book a meeting</a>
         </div>
       </nav>
