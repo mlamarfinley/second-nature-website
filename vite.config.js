@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
+
 
 /* BASE PATH.
  * GitHub Pages serves this repo at /second-nature-website/, so assets and
@@ -18,7 +18,7 @@ export default defineConfig(({ command, isSsrBuild }) => ({
   // the Pages subpath. The router reads import.meta.env.BASE_URL, so it follows
   // whichever one is in play without a second config to keep in sync.
   base: command === 'build' ? base : '/',
-  plugins: [react(), tailwindcss()],
+  plugins: [react()],
   server: { port: 5190 },
   build: {
     // Vendor splitting is a client-side concern. In the SSR build React is an

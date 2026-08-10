@@ -1,25 +1,19 @@
-import { motion, useReducedMotion } from 'framer-motion'
-import { CATEGORIES, CALENDLY_URL } from '../data/content.js'
+import { CATEGORIES } from '../data/content.js'
 import CallToAction from '../components/CallToAction.jsx'
+import { useReveal } from '../lib/useReveal.js'
 
 function Reveal({ i = 0, className, children }) {
-  const reduce = useReducedMotion()
+  const ref = useReveal({ delay: i * 50 })
   return (
-    <motion.div
-      className={className}
-      initial={reduce ? false : { opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.6, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
-    >
+    <div ref={ref} className={`reveal ${className || ''}`.trim()}>
       {children}
-    </motion.div>
+    </div>
   )
 }
 
 export default function Personal() {
   return (
-    <main id="main" tabIndex={-1} className="page page-quiet" style={{ '--accent': 'var(--nebula)' }}>
+    <main id="main" tabIndex={-1} className="page page-quiet">
       <div className="page-inner detail-inner">
         <Reveal i={0}>
           <span className="pp-eyebrow mono-label">Personal Systems</span>

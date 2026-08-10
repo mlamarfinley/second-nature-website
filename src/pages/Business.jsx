@@ -1,6 +1,6 @@
-import { motion, useReducedMotion } from 'framer-motion'
 import { BIZ, BIZ_REMOVES, STATUS } from '../data/content.js'
 import CallToAction from '../components/CallToAction.jsx'
+import { useReveal } from '../lib/useReveal.js'
 
 /* What used to live here: a `Counter` component that eased "40 hours saved per
    week", "60% less admin time" and "2× more deadlines hit" upward over 1.4
@@ -12,38 +12,30 @@ import CallToAction from '../components/CallToAction.jsx'
    What replaces it: what each system removes from your desk, and an honest
    build status per offering. */
 
+function Remove({ task, result, i }) {
+  const ref = useReveal({ delay: Math.min(i * 60, 240) })
+  return (
+    <div ref={ref} className="bz-remove reveal">
+      <h3 className="bz-remove-task">{task}</h3>
+      <p className="bz-remove-result">{result}</p>
+    </div>
+  )
+}
+
 function Removes() {
-  const reduce = useReducedMotion()
   return (
     <div className="bz-removes">
       {BIZ_REMOVES.map(([task, result], i) => (
-        <motion.div
-          className="bz-remove"
-          key={task}
-          initial={reduce ? false : { opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.5, delay: Math.min(i * 0.06, 0.24), ease: [0.22, 1, 0.36, 1] }}
-        >
-          <h3 className="bz-remove-task">{task}</h3>
-          <p className="bz-remove-result">{result}</p>
-        </motion.div>
+        <Remove key={task} task={task} result={result} i={i} />
       ))}
     </div>
   )
 }
 
 function Pillar({ data }) {
-  const reduce = useReducedMotion()
+  const ref = useReveal()
   return (
-    <motion.section
-      className="bz-pillar"
-      aria-labelledby={`pillar-${data.tag}`}
-      initial={reduce ? false : { opacity: 0, y: 22 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-    >
+    <section ref={ref} className="bz-pillar reveal" aria-labelledby={`pillar-${data.tag}`}>
       <span className="bz-tag mono-label">{data.tag}</span>
       <h2 className="bz-title" id={`pillar-${data.tag}`}>{data.title}</h2>
       <p className="bz-body">{data.body}</p>
@@ -57,7 +49,7 @@ function Pillar({ data }) {
           </li>
         ))}
       </ul>
-    </motion.section>
+    </section>
   )
 }
 

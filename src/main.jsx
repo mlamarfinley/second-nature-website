@@ -15,6 +15,12 @@ if (/^#\/[a-z0-9\-/]*$/i.test(legacyHash)) {
   window.history.replaceState(null, '', base + target + window.location.search)
 }
 
+/* Enables the scroll-reveal animation. Set from JS so the prerendered HTML
+   is readable without it — see .js-anim in index.css. */
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.documentElement.classList.add('js-anim')
+}
+
 initAnalytics()
 
 /* Structured data is baked into the prerendered HTML, so only add it here if

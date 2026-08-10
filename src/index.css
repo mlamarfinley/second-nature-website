@@ -1,26 +1,95 @@
-@import "tailwindcss";
+@import "./styles/fonts.css";
+
+/* ─── Reset ───────────────────────────────────────────────────────
+   Tailwind was imported at the top of this file and used exactly zero
+   times — no utility class appears anywhere in the JSX — but its preflight
+   was silently supplying the reset, so removing the import without this
+   block would have changed box-sizing, image display and default margins
+   across the whole site. */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; }
+img, picture, video, canvas, svg { display: block; max-width: 100%; }
+input, button, textarea, select { font: inherit; color: inherit; }
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+p, h1, h2, h3, h4 { overflow-wrap: break-word; }
+ul, ol { list-style: none; padding: 0; }
 
 /* ─── Second Nature design tokens ─────────────────────────────── */
 :root {
+  /* Ink — three values. */
   --ink: #F0F0EC;
-  --ink-dim: rgba(240, 240, 236, 0.62);
-  --ink-faint: rgba(240, 240, 236, 0.56);
+  --ink-dim: rgba(240, 240, 236, 0.68);   /* raised from .62 for small text */
+  --ink-faint: rgba(240, 240, 236, 0.56); /* labels only, never body copy */
+
+  /* Ground — ONE black, ONE raised surface. There were five: #050505,
+     #0a0d0a, #0b0f0b, #0a0f0c and an unused --forest token, which left
+     visible seams between panels on a bright display. */
   --base: #050505;
-  --gold: #E8A84C;          /* home: sunset gold */
+  --base-2: #0B0C0A;
+
+  /* Accent — ONE. The three-accent system (gold/purple/green, one per
+     section) never actually rendered: --accent was read by a single
+     selector on a page that has since been deleted, so purple never
+     appeared on the "purple" page at all. One accent applied consistently
+     is more distinctive than three that don't work. */
+  --gold: #E8A84C;
   --gold-soft: rgba(232, 168, 76, 0.55);
-  --nebula: #8E7CC3;        /* personal: nebula purple */
-  --pulse: #59D9A0;         /* business: electric green */
-  --pulse-blue: var(--pulse);  /* merged: one status green */
-  --forest: #131a12;        /* logo ground */
-  --serif: "Playfair Display", Georgia, serif;
-  --grotesk: "Space Grotesk", system-ui, sans-serif;
-  --body: "Schibsted Grotesk", system-ui, sans-serif;
+
+  /* Status — only ever on something genuinely live. */
+  --pulse: #59D9A0;
+
+  /* Rules — TWO. There were sixteen distinct alpha values on the same ink
+     colour, for the one motif this brand claims as its signature. */
+  --rule: rgba(240, 240, 236, 0.14);       /* structural: section tops */
+  --rule-soft: rgba(240, 240, 236, 0.08);  /* separators: list rows */
+
+  /* Type families — three, down from four. */
+  --serif: "Playfair Display", "Playfair Fallback", Georgia, serif;
+  --body: "Schibsted Grotesk", "Schibsted Fallback", system-ui, sans-serif;
+  --grotesk: var(--body);   /* was Space Grotesk: a second grotesk doing the
+                               same job, indistinguishable at text sizes */
   --mono: "Martian Mono", ui-monospace, monospace;
+
+  /* Type scale — 1.25 from a 17px base. Replaces 25 ad-hoc font sizes,
+     among them four near-identical body sizes (.92/.93/.95/.98rem) and an
+     h3 that outweighed its h2. Nothing below --step--2 ships: the old floor
+     was 9.6px uppercase letterspaced mono on the primary mobile CTA. */
+  --step--2: 0.75rem;    /* 12px — labels, captions, footer */
+  --step--1: 0.875rem;   /* 14px — secondary text, buttons, nav */
+  --step-0:  1.0625rem;  /* 17px — body */
+  --step-1:  1.3125rem;  /* 21px — leads */
+  --step-2:  1.625rem;   /* 26px — h3 */
+  --step-3:  2.0625rem;  /* 33px — h2 */
+  --step-4:  clamp(2.2rem, 1.5rem + 3.4vw, 3.6rem);  /* h1 */
+  --step-5:  clamp(2.6rem, 1.8rem + 4.6vw, 4.4rem);  /* one statement per page */
+
+  --lh-display: 1.06;
+  --lh-heading: 1.3;
+  --lh-body: 1.65;
+
+  /* Tracking — three values, down from eleven. */
+  --track-tight: -0.015em;
+  --track-0: 0;
+  --track-label: 0.1em;
+
+  /* Space — 4px base. */
+  --s1: 0.25rem; --s2: 0.5rem;  --s3: 0.75rem;
+  --s4: 1rem;    --s5: 1.5rem;  --s6: 2rem;
+  --s7: 3rem;    --s8: 4.5rem;  --s9: 7rem;
+  --gutter: clamp(1.25rem, 5vw, 4.5rem);
+  --measure: 62ch;
 }
 
 html, body { background: var(--base); color: var(--ink); }
-body { font-family: var(--body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; margin: 0; }
-h1, h2, h3 { font-family: var(--grotesk); font-weight: 600; line-height: 1.12; margin: 0; }
+body {
+  font-family: var(--body);
+  font-size: var(--step-0);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { font-family: var(--grotesk); font-weight: 600; line-height: var(--lh-heading); }
+h1 { line-height: var(--lh-display); letter-spacing: var(--track-tight); }
 a { color: inherit; }
 ::selection { background: rgba(232,168,76,.35); }
 
@@ -256,13 +325,6 @@ main:focus { outline: none; }
 }
 @keyframes sn-ring-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @keyframes sn-ring-spin-rev { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
-@keyframes sn-tick { 0%,100% { opacity: .25; } 50% { opacity: .9; } }
-@keyframes sn-chart-draw { from { stroke-dashoffset: 260; } to { stroke-dashoffset: 0; } }
-@keyframes sn-bar { 0%,100% { transform: scaleY(.55); } 50% { transform: scaleY(1); } }
-@keyframes sn-type { from { width: 0; } to { width: 100%; } }
-@keyframes sn-caret { 0%,100% { opacity: 0; } 50% { opacity: 1; } }
-@keyframes sn-glow-pulse { 0%,100% { box-shadow: 0 0 18px 2px var(--glow-c, rgba(232,168,76,.10)); } 50% { box-shadow: 0 0 30px 6px var(--glow-c, rgba(232,168,76,.22)); } }
-
 /* ─── Home stage ─────────────────────────────────────────────── */
 .stage-viewport {
   position: absolute; inset: 0; overflow: hidden; background: var(--base);
@@ -403,20 +465,13 @@ main:focus { outline: none; }
   animation-delay: var(--fly-delay, 0s);
   mix-blend-mode: screen;
 }
-@keyframes sn-fade-in { from { opacity: 0; } to { opacity: 1; } }
-
 /* ─── In-screen UIs (authored at 640×360, warped by matrix3d) ── */
-.sui { width: 100%; height: 100%; background: #0a0d0a; color: var(--ink); font-family: var(--mono); position: relative; overflow: hidden; }
+.sui { width: 100%; height: 100%; background: var(--base-2); color: var(--ink); font-family: var(--mono); position: relative; overflow: hidden; }
 .sui-pad { position: absolute; inset: 6.5% 7%; }
-.sui-title { font-size: 13px; letter-spacing: .16em; color: var(--ink-dim); transition: opacity .3s ease; }
-.screen-link:hover .sui-title, .screen-link:focus-visible .sui-title { opacity: 0; }
-.sui-hr { border-top: 1px solid rgba(240,240,236,.14); margin: 10px 0; }
-.sui-row { display: flex; justify-content: space-between; font-size: 12.5px; padding: 6px 0; color: var(--ink-dim); }
-.sui-row b { color: var(--ink); font-weight: 500; }
+
 .sui-bars { display: flex; align-items: flex-end; gap: 7px; height: 74px; }
 .sui-bars span { flex: 1; background: linear-gradient(to top, rgba(89,217,160,.25), rgba(89,217,160,.85)); transform-origin: bottom; animation: sn-bar var(--bar-dur, 3.4s) ease-in-out infinite; animation-delay: var(--bar-delay, 0s); }
-.sui-typeline { overflow: hidden; white-space: nowrap; font-size: 12px; color: var(--pulse); animation: sn-type 5.2s steps(38) infinite; }
-.sui-dot { display: inline-block; width: 7px; height: 7px; border-radius: 99px; background: var(--pulse); animation: sn-tick 2.2s ease-in-out infinite; margin-right: 8px; vertical-align: 1px; }
+
 .sui-rings { position: absolute; inset: 0; }
 .sui-ring { position: absolute; border-radius: 999px; border: 1.5px solid; }
 .sui-center-logo { width: 58%; max-height: 82%; object-fit: contain; filter: drop-shadow(0 0 18px rgba(89,217,160,.25)); }
@@ -462,61 +517,16 @@ main:focus { outline: none; }
 .bz-dim { font-size: .95rem; line-height: 1.75; color: var(--ink-dim); margin: 0; max-width: 42rem; }
 .bz-section { margin-top: 3.6rem; padding-top: 2rem; border-top: 1px solid rgba(240,240,236,.10); }
 
-.biz-columns { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.4rem, 6vw, 5rem); margin-top: 4rem; }
 .bz-pillar { min-width: 0; }
-.biz-columns > .bz-pillar + .bz-pillar { border-left: 1px solid rgba(240,240,236,.09); padding-left: clamp(2.4rem, 5vw, 5rem); }
+
 .bz-tag { display: inline-flex; align-items: center; gap: .7rem; font-size: .76rem; }
-.bz-ops .bz-tag { color: var(--ink-dim); }
-.bz-ops .bz-tag::after { background: rgba(89,217,160,.5); }
-.bz-team .bz-tag { color: var(--ink-dim); }
-.bz-team .bz-tag::after { background: rgba(89,217,160,.5); }
+
 .bz-tag::after { content: ""; width: 36px; height: 1px; background: rgba(240,240,236,.22); }
 .bz-title { font-size: 1.45rem; font-weight: 600; margin: .9rem 0 1rem; }
 .bz-body { font-size: .93rem; line-height: 1.72; color: var(--ink-dim); margin: 0 0 1.6rem; }
 /* Command-floor modules */
 .bz-pillar { transition: opacity .45s ease; }
-.bz-module {
-  border: 1px solid rgba(232,168,76,.24);
-  background: linear-gradient(180deg, rgba(240,240,236,.028), rgba(240,240,236,.012));
-  padding: 1.15rem 1.25rem 1.05rem;
-  transition: border-color .4s ease, box-shadow .4s ease;
-}
-.bz-module-head {
-  display: flex; justify-content: space-between; align-items: center;
-  padding-bottom: .8rem; margin-bottom: 1rem;
-  border-bottom: 1px solid rgba(240,240,236,.09);
-}
-.bz-live-dot { width: 7px; height: 7px; border-radius: 99px; animation: sn-tick 2.2s ease-in-out infinite; }
-.bz-live-ops { background: var(--pulse); box-shadow: 0 0 10px 1px rgba(89,217,160,.5); }
-.bz-live-team { background: var(--pulse-blue); box-shadow: 0 0 10px 1px rgba(79,168,216,.5); }
-.bz-module-foot { margin: 1rem 0 0; padding-top: .8rem; border-top: 1px solid rgba(240,240,236,.07); letter-spacing: .16em; line-height: 1.8; }
-.bz-rail { position: relative; display: flex; justify-content: space-between; margin-top: 1.2rem; padding-top: 1rem; }
-.bz-rail::before { content: ""; position: absolute; top: calc(1rem + .55em); left: 2%; right: 2%; height: 1px; background: rgba(89,217,160,.18); }
-.bz-rail-stage { position: relative; font-family: var(--mono); font-size: .62rem; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-faint); background: #0a0f0c; padding: 0 .5rem; }
-.bz-rail-pulse {
-  position: absolute; top: calc(1rem + .55em - 2.5px); left: 2%;
-  width: 6px; height: 6px; border-radius: 99px;
-  background: var(--pulse); box-shadow: 0 0 10px 2px rgba(89,217,160,.55);
-  animation: sn-rail-run 7s linear infinite;
-}
-@keyframes sn-rail-run { from { left: 2%; opacity: 0; } 6% { opacity: 1; } 94% { opacity: 1; } to { left: 96%; opacity: 0; } }
-.bz-comm { display: flex; flex-direction: column; }
-.bz-comm-row { display: flex; align-items: center; gap: .8rem; padding: .55rem 0; border-top: 1px solid rgba(240,240,236,.06); }
-.bz-comm-row:first-child { border-top: 0; }
-.bz-comm-dot { width: 6px; height: 6px; border-radius: 99px; flex: none; background: var(--pulse-blue); box-shadow: 0 0 8px 1px rgba(79,168,216,.5); animation: sn-tick 2.8s ease-in-out infinite; }
-.bz-comm-name { font-family: var(--grotesk); font-size: .88rem; color: var(--ink); }
-.bz-comm-status { margin-left: auto; font-family: var(--mono); font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); }
-.bz-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-.bz-metric-num { font-family: var(--grotesk); font-size: 1.7rem; font-weight: 600; color: var(--ink); }
-.bz-metric-num em { font-style: normal; color: var(--pulse); }
-.bz-metric .mono-label { margin-top: .25rem; }
-.bz-thread { position: relative; display: flex; justify-content: space-between; align-items: center; height: 2.55rem; }
-.bz-thread::before { content: ""; position: absolute; left: 3px; right: 3px; top: 50%; height: 1px; background: rgba(79,168,216,.28); }
-.bz-thread-dot {
-  position: relative; width: 9px; height: 9px; border-radius: 99px; flex: none;
-  background: radial-gradient(circle, #fff 0%, var(--pulse-blue) 60%, transparent 85%);
-  animation: sn-tick 2.5s ease-in-out infinite;
-}
+
 .bz-items { list-style: none; margin: 1.6rem 0 0; padding: 0; }
 .bz-item {
   display: flex; align-items: center; gap: .85rem;
@@ -526,10 +536,6 @@ main:focus { outline: none; }
 }
 .bz-item:hover { color: var(--ink); }
 .bz-items li:last-child .bz-item, .bz-items li:last-child.bz-item { border-bottom: 1px solid rgba(240,240,236,.08); }
-.bz-item-line { position: absolute; top: 0; left: 0; right: 0; height: 1px; background: rgba(240,240,236,.09); }
-.bz-marker { flex: none; width: 7px; height: 7px; }
-.bz-marker-ops { background: rgba(89,217,160,.75); }
-.bz-marker-team { border-radius: 99px; background: rgba(79,168,216,.8); }
 
 .bz-transition, .page-transition { margin-top: clamp(4.5rem, 10vh, 7rem); text-align: center; position: relative; z-index: 2; }
 .bz-transition-rule, .page-transition-rule { width: 64px; margin: 0 auto 1.8rem; }
@@ -543,20 +549,7 @@ main:focus { outline: none; }
 .detail-body { color: var(--ink-dim); max-width: 42rem; margin: 0 0 1.2rem; }
 
 /* Build page */
-.build-roots {
-  position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%;
-  pointer-events: none; opacity: .55;
-}
-.build-roots path {
-  fill: none; stroke: var(--accent, var(--nebula)); stroke-width: 1.4; stroke-linecap: round;
-  opacity: .28; stroke-dasharray: 1;
-  transition: stroke-dashoffset 1.1s cubic-bezier(.22,1,.36,1);
-}
-.poster-band { position: relative; height: min(56vh, 560px); overflow: hidden; }
-.poster-band img { width: 100%; height: 100%; object-fit: cover; object-position: center 38%; display: block; }
-.poster-band::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,5,5,.12) 0%, rgba(5,5,5,.28) 55%, var(--base) 98%); }
 
-.page-build { background: radial-gradient(800px 560px at 90% -4%, rgba(232,168,76,.05), transparent 70%); }
 
 /* Mobile home — the image as its own band beneath the copy, never behind it.
    No scrim stack, no text-shadow, nothing fighting the type for contrast. */
@@ -588,14 +581,9 @@ main:focus { outline: none; }
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 880px) {
   .mono-label { font-size: .72rem; }
-  .bz-rail-stage, .bz-comm-status { font-size: 11px; }
-  .biz-columns { position: relative; padding-left: 1.3rem; }
-  .biz-columns::before {
-    content: ""; position: absolute; left: 4px; top: 0; bottom: 0; width: 1px;
-    background: linear-gradient(180deg, transparent, rgba(89,217,160,.35) 10%, rgba(89,217,160,.35) 90%, transparent);
-  }
+
   .hb-tracks, .hb-steps, .hb-proof-screens, .hb-truths { grid-template-columns: 1fr; }
-  .biz-columns > .bz-pillar + .bz-pillar { border-left: 0; padding-left: 0; border-top: 1px solid rgba(240,240,236,.09); padding-top: 3rem; margin-top: 1rem; }
+
   .feature-row strong { min-width: 8.5rem; }
 }
 
@@ -794,3 +782,20 @@ main:focus { outline: none; }
    aspect one and a tablet one), all four declaring the same five properties.
    Which hero renders is now a single JS media query in Home.jsx — one source
    of truth instead of four CSS blocks racing each other. */
+
+/* ─── Scroll reveal (replaces framer-motion) ─────────────────────
+   Opt-in, not opt-out: content is visible by default and only starts
+   hidden once JS has confirmed it can reveal it again. The pages are
+   prerendered, so a .reveal that defaulted to opacity:0 would leave every
+   section invisible to anyone whose JavaScript failed — and hide the
+   content from crawlers in exactly the HTML we went to the trouble of
+   generating. */
+.js-anim .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1);
+}
+.js-anim .reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js-anim .reveal { opacity: 1; transform: none; transition: none; }
+}

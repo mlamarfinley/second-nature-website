@@ -1,11 +1,20 @@
-import { motion, useReducedMotion } from 'framer-motion'
 import { SYSTEMS } from '../data/content.js'
 import CallToAction from '../components/CallToAction.jsx'
+import { useReveal } from '../lib/useReveal.js'
+
+function SystemRow({ name, body, i }) {
+  const ref = useReveal({ delay: Math.min(i * 50, 300) })
+  return (
+    <article ref={ref} className="sys-row reveal">
+      <h2 className="sys-name">{name}</h2>
+      <p className="sys-body">{body}</p>
+    </article>
+  )
+}
 
 export default function Systems() {
-  const reduce = useReducedMotion()
   return (
-    <main id="main" tabIndex={-1} className="page page-quiet" style={{ '--accent': 'var(--gold)' }}>
+    <main id="main" tabIndex={-1} className="page page-quiet">
       <div className="page-inner">
         <span className="pp-eyebrow mono-label">Systems</span>
         <h1 className="bz-headline">When the thing doesn&rsquo;t exist yet.</h1>
@@ -18,17 +27,7 @@ export default function Systems() {
 
         <div className="sys-list">
           {SYSTEMS.items.map(([name, body], i) => (
-            <motion.article
-              key={name}
-              className="sys-row"
-              initial={reduce ? false : { opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.55, delay: Math.min(i * 0.05, 0.3), ease: [0.22, 1, 0.36, 1] }}
-            >
-              <h2 className="sys-name">{name}</h2>
-              <p className="sys-body">{body}</p>
-            </motion.article>
+            <SystemRow key={name} name={name} body={body} i={i} />
           ))}
         </div>
 

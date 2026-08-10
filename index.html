@@ -10,9 +10,17 @@
     <link rel="icon" type="image/png" href="./favicon.png" />
     <link rel="apple-touch-icon" href="./favicon.png" />
     <link rel="preload" as="image" imagesrcset="./hero-800.webp 800w, ./hero-1456.webp 1456w" imagesizes="100vw" type="image/webp" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Space+Grotesk:wght@400;500;600&family=Schibsted+Grotesk:wght@400;500&family=Martian+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <!-- Fonts are self-hosted. They used to come from fonts.googleapis.com:
+         a render-blocking stylesheet on a third-party origin, plus a second
+         origin for the files, and every visitor's IP handed to Google before
+         first paint — which a German court ruled a GDPR violation in 2022,
+         on a site that had no privacy policy disclosing it. Preloading the
+         two faces that paint above the fold. -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="/fonts/schibsted-grotesk-latin-wght-normal.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="/fonts/playfair-display-latin-500-normal.woff2" />
 
     <!-- Canonical and share tags now point at the domain the business owns.
          They used to point at a personal github.io subdomain, which told

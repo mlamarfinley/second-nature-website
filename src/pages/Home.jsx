@@ -65,7 +65,7 @@ function AmbientRings() {
 
 function CenterScreenUI() {
   return (
-    <div className="sui" aria-hidden="true" style={{ display: 'grid', placeItems: 'center', background: '#0b0f0b' }}>
+    <div className="sui" aria-hidden="true" style={{ display: 'grid', placeItems: 'center', background: 'var(--base-2)' }}>
       <img className="sui-center-logo" src="./logo.webp" width="384" height="384" alt="" />
     </div>
   )
