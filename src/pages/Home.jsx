@@ -1,38 +1,47 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { matrix3dForQuad } from '../lib/homography.js'
-import { HERO, CALENDLY_URL, HOME_COPY } from '../data/content.js'
+import {
+  HERO,
+  HOME_COPY,
+  SAVANNAH_PHONE,
+  SAVANNAH_PHONE_DISPLAY,
+  FAQS,
+  RESPONSE_PROMISE,
+} from '../data/content.js'
 import CallToAction from '../components/CallToAction.jsx'
 
-/* In-screen UIs, authored at a fixed 640×360 design size and warped
-   onto the photographed screens with matrix3d. All loops are CSS. */
+/* In-screen surfaces, authored at a fixed 640×360 and warped onto the
+   photographed monitors with matrix3d.
 
-function BusinessScreenUI() {
+   These used to display invented telemetry — "WORKFLOWS RUNNING 41",
+   "FOLLOW-UPS SENT 128", "Invoice #204 · reminder sent" — under labels that
+   read LIVE, from a company with no clients. Every number is gone. What's
+   left is ambient light with no claim attached: a screen that is on, not a
+   screen that is lying. Real product screenshots replace these entirely once
+   they're captured. */
+
+function AmbientBars() {
   return (
     <div className="sui" aria-hidden="true">
       <div className="sui-pad">
-        <div className="sui-title"><span className="sui-dot" />OPERATIONS · LIVE</div>
-        <div className="sui-hr" />
         <div className="sui-bars">
           {[0, 1, 2, 3, 4, 5, 6].map((i) => (
             <span key={i} style={{ '--bar-dur': `${2.8 + i * 0.35}s`, '--bar-delay': `${i * 0.22}s` }} />
           ))}
         </div>
-        <div className="sui-hr" />
-        <div className="sui-row"><span>WORKFLOWS RUNNING</span><b>41</b></div>
-        <div className="sui-row"><span>FOLLOW-UPS SENT</span><b>128</b></div>
-        <div className="sui-typeline">&gt; inbox triage complete · 3 actions extracted_</div>
       </div>
     </div>
   )
 }
 
-function PersonalScreenUI() {
+function AmbientRings() {
   const rings = [
-    { size: 292, color: 'rgba(142,124,195,.55)', dur: 26 },
-    { size: 224, color: 'rgba(142,124,195,.6)', dur: 19, rev: true },
-    { size: 156, color: 'rgba(142,124,195,.75)', dur: 13 },
-    { size: 88, color: 'rgba(240,240,236,.5)', dur: 9, rev: true },
+    { size: 292, color: 'rgba(232,168,76,.35)', dur: 26 },
+    { size: 224, color: 'rgba(232,168,76,.4)', dur: 19, rev: true },
+    { size: 156, color: 'rgba(232,168,76,.5)', dur: 13 },
+    { size: 88, color: 'rgba(240,240,236,.4)', dur: 9, rev: true },
   ]
   return (
     <div className="sui" aria-hidden="true">
@@ -49,9 +58,6 @@ function PersonalScreenUI() {
             }}
           />
         ))}
-      </div>
-      <div className="sui-pad" style={{ display: 'flex', alignItems: 'flex-end' }}>
-        <div className="sui-title"><span className="sui-dot" style={{ background: 'var(--nebula)' }} />PERSONAL SYSTEM · 4 NODES</div>
       </div>
     </div>
   )
@@ -111,11 +117,8 @@ function Stage() {
     const measure = () => {
       const vw = el.clientWidth
       const vh = el.clientHeight
-      // Cover: lock to image ratio, fill viewport, center — but NEVER crop into the
-      // monitors (they span ~16%–84% of the image). If covering the height would push
-      // them past the edges, clamp the zoom and letterbox top/bottom instead.
       let h = Math.max(vw / HERO.ratio, vh)
-      const maxW = vw / 0.72 // keep the monitor span (68%) inside the viewport with margin
+      const maxW = vw / 0.72
       if (h * HERO.ratio > maxW) h = maxW / HERO.ratio
       setBox({ w: h * HERO.ratio, h, letterboxed: h < vh - 1 })
     }
@@ -130,9 +133,9 @@ function Stage() {
     if (!box) return []
     const px = (q) => q.map(([x, y]) => [(x / 100) * box.w, (y / 100) * box.h])
     return [
-      { key: 'left', to: '/business', label: 'ENTER BUSINESS SYSTEMS', ui: <BusinessScreenUI />, quad: px(HERO.quads.left), pon: 0.75 },
+      { key: 'left', to: '/business', label: 'Business systems', ui: <AmbientBars />, quad: px(HERO.quads.left), pon: 0.75 },
       { key: 'center', to: null, label: null, ui: <CenterScreenUI />, quad: px(HERO.quads.center), pon: 0.2 },
-      { key: 'right', to: '/personal', label: 'ENTER PERSONAL SYSTEMS', ui: <PersonalScreenUI />, quad: px(HERO.quads.right), pon: 0.9 },
+      { key: 'right', to: '/systems', label: 'Custom software', ui: <AmbientRings />, quad: px(HERO.quads.right), pon: 0.9 },
     ].map((s) => ({ ...s, matrix: matrix3dForQuad(SURFACE_W, SURFACE_H, s.quad) }))
   }, [box])
 
@@ -144,8 +147,8 @@ function Stage() {
             <source type="image/webp" srcSet="./hero-800.webp 800w, ./hero-1456.webp 1456w" sizes="100vw" />
             <img
               className="stage-img" src="./hero.jpg" width="1456" height="816"
-              loading="eager" fetchPriority="high"
-              alt="Three monitors on a table in a sunset forest, the Second Nature systems"
+              loading="eager" fetchpriority="high"
+              alt="Three monitors on a desk in a forest at sunset"
             />
           </picture>
           <div
@@ -167,6 +170,8 @@ function Stage() {
                 onClick={(e) => { e.preventDefault(); navigate(s.to) }}
               >
                 <div className="screen-inner" style={{ '--pon-delay': `${s.pon}s` }}>{s.ui}</div>
+                {/* Label is always faintly visible, not hover-only: touch users
+                    never discovered these were links. */}
                 <span className="screen-label">{s.label}</span>
               </a>
             ) : (
@@ -182,8 +187,6 @@ function Stage() {
 }
 
 function MobileHome() {
-  // Mirror the CSS cover math (object-position 50% 26%) to find where the
-  // photographed center screen lands, so the logo sits ON the monitor.
   const wrapRef = useRef(null)
   const [screenRect, setScreenRect] = useState(null)
   useEffect(() => {
@@ -216,7 +219,7 @@ function MobileHome() {
     <div className="mobile-home" ref={wrapRef}>
       <picture>
         <source type="image/webp" srcSet="./hero-800.webp 800w, ./hero-1456.webp 1456w" sizes="100vw" />
-        <img className="mh-bg" src="./hero.jpg" width="1456" height="816" loading="eager" fetchPriority="high" alt="" aria-hidden="true" />
+        <img className="mh-bg" src="./hero.jpg" width="1456" height="816" loading="eager" fetchpriority="high" alt="" aria-hidden="true" />
       </picture>
       <div className="mh-scrim" aria-hidden="true" />
       {screenRect && (
@@ -231,96 +234,73 @@ function MobileHome() {
   )
 }
 
-function DailyBriefUI() {
-  const rows = [
-    ['07:30', 'Morning check-in call', 'done'],
-    ['09:00', 'Deep work: proposal draft', 'now'],
-    ['12:30', 'Follow-up: 2 replies drafted', 'queued'],
-    ['17:00', 'Day review + carry-over', 'queued'],
-  ]
-  return (
-    <div className="sui" aria-hidden="true">
-      <div className="sui-pad">
-        <div className="sui-title"><span className="sui-dot" style={{ background: 'var(--gold)' }} />TODAY · PERSONAL SYSTEM</div>
-        <div className="sui-hr" />
-        {rows.map(([t, label, st]) => (
-          <div className="sui-row" key={label}><span>{t} · {label}</span><b>{st.toUpperCase()}</b></div>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function FollowUpsUI() {
-  const rows = [
-    ['Client reply', 'drafted · awaiting OK'],
-    ['Invoice #204', 'reminder sent'],
-    ['New lead', 'call scheduled · Thu'],
-    ['Quiet thread', 'nudge queued'],
-  ]
-  return (
-    <div className="sui" aria-hidden="true">
-      <div className="sui-pad">
-        <div className="sui-title"><span className="sui-dot" />FOLLOW-UPS · LIVE</div>
-        <div className="sui-hr" />
-        {rows.map(([name, status]) => (
-          <div className="sui-row" key={name}><span>{name}</span><b>{status.toUpperCase()}</b></div>
-        ))}
-        <div className="sui-typeline">&gt; 3 threads kept warm today_</div>
-      </div>
-    </div>
-  )
+/* Renders the desktop stage OR the mobile poster — never both. They used to
+   render together, so a phone ran the homography math, two ResizeObservers and
+   ~35 animations underneath an opaque image, and left two invisible links
+   sitting in the tab order. */
+function useIsWide(query = '(min-width: 1025px) and (min-aspect-ratio: 21/20)') {
+  const [wide, setWide] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia(query)
+    const on = () => setWide(mq.matches)
+    on()
+    mq.addEventListener('change', on)
+    return () => mq.removeEventListener('change', on)
+  }, [query])
+  return wide
 }
 
 export default function Home() {
+  const wide = useIsWide()
+  const { hero, tracks, steps, proof, truths, founding, reframe } = HOME_COPY
+
   return (
-    <main id="main" tabIndex={-1} aria-label="Second Nature home">
+    <main id="main" tabIndex={-1}>
+      {/* Wide screens get the composed stage with the copy set into it.
+          Narrow screens get type on solid black and the image below as its
+          own band — text over a bright photograph needed a scrim, a second
+          scrim and a text-shadow to be readable, which is the tell that the
+          composition never had room for it. */}
       <section className="hero-band">
-        <Stage />
-        <MobileHome />
+        {wide && <Stage />}
         <div className="hero-overlay">
-          <span className="mono-label hero-eyebrow">Second Nature · AI Systems</span>
-          <h1 className="serif-display hero-h1">We build AI systems that work with&nbsp;you.</h1>
-          <p className="hero-sub">
-            Custom agents that carry your schedule, your follow-ups, your admin, and your
-            operations, calmly, in the background, every day.
-          </p>
-          <div className="hero-actions">
-            <CallToAction />
-            <a
-              className="hero-secondary"
-              href="#how"
-              onClick={(e) => { e.preventDefault(); document.getElementById('how')?.scrollIntoView({ behavior: 'smooth' }) }}
-            >
-              See how it works ↓
-            </a>
-          </div>
+          <span className="mono-label hero-eyebrow">{hero.eyebrow}</span>
+          <h1 className="serif-display hero-h1">{hero.h1}</h1>
+          <p className="hero-sub">{hero.sub}</p>
+          <CallToAction className="hero-cta-block" />
+          <p className="hero-proof-line">{hero.proofLine}</p>
         </div>
       </section>
+      {!wide && <MobileHome />}
 
       <div className="home-body">
-        <section className="hb-section hb-reframe" aria-label="The idea">
-          <p className="serif-display hb-line">{HOME_COPY.reframe.line}</p>
-          <p className="hb-body">{HOME_COPY.reframe.body}</p>
+        <section className="hb-section hb-reframe" aria-labelledby="idea">
+          <h2 id="idea" className="serif-display hb-line">{reframe.line}</h2>
+          <p className="hb-body">{reframe.body}</p>
         </section>
 
-        <section className="hb-section" aria-label="What we build">
-          <span className="mono-label hb-eyebrow">What we build</span>
+        {/* Three tracks, three rows. This used to be a two-column grid holding
+            three items, so the third orphaned onto its own row — in the site's
+            core merchandising section. And every crosslink label came from a
+            two-case ternary, so the custom-software track was signposted
+            "Explore business". Labels now live in the data. */}
+        <section className="hb-section" aria-labelledby="what-we-build">
+          <h2 id="what-we-build" className="section-heading">What we build</h2>
           <div className="hb-tracks">
-            {[HOME_COPY.tracks.business, HOME_COPY.tracks.systems, HOME_COPY.tracks.life].map((t) => (
+            {[tracks.business, tracks.systems, tracks.life].map((t) => (
               <div className="hb-track" key={t.title}>
-                <h2>{t.title}</h2>
+                <h3>{t.title}</h3>
                 <ul>{t.items.map((it) => <li key={it}>{it}</li>)}</ul>
-                <Link className="crosslink" to={t.to}>Explore {t.title === 'For your life' ? 'personal' : 'business'} →</Link>
+                <Link className="crosslink" to={t.to}>{t.cta} →</Link>
               </div>
             ))}
           </div>
         </section>
 
-        <section id="how" className="hb-section" aria-label="How it works">
-          <span className="mono-label hb-eyebrow">How it works</span>
+        <section id="how" className="hb-section" aria-labelledby="how-it-works">
+          <h2 id="how-it-works" className="section-heading">How it works</h2>
           <div className="hb-steps">
-            {HOME_COPY.steps.map(([title, body], i) => (
+            {steps.map(([title, body], i) => (
               <div className="hb-step" key={title}>
                 <span className="hb-step-num">{String(i + 1).padStart(2, '0')}</span>
                 <h3>{title}</h3>
@@ -330,19 +310,27 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="hb-section" aria-label="Proof">
-          <span className="mono-label hb-eyebrow">{HOME_COPY.proof.title}</span>
-          <p className="hb-body hb-proof-body">{HOME_COPY.proof.body}</p>
-          <div className="hb-proof-screens" aria-hidden="true">
-            <div className="hb-screen"><DailyBriefUI /></div>
-            <div className="hb-screen"><FollowUpsUI /></div>
-          </div>
+        {/* The proof section used to be two fabricated dashboards under the
+            heading "Running right now". The proof is now the thing a stranger
+            can verify in ninety seconds: the number answers. */}
+        <section className="hb-section hb-proof" aria-labelledby="proof">
+          <h2 id="proof" className="section-heading">{proof.title}</h2>
+          <p className="hb-body hb-proof-body">{proof.body}</p>
+          {SAVANNAH_PHONE && (
+            <a className="proof-dial" href={`tel:${SAVANNAH_PHONE}`}>
+              <span className="proof-dial-num">{SAVANNAH_PHONE_DISPLAY}</span>
+              <span className="proof-dial-cap">{proof.cta} →</span>
+            </a>
+          )}
+          <p className="hb-body proof-more">
+            <Link className="inline-link" to="/work">See both systems in detail →</Link>
+          </p>
         </section>
 
-        <section className="hb-section" aria-label="Why Second Nature">
-          <span className="mono-label hb-eyebrow">Why Second Nature</span>
+        <section className="hb-section" aria-labelledby="why">
+          <h2 id="why" className="section-heading">Why Second Nature</h2>
           <div className="hb-truths">
-            {HOME_COPY.truths.map(([title, body]) => (
+            {truths.map(([title, body]) => (
               <div className="hb-truth" key={title}>
                 <h3>{title}</h3>
                 <p>{body}</p>
@@ -351,8 +339,32 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="hb-section hb-close" aria-label="Get started">
-          <p className="serif-display hb-line">Technology that becomes second&nbsp;nature.</p>
+        <section className="hb-section" aria-labelledby="home-faq">
+          <h2 id="home-faq" className="section-heading">Questions people ask first</h2>
+          <div className="faq-list">
+            {FAQS.map(([q, a], i) => (
+              <details className="faq" key={q} open={i === 0}>
+                <summary>{q}</summary>
+                <div><p>{a}</p></div>
+              </details>
+            ))}
+          </div>
+          <p className="response-promise">{RESPONSE_PROMISE}</p>
+          <p className="hb-body proof-more">
+            <Link className="inline-link" to="/faq">All questions and answers →</Link>
+          </p>
+        </section>
+
+        <section className="hb-section hb-founding" aria-labelledby="founding">
+          <h2 id="founding" className="section-heading">{founding.title}</h2>
+          <p className="hb-body">{founding.body}</p>
+          <p className="hb-body proof-more">
+            <Link className="inline-link" to="/contact">Get a free friction map →</Link>
+          </p>
+        </section>
+
+        <section className="hb-section hb-close" aria-labelledby="start">
+          <h2 id="start" className="serif-display hb-line">Call it and decide for yourself.</h2>
           <CallToAction />
         </section>
       </div>
