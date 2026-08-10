@@ -15,7 +15,7 @@ import Contact from './pages/Contact.jsx'
 import Thanks from './pages/Thanks.jsx'
 import Privacy from './pages/Privacy.jsx'
 import NotFound from './pages/NotFound.jsx'
-import { PAGE_META, DEFAULT_META, NOT_FOUND_META } from './data/seo.js'
+import { PAGE_META, DEFAULT_META, NOT_FOUND_META, STAGING } from './data/seo.js'
 
 /* Route changes in a single-page app reload nothing, so unless something
    moves focus and updates the title, a screen-reader user gets no signal at
@@ -34,6 +34,19 @@ function RouteEffects() {
     document.title = meta.title
     const desc = document.querySelector('meta[name="description"]')
     if (desc) desc.setAttribute('content', meta.description)
+
+    // Staging: ask every crawler to stay away, on every route.
+    let robots = document.querySelector('meta[name="robots"]')
+    if (STAGING) {
+      if (!robots) {
+        robots = document.createElement('meta')
+        robots.setAttribute('name', 'robots')
+        document.head.appendChild(robots)
+      }
+      robots.setAttribute('content', 'noindex, nofollow, noarchive, nosnippet')
+    } else if (robots) {
+      robots.remove()
+    }
   }, [pathname])
 
   useEffect(() => {

@@ -1,14 +1,45 @@
+# ─────────────────────────────────────────────────────────────
+# STAGING MODE. The site is being built in public view of nobody.
+# Every crawler is asked to stay out so nothing gets indexed, cached,
+# or pulled into an AI answer before it is ready.
+#
+# ON LAUNCH DAY, swap this whole file for the block at the bottom AND
+# set STAGING = false in src/data/seo.js. Both, or the site stays invisible.
+# ─────────────────────────────────────────────────────────────
+
 User-agent: *
-Allow: /
+Disallow: /
 
-# AI answer engines. An AI studio should want to be citable in AI answers.
 User-agent: GPTBot
-Allow: /
-User-agent: ClaudeBot
-Allow: /
-User-agent: PerplexityBot
-Allow: /
-User-agent: Google-Extended
-Allow: /
+Disallow: /
 
-Sitemap: https://aisecondnature.com/sitemap.xml
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+# ─────────────────────────────────────────────────────────────
+# LAUNCH VERSION — delete everything above and uncomment this.
+#
+# User-agent: *
+# Allow: /
+#
+# # AI answer engines. An AI studio should want to be citable in AI answers.
+# User-agent: GPTBot
+# Allow: /
+# User-agent: ClaudeBot
+# Allow: /
+# User-agent: PerplexityBot
+# Allow: /
+# User-agent: Google-Extended
+# Allow: /
+#
+# Sitemap: https://aisecondnature.com/sitemap.xml
+# ─────────────────────────────────────────────────────────────

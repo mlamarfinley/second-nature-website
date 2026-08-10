@@ -1,5 +1,16 @@
 import { SITE_URL, SITE_NAME, CONTACT_EMAIL, SAVANNAH_PHONE } from './content.js'
 
+/* STAGING MODE — flip to false on launch day.
+ *
+ * While true the site asks every search engine not to index or follow it, so
+ * the work can live on the real domain without turning up in results, in AI
+ * answers, or in anyone's share preview. It does NOT stop a person who has the
+ * URL — that needs an access gate in front of the host (see DOMAIN-SETUP.md).
+ *
+ * Flipping this to false is the single switch that makes the site public.
+ * public/robots.txt has to be swapped at the same time; both are noted there. */
+export const STAGING = true
+
 /* Per-route titles and descriptions. Previously all five routes shared one
    <title> and one meta description, so every tab, bookmark, history entry and
    shared link described the site identically. */
