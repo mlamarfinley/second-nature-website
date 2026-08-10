@@ -70,22 +70,178 @@ a { color: inherit; }
   color: var(--gold) !important; transition: background .3s, color .3s !important;
 }
 .topnav-cta:hover { background: var(--gold); color: var(--base) !important; }
-@media (max-width: 880px) {
-  .topnav-links a:not(.topnav-cta) { display: none; }
+/* Below 900px the page links collapse and the Index takes over. Before the
+   Index existed this rule left the site with no navigation at all on a phone. */
+@media (max-width: 900px) {
+  .topnav-links { display: none; }
+  .index-toggle { display: inline-flex; }
   .topnav { padding: 1rem 1.25rem; }
 }
 main:focus { outline: none; }
 .site-footer {
   position: relative; z-index: 2;
-  display: flex; flex-wrap: wrap; gap: 1.2rem 2.2rem; align-items: center; justify-content: center;
-  padding: 2.2rem clamp(1.25rem, 5vw, 4.5rem) calc(2.2rem + env(safe-area-inset-bottom));
-  border-top: 1px solid rgba(240,240,236,.08); background: var(--base);
-  font-family: var(--mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+  padding: clamp(2.5rem, 6vh, 4rem) clamp(1.25rem, 5vw, 4.5rem) calc(2rem + env(safe-area-inset-bottom));
+  border-top: 1px solid rgba(240,240,236,.14); background: var(--base);
+  color: var(--ink-dim);
+}
+.footer-inner {
+  max-width: 1460px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: 2.5rem clamp(1.5rem, 4vw, 3rem);
+}
+.footer-mark { font-family: var(--grotesk); font-size: .8rem; letter-spacing: .3em; color: var(--ink); }
+.footer-line { margin: .8rem 0 0; font-size: .875rem; max-width: 20rem; }
+.footer-place { color: var(--ink); }
+.footer-head {
+  font-family: var(--mono); font-size: .68rem; font-weight: 500; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--ink-faint); margin: 0 0 .9rem;
+}
+.footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+.footer-col a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  min-height: 40px; display: inline-flex; align-items: center;
+}
+.footer-col a:hover { color: var(--gold); }
+.footer-note { margin: .4rem 0 0; font-size: .8rem; color: var(--ink-faint); max-width: 17rem; line-height: 1.6; }
+.footer-base {
+  max-width: 1460px; margin: clamp(2rem, 5vh, 3rem) auto 0;
+  padding-top: 1.4rem; border-top: 1px solid rgba(240,240,236,.08);
+  font-size: .8rem; color: var(--ink-faint);
+  display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; align-items: center;
+}
+.footer-legal { color: var(--ink-faint); text-decoration: none; }
+.footer-legal:hover { color: var(--ink); }
+@media (max-width: 900px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+/* ─── Breadcrumbs ─────────────────────────────────────────────── */
+.breadcrumbs ol {
+  display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; margin: 0 0 1.6rem; padding: 0;
+  font-family: var(--mono); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
   color: var(--ink-faint);
 }
-.site-footer a { color: var(--ink-faint); text-decoration: none; transition: color .3s; }
-.site-footer a:hover { color: var(--ink); }
-.site-footer-mark { color: var(--ink-dim); }
+.breadcrumbs li + li::before { content: "/"; margin-right: .5rem; color: var(--ink-faint); }
+.breadcrumbs a { color: var(--ink-faint); text-decoration: none; }
+.breadcrumbs a:hover { color: var(--ink); }
+.breadcrumbs [aria-current="page"] { color: var(--ink); }
+
+/* ─── Sticky mobile CTA — one action, never two ───────────────── */
+.sticky-cta {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+  padding: .75rem clamp(1rem, 4vw, 1.5rem) calc(.75rem + env(safe-area-inset-bottom));
+  background: linear-gradient(180deg, rgba(5,5,5,.86), var(--base) 55%);
+  border-top: 1px solid rgba(240,240,236,.14);
+}
+.sticky-cta a {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 50px; width: 100%;
+  border: 1px solid var(--gold); color: var(--gold); text-decoration: none;
+  font-family: var(--mono); font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
+}
+@media (min-width: 901px) { .sticky-cta { display: none; } }
+
+/* ─── Forms ───────────────────────────────────────────────────── */
+.sn-form { margin: 2.5rem 0 0; max-width: 34rem; }
+.sn-hp { position: absolute; left: -9999px; }
+.sn-field { display: flex; flex-direction: column; margin-bottom: 1.4rem; }
+.sn-field label {
+  font-family: var(--mono); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink-faint); margin-bottom: .5rem;
+}
+.sn-field input, .sn-field textarea {
+  background: rgba(240,240,236,.04); border: 1px solid rgba(240,240,236,.18);
+  color: var(--ink); padding: .8rem .9rem;
+  /* 16px minimum: anything smaller makes iOS Safari zoom the page on focus. */
+  font-family: var(--body); font-size: 16px; line-height: 1.5;
+  border-radius: 0; -webkit-appearance: none;
+}
+.sn-field input:focus-visible, .sn-field textarea:focus-visible {
+  outline: 1.5px solid var(--gold); outline-offset: 2px; border-color: transparent;
+}
+.sn-hint { margin: .6rem 0 0; font-size: .82rem; line-height: 1.6; color: var(--ink-faint); }
+.sn-error { margin: 1rem 0 0; font-size: .88rem; color: var(--gold); }
+.sn-form .cta-button { margin-top: .4rem; }
+.sn-form .cta-button[disabled] { opacity: .55; cursor: default; }
+.response-promise {
+  margin: 1.6rem 0 0; padding-top: 1.2rem; border-top: 1px solid rgba(240,240,236,.14);
+  font-size: .9rem; line-height: 1.7; color: var(--ink);
+}
+
+/* ─── FAQ ─────────────────────────────────────────────────────── */
+.faq-list { margin-top: 2.5rem; border-top: 1px solid rgba(240,240,236,.14); }
+.faq { border-bottom: 1px solid rgba(240,240,236,.09); }
+.faq > summary {
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  min-height: 60px; cursor: pointer; list-style: none;
+  font-family: var(--grotesk); font-size: 1.05rem; color: var(--ink);
+}
+.faq > summary::-webkit-details-marker { display: none; }
+.faq > summary::after { content: "+"; color: var(--gold); font-size: 1.3rem; flex: none; }
+.faq[open] > summary::after { content: "–"; }
+.faq > div { padding: 0 0 1.4rem; }
+.faq p { margin: 0; max-width: 44rem; color: var(--ink-dim); line-height: 1.75; }
+
+/* ─── Builds (the honest case studies) ────────────────────────── */
+.build { margin-top: clamp(3rem, 7vh, 4.5rem); padding-top: 2rem; border-top: 1px solid rgba(240,240,236,.14); }
+.build-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem 1.2rem; }
+.build-name { font-size: clamp(1.5rem, 2.8vw, 2.1rem); margin: 0; }
+.build-status {
+  font-family: var(--mono); font-size: .66rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--pulse);
+}
+.build-body { margin-top: 1.6rem; }
+.build-row {
+  display: grid; grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
+  gap: .3rem clamp(1.5rem, 4vw, 3rem);
+  padding: 1rem 0; border-top: 1px solid rgba(240,240,236,.08);
+}
+.build-row h3 {
+  font-family: var(--mono); font-size: .68rem; font-weight: 500; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--ink-faint); margin: 0;
+}
+.build-row p { margin: 0; color: var(--ink-dim); line-height: 1.75; max-width: 46rem; }
+.build-stack { font-family: var(--mono); font-size: .8rem; letter-spacing: .04em; }
+.build-honest {
+  margin: 1.4rem 0 0; padding-left: 1rem; border-left: 2px solid var(--gold);
+  font-size: .9rem; line-height: 1.7; color: var(--ink);
+}
+
+/* ─── Thanks / 404 / policy ───────────────────────────────────── */
+.thanks-steps { list-style: none; margin: 2.5rem 0 0; padding: 0; }
+.thanks-steps li {
+  display: grid; grid-template-columns: 3rem 1fr; gap: 1rem;
+  padding: 1.4rem 0; border-top: 1px solid rgba(240,240,236,.09);
+}
+.thanks-num { font-family: var(--mono); font-size: .72rem; letter-spacing: .14em; color: var(--gold); }
+.thanks-steps h2 { font-size: 1.05rem; margin: 0 0 .4rem; }
+.thanks-steps p { margin: 0; color: var(--ink-dim); line-height: 1.7; }
+.thanks-meanwhile { margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid rgba(240,240,236,.14); }
+.nf-links { list-style: none; margin: 2rem 0; padding: 0; border-top: 1px solid rgba(240,240,236,.14); }
+.nf-links li { display: flex; flex-direction: column; padding: .9rem 0; border-bottom: 1px solid rgba(240,240,236,.08); }
+.nf-links a { color: var(--ink); text-decoration: none; font-size: 1.05rem; }
+.nf-links a:hover { color: var(--gold); }
+.nf-links span { color: var(--ink-faint); font-size: .85rem; margin-top: .15rem; }
+.policy-list { margin: 1rem 0 0; padding: 0 0 0 1.1rem; color: var(--ink-dim); line-height: 1.8; max-width: 46rem; }
+.policy-list li { margin-bottom: .6rem; }
+.policy-list strong { color: var(--ink); font-weight: 500; }
+.proof-more { margin-top: 1.6rem; }
+.inline-link { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(232,168,76,.4); }
+.inline-link:hover { border-bottom-color: var(--gold); }
+
+@media (max-width: 700px) {
+  .build-row { grid-template-columns: 1fr; gap: .35rem; }
+}
+
+/* About page contact list */
+.about-contact { list-style: none; margin: 0 0 1.6rem; padding: 0; }
+.about-contact li { display: flex; flex-direction: column; padding: .8rem 0; border-top: 1px solid rgba(240,240,236,.09); }
+.about-contact a { color: var(--ink); text-decoration: none; font-size: 1.05rem; }
+.about-contact a:hover { color: var(--gold); }
+.about-contact span { color: var(--ink-faint); font-size: .85rem; margin-top: .2rem; }
 
 :focus-visible { outline: 1.5px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
 
@@ -111,7 +267,21 @@ main:focus { outline: none; }
 .stage-viewport {
   position: absolute; inset: 0; overflow: hidden; background: var(--base);
 }
-.hero-band { position: relative; height: min(78vh, 820px); min-height: 540px; }
+/* Grows with its content instead of clipping it. The overlay used to be
+   absolutely pinned to the bottom of a fixed-height band, so longer copy
+   pushed the eyebrow up behind the fixed header. */
+.hero-band {
+  position: relative;
+  min-height: min(78vh, 820px);
+  display: flex; align-items: flex-end;
+  padding: 7.5rem clamp(1.25rem, 5vw, 4rem) clamp(2.5rem, 6vh, 4rem);
+}
+/* On narrow screens the hero is type on black — it needs no image height. */
+@media (max-width: 1024px) {
+  .hero-band { min-height: 0; padding-top: 6.5rem; padding-bottom: 2.5rem; }
+  .hero-band::before, .hero-band::after { content: none; }
+  .hero-overlay { text-shadow: none; }
+}
 .hero-band::before {
   content: ""; position: absolute; inset: 0; z-index: 5; pointer-events: none;
   background: linear-gradient(100deg, rgba(5,5,5,.74) 10%, rgba(5,5,5,.44) 34%, transparent 58%);
@@ -121,13 +291,12 @@ main:focus { outline: none; }
   background: linear-gradient(180deg, transparent, rgba(5,5,5,.82) 78%, var(--base) 100%);
 }
 .hero-overlay {
-  position: absolute; left: clamp(1.25rem, 5vw, 4rem); bottom: clamp(1.6rem, 5vh, 3.2rem);
-  right: clamp(1.25rem, 5vw, 4rem); z-index: 6; max-width: 44rem;
+  position: relative; z-index: 6; max-width: 46rem;
   text-shadow: 0 1px 14px rgba(0,0,0,.85);
 }
 .hero-eyebrow { color: var(--gold); }
-.hero-h1 { font-size: clamp(2.4rem, 4.6vw, 4.2rem); margin: .9rem 0 1rem; }
-.hero-sub { color: var(--ink-dim); max-width: 36rem; margin: 0 0 1.6rem; }
+.hero-h1 { font-size: clamp(2.2rem, 4.2vw, 3.8rem); margin: .9rem 0 1rem; }
+.hero-sub { color: var(--ink-dim); max-width: 38rem; margin: 0 0 .4rem; }
 .hero-actions { display: flex; align-items: center; gap: 1.6rem; flex-wrap: wrap; }
 .hero-cta { border-color: var(--gold); color: var(--gold); }
 .hero-cta:hover { background: var(--gold); color: var(--base); }
@@ -142,10 +311,26 @@ main:focus { outline: none; }
 .hb-eyebrow { color: var(--gold); display: block; margin-bottom: 1.6rem; }
 .hb-line { font-size: clamp(1.9rem, 3.6vw, 3rem); margin: 0 0 1rem; }
 .hb-body { color: var(--ink-dim); max-width: 40rem; margin: 0; }
-.hb-tracks { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); }
-.hb-track h2 { font-size: 1.35rem; margin-bottom: 1rem; }
-.hb-track ul { list-style: none; margin: 0 0 1.4rem; padding: 0; }
-.hb-track li { padding: .55rem 0; border-top: 1px solid rgba(240,240,236,.08); color: var(--ink-dim); }
+/* Three ruled rows, not a two-column grid holding three items — which
+   orphaned the third onto its own row in the site's core merchandising
+   section. Rows also read better on a phone than wrapped columns. */
+.hb-tracks { display: block; border-top: 1px solid rgba(240,240,236,.14); }
+.hb-track {
+  display: grid;
+  grid-template-columns: minmax(0, 16rem) minmax(0, 1fr);
+  gap: .4rem clamp(1.5rem, 5vw, 4rem);
+  padding: 1.8rem 0;
+  border-bottom: 1px solid rgba(240,240,236,.08);
+}
+.hb-track h3 { grid-column: 1; font-size: 1.25rem; margin: 0; }
+.hb-track ul { grid-column: 2; list-style: none; margin: 0 0 1rem; padding: 0; }
+.hb-track li { padding: .5rem 0; border-top: 1px solid rgba(240,240,236,.08); color: var(--ink-dim); }
+.hb-track li:first-child { border-top: 0; padding-top: 0; }
+.hb-track .crosslink { grid-column: 2; }
+@media (max-width: 900px) {
+  .hb-track { grid-template-columns: 1fr; gap: .8rem; }
+  .hb-track h3, .hb-track ul, .hb-track .crosslink { grid-column: 1; }
+}
 .hb-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.6rem, 4vw, 3.5rem); }
 .hb-step-num { font-family: var(--mono); font-size: .72rem; color: var(--gold); letter-spacing: .14em; }
 .hb-step h3 { font-size: 1.08rem; margin: .5rem 0 .5rem; }
@@ -195,13 +380,16 @@ main:focus { outline: none; }
 }
 .screen-link { cursor: pointer; }
 .screen-link:hover .screen-inner, .screen-link:focus-visible .screen-inner { filter: brightness(1.12); }
+/* Always faintly legible rather than hover-only — touch users never learned
+   these monitors were links. */
 .screen-label {
   position: absolute; left: 50%; bottom: 7%; transform: translateX(-50%);
-  opacity: 0; transition: opacity .45s ease; white-space: nowrap;
-  color: var(--ink); font-family: var(--mono); font-size: 11px; letter-spacing: .15em;
-  text-shadow: 0 0 12px rgba(0,0,0,.9);
+  opacity: .6; transition: opacity .45s ease; white-space: nowrap;
+  color: var(--ink); font-family: var(--mono); font-size: 12px; letter-spacing: .14em;
+  text-transform: uppercase; text-shadow: 0 0 12px rgba(0,0,0,.9);
 }
-.screen-link:hover .screen-label, .screen-link:focus-visible .screen-label { opacity: .9; }
+.screen-link:hover .screen-label, .screen-link:focus-visible .screen-label { opacity: 1; }
+@media (hover: none) { .screen-label { opacity: .9; } }
 .sun-bloom {
   position: absolute; pointer-events: none;
   background: radial-gradient(ellipse at center, rgba(255,196,110,.42) 0%, rgba(255,170,70,.14) 42%, transparent 70%);
@@ -236,20 +424,20 @@ main:focus { outline: none; }
 /* ─── Interior pages ─────────────────────────────────────────── */
 .page { min-height: 100vh; min-height: 100dvh; position: relative; overflow-x: clip; }
 .page-inner { position: relative; z-index: 2; max-width: 1460px; margin: 0 auto; padding: clamp(5.5rem, 10vh, 8rem) clamp(1.25rem, 5vw, 4.5rem) 6rem; }
-/
-.wordmark::before {
-  content: ""; position: fixed; top: 0; left: 0; right: 0; height: 5.4rem;
-  z-index: -1; pointer-events: none;
-  background: linear-gradient(180deg, rgba(5,5,5,.96) 0%, rgba(5,5,5,.72) 52%, transparent 100%);
-}
+/* A stray lone "/" sat here and corrupted parsing, silently swallowing the
+   rule that followed it (.wordmark::before — itself dead, referenced by no
+   JSX). Both are gone. */
 .crosslink { font-family: var(--mono); font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--ink-faint); text-decoration: none; }
 .crosslink:hover { color: var(--ink); }
 
-.cta-block { margin-top: clamp(5rem, 12vh, 8rem); text-align: center; }
-.cta-statement { font-size: clamp(2.4rem, 6vw, 4.6rem); color: var(--ink); }
+/* An older `.cta-block` rule lived here with `text-align: center` and a huge
+   top margin, left over from a layout that no longer exists. It collided with
+   the CTA component and centred its disclosure line. Removed; the live
+   definition is in the CTA section below. */
 .cta-button {
-  display: inline-block; margin-top: 2.2rem; padding: 1rem 2.6rem;
-  font-family: var(--mono); font-size: .8rem; letter-spacing: .3em; text-transform: uppercase;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: .9rem 1.6rem;
+  font-family: var(--mono); font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
   color: var(--ink); text-decoration: none;
   border: 1px solid rgba(240,240,236,.28);
   transition: border-color .35s ease, background .35s ease, color .35s ease;
@@ -370,18 +558,22 @@ main:focus { outline: none; }
 
 .page-build { background: radial-gradient(800px 560px at 90% -4%, rgba(232,168,76,.05), transparent 70%); }
 
-/* Mobile home — cinematic poster treatment (hidden on desktop) */
-.mobile-home { display: none; }
+/* Mobile home — the image as its own band beneath the copy, never behind it.
+   No scrim stack, no text-shadow, nothing fighting the type for contrast. */
+.mobile-home {
+  position: relative; display: block;
+  height: min(46vh, 380px); overflow: hidden;
+  border-top: 1px solid rgba(240,240,236,.14);
+  border-bottom: 1px solid rgba(240,240,236,.14);
+}
 .mh-bg {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; object-position: 50% 26%;
 }
+/* A gentle vignette only — nothing is read on top of this now. */
 .mh-scrim {
   position: absolute; inset: 0;
-  background: linear-gradient(180deg,
-    rgba(5,5,5,.66) 0%, rgba(5,5,5,.18) 26%,
-    rgba(5,5,5,.06) 44%, rgba(5,5,5,.30) 62%,
-    rgba(5,5,5,.82) 82%, rgba(5,5,5,.95) 100%);
+  background: linear-gradient(180deg, rgba(5,5,5,.35) 0%, rgba(5,5,5,.06) 40%, rgba(5,5,5,.45) 100%);
 }
 .mh-ambient { position: absolute; inset: 0; pointer-events: none; }
 .mh-screen-logo {
@@ -395,11 +587,6 @@ main:focus { outline: none; }
 
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 880px) {
-  .mobile-home {
-    display: flex; flex-direction: column; justify-content: flex-end;
-    height: 100%; position: relative; overflow: hidden;
-    padding: 2.2rem;
-  }
   .mono-label { font-size: .72rem; }
   .bz-rail-stage, .bz-comm-status { font-size: 11px; }
   .biz-columns { position: relative; padding-left: 1.3rem; }
@@ -439,8 +626,120 @@ main:focus { outline: none; }
   .sys-row { grid-template-columns: 1fr; gap: .5rem; }
 }
 
-/* Two separate buttons: speak to an agent, or book a meeting. */
-.cta-pair { display: flex; align-items: center; gap: .9rem; flex-wrap: wrap; margin-top: 1.6rem; }
+/* ─── Section headings that used to be decorative spans ──────── */
+/* "What we build", "How it works" etc. were <span class="mono-label">, so the
+   document outline ran h1 → h2 → h3 with the section titles invisible to
+   screen readers. They're real headings now, styled to look identical. */
+.section-heading {
+  font-family: var(--mono);
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin: 0 0 1.6rem;
+}
+
+/* ─── CTA block: visible digits + AI disclosure ───────────────── */
+.cta-block { margin-top: 1.6rem; }
+.hb-close .cta-block, .bz-transition .cta-block, .page-transition .cta-block { display: inline-block; text-align: left; }
+.cta-disclosure {
+  margin: .9rem 0 0;
+  max-width: 34rem;
+  font-size: .82rem;
+  line-height: 1.6;
+  color: var(--ink-faint);
+}
+.hero-proof-line {
+  margin: 1rem 0 0;
+  max-width: 32rem;
+  font-size: .85rem;
+  line-height: 1.6;
+  color: var(--ink-dim);
+}
+
+/* ─── Proof: the dialable number as the evidence ──────────────── */
+.hb-proof-body { margin-bottom: 2rem; }
+.proof-dial {
+  display: inline-flex; flex-direction: column; gap: .4rem;
+  padding: 1.4rem 0 0; border-top: 1px solid rgba(240,240,236,.14);
+  text-decoration: none;
+}
+.proof-dial-num {
+  font-family: var(--serif); font-size: clamp(2rem, 4.5vw, 3.2rem);
+  line-height: 1; color: var(--ink); letter-spacing: .01em;
+}
+.proof-dial-cap {
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--gold);
+}
+.proof-dial:hover .proof-dial-num { color: var(--gold); }
+
+/* ─── Business: what a system removes, + build status ─────────── */
+.bz-removes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem clamp(2rem, 5vw, 4rem); margin-top: 1rem; }
+.bz-remove { border-top: 1px solid rgba(240,240,236,.14); padding-top: 1rem; }
+.bz-remove-task { font-size: 1.02rem; font-weight: 500; margin: 0 0 .5rem; }
+.bz-remove-result { font-size: .93rem; line-height: 1.7; color: var(--ink-dim); margin: 0; }
+.bz-note, .bz-status-note {
+  margin: 2.4rem 0 0; max-width: 44rem;
+  font-size: .9rem; line-height: 1.7; color: var(--ink-faint);
+}
+.bz-status-note { margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(240,240,236,.14); }
+.bz-item {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1.2rem;
+  padding: .85rem .1rem; border-top: 1px solid rgba(240,240,236,.08);
+  font-family: var(--grotesk); font-size: .98rem; color: var(--ink-dim);
+}
+.bz-items li:last-child { border-bottom: 1px solid rgba(240,240,236,.08); }
+.bz-item-name { min-width: 0; }
+.bz-status {
+  flex: none; font-family: var(--mono); font-size: .62rem; letter-spacing: .14em;
+  text-transform: uppercase; white-space: nowrap;
+}
+.bz-status-live { color: var(--pulse); }
+.bz-status-order { color: var(--ink-faint); }
+
+/* ─── Mobile index (the navigation that didn't exist) ─────────── */
+.index-toggle {
+  display: none; align-items: center; min-height: 44px; padding: 0 .2rem;
+  background: none; border: 0; color: var(--ink-dim); cursor: pointer;
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+}
+/* Declared here, after the base rule, so it actually wins — the earlier
+   breakpoint block sits above this in the file and loses at equal specificity. */
+@media (max-width: 900px) {
+  .index-toggle { display: inline-flex; }
+}
+.index-toggle[aria-expanded="true"] { color: var(--ink); }
+.index-panel {
+  position: fixed; inset: 0; z-index: 90; background: var(--base);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 5rem clamp(1.25rem, 5vw, 3rem) calc(2rem + env(safe-area-inset-bottom));
+  animation: index-in .28s cubic-bezier(.22,1,.36,1);
+  overflow-y: auto;
+}
+@keyframes index-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.index-list { border-top: 1px solid rgba(240,240,236,.08); }
+.index-row {
+  display: grid; grid-template-columns: 2.4rem 1fr;
+  grid-template-areas: "num title" ". blurb";
+  gap: .15rem .8rem; padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(240,240,236,.08); text-decoration: none;
+}
+.index-num { grid-area: num; font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; color: var(--ink-faint); line-height: 1.7; }
+.index-title { grid-area: title; font-family: var(--serif); font-size: 2rem; line-height: 1.05; color: var(--ink); }
+.index-blurb { grid-area: blurb; font-size: .875rem; color: var(--ink-dim); }
+.index-foot { display: flex; flex-direction: column; gap: .2rem; margin-top: 2rem; font-size: .875rem; color: var(--ink-dim); }
+.index-foot a { min-height: 44px; display: inline-flex; align-items: center; text-decoration: none; color: var(--ink); }
+.index-close {
+  position: absolute; top: 1rem; right: clamp(1.25rem, 5vw, 3rem);
+  min-height: 44px; background: none; border: 0; color: var(--ink-dim); cursor: pointer;
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+}
+
+/* Two separate buttons: call the AI, or book a meeting. */
+.cta-pair { display: flex; align-items: center; gap: .9rem; flex-wrap: wrap; }
 .cta-pair .cta-button { margin-top: 0; }
 .cta-button-agent {
   display: inline-flex; align-items: center; gap: .6rem;
@@ -491,19 +790,7 @@ main:focus { outline: none; }
   .topnav-phone-dot { width: 4px; height: 4px; }
 }
 
-@media (min-width: 881px) and (max-aspect-ratio: 21/20) {
-  .mobile-home {
-    display: flex; flex-direction: column; justify-content: flex-end;
-    height: 100%; position: relative; overflow: hidden;
-    padding: 2.2rem;
-  }
-}
-
-/* Tablet: the three-monitor stage needs real width — poster carries 881-1024. */
-@media (min-width: 881px) and (max-width: 1024px) {
-  .mobile-home {
-    display: flex; flex-direction: column; justify-content: flex-end;
-    height: 100%; position: relative; overflow: hidden;
-    padding: 2.2rem;
-  }
-}
+/* Two more verbatim-duplicate .mobile-home blocks lived here (a portrait-
+   aspect one and a tablet one), all four declaring the same five properties.
+   Which hero renders is now a single JS media query in Home.jsx — one source
+   of truth instead of four CSS blocks racing each other. */

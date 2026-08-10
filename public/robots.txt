@@ -1,2 +1,14 @@
 User-agent: *
 Allow: /
+
+# AI answer engines. An AI studio should want to be citable in AI answers.
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://aisecondnature.com/sitemap.xml
