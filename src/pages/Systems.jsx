@@ -16,8 +16,8 @@ export default function Systems() {
   return (
     <main id="main" tabIndex={-1} className="page page-quiet">
       <div className="page-inner">
-        <span className="pp-eyebrow mono-label">Systems</span>
-        <h1 className="bz-headline">When the thing doesn&rsquo;t exist yet.</h1>
+        <span className="pp-eyebrow mono-label">Custom software</span>
+        <h1 className="bz-headline">The software your spreadsheet is pretending to&nbsp;be.</h1>
         <p className="bz-lead">{SYSTEMS.lead}</p>
         <p className="bz-dim">
           A website, a dashboard, a portal, the internal software your business has been faking

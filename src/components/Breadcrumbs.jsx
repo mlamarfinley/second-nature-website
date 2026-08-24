@@ -3,7 +3,7 @@ import { SITE_URL } from '../data/content.js'
 
 const LABELS = {
   '/business': 'Business',
-  '/systems': 'Systems',
+  '/systems': 'Custom software',
   '/personal': 'Personal',
   '/about': 'About',
   '/work': 'What we’ve built',

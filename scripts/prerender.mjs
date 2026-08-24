@@ -19,7 +19,7 @@ const base = process.env.SITE_BASE || '/second-nature-website/'
 
 const { render } = await import(join(dist, 'server/entry-server.js'))
 const { ROUTES } = await import(join(root, 'src/routes.js'))
-const { PAGE_META, DEFAULT_META, ORG_JSON_LD, STAGING } = await import(join(root, 'src/data/seo.js'))
+const { PAGE_META, DEFAULT_META, ORG_JSON_LD, STAGING, NOINDEX_ROUTES } = await import(join(root, 'src/data/seo.js'))
 const { NOT_FOUND_META } = await import(join(root, 'src/data/seo.js'))
 
 const template = readFileSync(join(dist, 'index.html'), 'utf-8')
@@ -51,7 +51,7 @@ function buildHead(route, meta) {
     `<meta name="twitter:description" content="${esc(meta.description)}" />`,
     `<meta name="twitter:image" content="${SITE_URL}/og.jpg" />`,
   ]
-  if (STAGING) {
+  if (STAGING || NOINDEX_ROUTES.has(route)) {
     tags.push('<meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />')
   }
   // Organisation schema on the homepage only — repeating it on every page is

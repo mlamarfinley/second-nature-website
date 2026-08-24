@@ -31,9 +31,14 @@ export const PAGE_META = {
       'When the tool you need doesn’t exist yet: websites, dashboards, client portals, booking platforms and internal software, built around how you actually work.',
   },
   '/personal': {
-    title: 'Personal AI Systems — Second Nature',
+    title: 'Personal Systems — Second Nature (by referral)',
     description:
-      'Personal systems that plan the day, check in, triage the inbox, and report the money. Friends, family and referrals only.',
+      'Personal systems that plan the day, check in, triage the inbox and report the money. Not sold publicly — friends, family and referrals only.',
+  },
+  '/terms': {
+    title: 'Terms of Service — Second Nature',
+    description:
+      'Scope, payment, ownership, cancellation and the limits on what an AI employee does unsupervised. Written to be read, not to be survived.',
   },
   '/about': {
     title: 'About Miles Finley — Second Nature, Atlanta',
@@ -69,6 +74,13 @@ export const PAGE_META = {
     description: 'Tell us where the work backs up. You leave with the friction map whether you hire us or not.',
   },
 }
+
+/* Routes kept out of search permanently, regardless of STAGING.
+   Personal systems are friends/family/referrals only — the internal decision
+   was "not marketed cold" — so the page exists for people sent a direct link
+   and should never turn up in a search result. /thanks is a post-submit page
+   with no standalone value. */
+export const NOINDEX_ROUTES = new Set(['/personal', '/thanks'])
 
 export const DEFAULT_META = PAGE_META['/']
 

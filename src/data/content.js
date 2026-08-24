@@ -270,7 +270,7 @@ export const HOME_COPY = {
       cta: 'Explore business systems',
     },
     systems: {
-      title: 'Built from scratch',
+      title: 'Custom software',
       items: ['Websites that work on a phone first', 'Dashboards and client portals', 'Internal tools your process actually fits', 'Custom AI applications'],
       to: '/systems',
       cta: 'Explore custom builds',

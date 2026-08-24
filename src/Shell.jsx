@@ -13,8 +13,9 @@ import Faq from './pages/Faq.jsx'
 import Contact from './pages/Contact.jsx'
 import Thanks from './pages/Thanks.jsx'
 import Privacy from './pages/Privacy.jsx'
+import Terms from './pages/Terms.jsx'
 import NotFound from './pages/NotFound.jsx'
-import { PAGE_META, DEFAULT_META, NOT_FOUND_META, STAGING } from './data/seo.js'
+import { PAGE_META, DEFAULT_META, NOT_FOUND_META, STAGING, NOINDEX_ROUTES } from './data/seo.js'
 
 /* Route changes in a single-page app reload nothing, so unless something moves
    focus and updates the title, a screen-reader user gets no signal at all that
@@ -35,7 +36,7 @@ function RouteEffects() {
     if (desc) desc.setAttribute('content', meta.description)
 
     let robots = document.querySelector('meta[name="robots"]')
-    if (STAGING) {
+    if (STAGING || NOINDEX_ROUTES.has(pathname)) {
       if (!robots) {
         robots = document.createElement('meta')
         robots.setAttribute('name', 'robots')
@@ -76,6 +77,7 @@ export default function Shell() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/thanks" element={<Thanks />} />
         <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
         <Route path="/about" element={<About />} />
         {/* /build was an unfinished intake page; its links live on. */}
         <Route path="/build" element={<Navigate to="/contact" replace />} />

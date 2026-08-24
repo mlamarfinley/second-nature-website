@@ -12,6 +12,7 @@ export const ROUTES = [
   '/about',
   '/personal',
   '/privacy',
+  '/terms',
 ]
 
 /* Reachable, but deliberately not prerendered or listed in the sitemap:

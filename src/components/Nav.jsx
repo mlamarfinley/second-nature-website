@@ -5,7 +5,7 @@ import SiteIndex from './SiteIndex.jsx'
 
 const LINKS = [
   ['/business', 'Business'],
-  ['/systems', 'Systems'],
+  ['/systems', 'Software'],
   ['/work', 'Our work'],
   ['/faq', 'FAQ'],
   ['/about', 'About'],
