@@ -1,6 +1,7 @@
 import { BUILDS, SAVANNAH_PHONE, SAVANNAH_PHONE_DISPLAY } from '../data/content.js'
 import CallToAction from '../components/CallToAction.jsx'
 import Breadcrumbs from '../components/Breadcrumbs.jsx'
+import PageImage from '../components/PageImage.jsx'
 
 /* The case-study section, done honestly. With no outside clients there are no
    client results to report, so these are our own builds, labelled as our own.
@@ -52,6 +53,9 @@ export default function Work() {
 
         {/* Deliberately not a testimonial carousel with placeholder quotes in
             it. The section appears when there is something true to put in it. */}
+
+        <PageImage name="veins" />
+
         <section className="detail-block" aria-labelledby="reviews">
           <h2 className="detail-headline" id="reviews">Customer reviews</h2>
           <p className="detail-body">

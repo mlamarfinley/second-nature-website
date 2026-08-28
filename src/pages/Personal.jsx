@@ -1,4 +1,5 @@
 import { CATEGORIES, CONTACT_EMAIL, SAVANNAH_PHONE, SAVANNAH_PHONE_DISPLAY } from '../data/content.js'
+import PageImage from '../components/PageImage.jsx'
 
 /* Unlisted by design.
  *
@@ -37,6 +38,9 @@ export default function Personal() {
           inbox and money, and I’d rather work with people who’ll tell me when something is rough.
           If you were referred, that’s you.
         </p>
+
+
+        <PageImage name="dunes" />
 
         <section className="detail-block" aria-labelledby="p-what">
           <h2 className="detail-headline" id="p-what">What it covers</h2>

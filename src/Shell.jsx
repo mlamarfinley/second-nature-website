@@ -24,8 +24,15 @@ import { PAGE_META, DEFAULT_META, NOT_FOUND_META, STAGING, NOINDEX_ROUTES } from
    The title and meta work here is now a fallback for client-side navigation:
    the first load already arrives with correct tags baked into the HTML by the
    prerenderer, which is what crawlers and share previews actually read. */
+/* GitHub Pages serves /business/ with a trailing slash, but the route keys
+   have none — so an unnormalised lookup missed on every sub-page and retitled
+   it "Page not found" the moment React hydrated. */
+export const normalisePath = (p) => (p.length > 1 ? p.replace(/\/+$/, '') : p)
+
 function RouteEffects() {
-  const { pathname, hash } = useLocation()
+  const location = useLocation()
+  const pathname = normalisePath(location.pathname)
+  const { hash } = location
   const first = useRef(true)
 
   useEffect(() => {

@@ -17,7 +17,7 @@ export default function Nav() {
     <header className="site-header">
       <nav className="topnav" aria-label="Site">
         <Link to="/" className="topnav-mark" aria-label="Second Nature home">
-          <img src="./logo.webp" width="384" height="384" alt="" />
+          <img src="/logo.webp" width="384" height="384" alt="" />
           <span>SECOND&nbsp;NATURE</span>
         </Link>
 

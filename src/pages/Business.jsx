@@ -2,6 +2,7 @@ import { BIZ, BIZ_REMOVES, STATUS } from '../data/content.js'
 import { FAMILIES } from '../data/offerings.js'
 import CallToAction from '../components/CallToAction.jsx'
 import { useReveal } from '../lib/useReveal.js'
+import PageImage from '../components/PageImage.jsx'
 
 /* What used to live here: a `Counter` component that eased "40 hours saved per
    week", "60% less admin time" and "2× more deadlines hit" upward over 1.4
@@ -97,6 +98,9 @@ export default function Business() {
           employees that take a role outright. Every one below says what it does, what it needs
           from you, and whether it’s running today or built to order.
         </p>
+
+
+        <PageImage name="roots" />
 
         <section className="bz-section" aria-labelledby="removes">
           <h2 id="removes" className="section-heading">What a system takes off your desk</h2>

@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { SITE_URL } from '../data/content.js'
+import { normalisePath } from '../Shell.jsx'
 
 const LABELS = {
   '/business': 'Business',
@@ -17,7 +18,7 @@ const LABELS = {
    this site — inventing a deeper hierarchy to look bigger is the same species
    of decoration the rest of this rebuild removed. */
 export default function Breadcrumbs() {
-  const { pathname } = useLocation()
+  const pathname = normalisePath(useLocation().pathname)
   const label = LABELS[pathname]
   if (!label) return null
 

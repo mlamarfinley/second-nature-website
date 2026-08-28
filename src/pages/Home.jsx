@@ -66,7 +66,7 @@ function AmbientRings() {
 function CenterScreenUI() {
   return (
     <div className="sui" aria-hidden="true" style={{ display: 'grid', placeItems: 'center', background: 'var(--base-2)' }}>
-      <img className="sui-center-logo" src="./logo.webp" width="384" height="384" alt="" />
+      <img className="sui-center-logo" src="/logo.webp" width="384" height="384" alt="" />
     </div>
   )
 }
@@ -144,9 +144,9 @@ function Stage() {
       {box && (
         <div className="stage" style={{ width: box.w, height: box.h }}>
           <picture>
-            <source type="image/webp" srcSet="./hero-800.webp 800w, ./hero-1456.webp 1456w" sizes="100vw" />
+            <source type="image/webp" srcSet="/hero-800.webp 800w, /hero-1456.webp 1456w" sizes="100vw" />
             <img
-              className="stage-img" src="./hero.jpg" width="1456" height="816"
+              className="stage-img" src="/hero.jpg" width="1456" height="816"
               loading="eager" fetchpriority="high"
               alt="Three monitors on a desk in a forest at sunset"
             />
@@ -218,15 +218,13 @@ function MobileHome() {
   return (
     <div className="mobile-home" ref={wrapRef}>
       <picture>
-        <source type="image/webp" srcSet="./hero-800.webp 800w, ./hero-1456.webp 1456w" sizes="100vw" />
-        <img className="mh-bg" src="./hero.jpg" width="1456" height="816" loading="eager" fetchpriority="high" alt="" aria-hidden="true" />
+        <source type="image/webp" srcSet="/hero-800.webp 800w, /hero-1456.webp 1456w" sizes="100vw" />
+        <img className="mh-bg" src="/hero.jpg" width="1456" height="816" loading="eager" fetchpriority="high" alt="" aria-hidden="true" />
       </picture>
       <div className="mh-scrim" aria-hidden="true" />
-      {screenRect && (
-        <div className="mh-screen-logo" style={screenRect} aria-hidden="true">
-          <img src="./logo.webp" width="384" height="384" alt="" />
-        </div>
-      )}
+      {/* The logo used to be composited onto the centre monitor here. With the
+          copy sitting over the image again it collided with the body text —
+          and the mark is already in the nav two inches above. */}
       <div className="mh-ambient" aria-hidden="true">
         <Fireflies count={8} />
       </div>
@@ -262,7 +260,14 @@ export default function Home() {
           scrim and a text-shadow to be readable, which is the tell that the
           composition never had room for it. */}
       <section className="hero-band">
-        {wide && <Stage />}
+        {/* The forest render stays. The research is explicit: for a
+            utilitarian product, overt AI art gains far more on novelty than
+            it loses on authenticity, and the harm mechanism is felt
+            deception — which a picture nobody could mistake for a photo
+            cannot cause. What was removed was the fabricated dashboards
+            bolted onto its monitors, which asserted things that weren't
+            true. The art was never the problem. */}
+        {wide ? <Stage /> : <MobileHome />}
         <div className="hero-overlay">
           <span className="mono-label hero-eyebrow">{hero.eyebrow}</span>
           <h1 className="serif-display hero-h1">{hero.h1}</h1>
@@ -271,7 +276,6 @@ export default function Home() {
           <p className="hero-proof-line">{hero.proofLine}</p>
         </div>
       </section>
-      {!wide && <MobileHome />}
 
       <div className="home-body">
         <section className="hb-section hb-reframe" aria-labelledby="idea">
