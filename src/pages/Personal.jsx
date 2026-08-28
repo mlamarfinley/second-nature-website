@@ -40,10 +40,10 @@ export default function Personal() {
         </p>
 
 
-        <PageImage name="dunes" />
-
         <section className="detail-block" aria-labelledby="p-what">
-          <h2 className="detail-headline" id="p-what">What it covers</h2>
+          <PageImage name="dunes">
+            <h2 className="page-image-heading serif-display" id="p-what">What it&nbsp;covers</h2>
+          </PageImage>
           <p className="detail-body">
             Four areas. Most people start with one and add another when the first has proved
             itself.

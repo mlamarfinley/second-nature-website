@@ -100,10 +100,12 @@ export default function Business() {
         </p>
 
 
-        <PageImage name="roots" />
-
         <section className="bz-section" aria-labelledby="removes">
-          <h2 id="removes" className="section-heading">What a system takes off your desk</h2>
+          <PageImage name="roots">
+            <h2 id="removes" className="page-image-heading serif-display">
+              What a system takes off your&nbsp;desk
+            </h2>
+          </PageImage>
           <Removes />
           <p className="bz-note">
             We don’t publish hours-saved numbers, because we’d be making them up — we have no

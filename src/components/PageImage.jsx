@@ -1,62 +1,59 @@
-/* One image per page, one treatment for all of them.
+/* One image per page, integrated as ground rather than inserted as a picture.
  *
- * The site had imagery on exactly one of twelve pages, which is itself a
- * documented AI-generated-site tell — generated sites cluster at two
- * extremes: synthetic people, or no images at all substituting gradients
- * and big type.
+ * The first version sat inside the text column with a border top and bottom,
+ * which made it read as a rectangle pasted onto the page — the boxed-card
+ * problem the brief explicitly rules out. This version is full-bleed, has no
+ * borders at all, and is masked so it dissolves into the page colour at both
+ * edges. It is the ground a section stands on, not an illustration dropped
+ * into the prose.
  *
- * Every image here is atmosphere, never evidence. Each carries a caption
- * naming what it is, so it can't be mistaken for a claim about the
- * business — that line is what the trust research actually punishes.
- * The shared grade keeps four different pictures reading as one family. */
+ * Every image is atmosphere, never evidence. The quiet credit is what keeps
+ * that line legible — it is the device that stops an image being read as a
+ * claim about the business.
+ */
 
-/* Each caption does two jobs: a dry line that earns the picture's place on
-   that particular page, and the disclosure. The line is the human bit —
-   wordplay is the thing generated copy is worst at, so a caption that
-   actually lands is evidence a person wrote it. The disclosure stays
-   because that's what keeps the image atmosphere rather than a claim. */
 export const IMAGES = {
   roots: {
     src: 'roots',
     alt: 'A branching root network picked out in gold across cracked dark earth',
-    line: 'The part doing the work is the part you don’t see.',
     credit: 'Root network · cover art, generated',
   },
   veins: {
     src: 'veins',
     alt: 'A leaf backlit so its vein structure reads as a network',
-    line: 'Hold it up to the light. That’s the whole offer.',
     credit: 'Leaf veins · cover art, generated',
   },
   grid: {
     src: 'grid',
     alt: 'A city seen from high above at night, lit windows forming a grid',
-    line: 'Also a network. Somebody just had to draw this one first.',
     credit: 'City grid at night · cover art, generated',
   },
   dunes: {
     src: 'dunes',
     alt: 'Wind-carved dunes at low sun, ridges running to the horizon',
-    line: 'Same wind, every day. That’s the entire trick.',
     credit: 'Dunes · cover art, generated',
   },
 }
 
-export default function PageImage({ name, height = 'band', children }) {
+/* `heading` sits on the image, so the band carries content rather than
+   interrupting it. Leave it out and the band is pure atmosphere. */
+export default function PageImage({ name, heading, children }) {
   const img = IMAGES[name]
   if (!img) return null
   return (
-    <figure className={`page-image page-image-${height}`}>
+    <div className={`page-image page-image-${name}`}>
       <picture>
         <source media="(max-width: 800px)" srcSet={`/img/${img.src}-800.jpg`} />
         <img src={`/img/${img.src}-1600.jpg`} alt={img.alt} loading="lazy" decoding="async" />
       </picture>
-      <span className="page-image-scrim" aria-hidden="true" />
-      {children}
-      <figcaption>
-        <span className="page-image-line">{img.line}</span>
-        <span className="page-image-credit">{img.credit}</span>
-      </figcaption>
-    </figure>
+      <div className="page-image-veil" aria-hidden="true" />
+      {(heading || children) && (
+        <div className="page-image-body">
+          {heading && <p className="page-image-heading serif-display">{heading}</p>}
+          {children}
+        </div>
+      )}
+      <span className="page-image-credit">{img.credit}</span>
+    </div>
   )
 }

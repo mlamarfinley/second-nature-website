@@ -54,10 +54,10 @@ export default function Work() {
         {/* Deliberately not a testimonial carousel with placeholder quotes in
             it. The section appears when there is something true to put in it. */}
 
-        <PageImage name="veins" />
-
         <section className="detail-block" aria-labelledby="reviews">
-          <h2 className="detail-headline" id="reviews">Customer reviews</h2>
+          <PageImage name="veins">
+            <h2 className="page-image-heading serif-display" id="reviews">Customer&nbsp;reviews</h2>
+          </PageImage>
           <p className="detail-body">
             There aren’t any yet, and you won’t find invented ones here. When a client is willing
             to put their name to what we built for them, their words go in this space with their

@@ -27,7 +27,9 @@ export default function Systems() {
         </p>
 
 
-        <PageImage name="grid" />
+        <PageImage name="grid">
+          <p className="page-image-heading serif-display">What we&nbsp;build.</p>
+        </PageImage>
 
         <div className="sys-list">
           {SYSTEMS.items.map(([name, body], i) => (
