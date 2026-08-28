@@ -3,15 +3,16 @@ import react from '@vitejs/plugin-react'
 
 
 /* BASE PATH.
- * GitHub Pages serves this repo at /second-nature-website/, so assets and
- * routes have to be prefixed. The day the custom domain is connected the site
- * sits at the root instead — build with SITE_BASE=/ and everything follows,
- * because the router basename and the prerenderer both read this value.
+ * The custom domain serves the site from the root, so this defaults to '/'.
+ * The old github.io project URL served it from /second-nature-website/ — build
+ * that variant with `npm run build:subpath` if it's ever needed again. The
+ * router basename and the prerenderer both read this value, so nothing else
+ * has to change.
  *
  * It used to be './' (relative), which works for a flat single page and breaks
  * the moment routes are nested: /business/index.html would resolve ./assets
  * to /business/assets. */
-const base = process.env.SITE_BASE || '/second-nature-website/'
+const base = process.env.SITE_BASE || '/'
 
 export default defineConfig(({ command, isSsrBuild }) => ({
   // Dev runs at the root so localhost:5190 just works; only the build carries

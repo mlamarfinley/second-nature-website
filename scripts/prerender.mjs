@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url'
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)))
 const dist = join(root, 'dist')
-const base = process.env.SITE_BASE || '/second-nature-website/'
+const base = process.env.SITE_BASE || '/'
 
 const { render } = await import(join(dist, 'server/entry-server.js'))
 const { ROUTES } = await import(join(root, 'src/routes.js'))

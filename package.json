@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist/server && node scripts/prerender.mjs",
-    "build:root": "SITE_BASE=/ npm run build",
-    "preview": "vite preview"
+    "build": "SITE_BASE=${SITE_BASE:-/} vite build && SITE_BASE=${SITE_BASE:-/} vite build --ssr src/entry-server.jsx --outDir dist/server && SITE_BASE=${SITE_BASE:-/} node scripts/prerender.mjs",
+    "preview": "vite preview",
+    "build:subpath": "SITE_BASE=/second-nature-website/ npm run build"
   },
   "dependencies": {
     "@fontsource-variable/schibsted-grotesk": "^5.3.0",
