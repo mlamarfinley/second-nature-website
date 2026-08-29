@@ -1,4 +1,5 @@
 import { CATEGORIES, CONTACT_EMAIL, SAVANNAH_PHONE, SAVANNAH_PHONE_DISPLAY } from '../data/content.js'
+import PageImage from '../components/PageImage.jsx'
 
 /* Unlisted by design.
  *
@@ -38,8 +39,11 @@ export default function Personal() {
           If you were referred, that’s you.
         </p>
 
+
         <section className="detail-block" aria-labelledby="p-what">
-          <h2 className="detail-headline" id="p-what">What it covers</h2>
+          <PageImage name="dunes">
+            <h2 className="page-image-heading serif-display" id="p-what">What it&nbsp;covers</h2>
+          </PageImage>
           <p className="detail-body">
             Four areas. Most people start with one and add another when the first has proved
             itself.

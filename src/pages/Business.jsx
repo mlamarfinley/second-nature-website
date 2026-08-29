@@ -2,6 +2,7 @@ import { BIZ, BIZ_REMOVES, STATUS } from '../data/content.js'
 import { FAMILIES } from '../data/offerings.js'
 import CallToAction from '../components/CallToAction.jsx'
 import { useReveal } from '../lib/useReveal.js'
+import PageImage from '../components/PageImage.jsx'
 
 /* What used to live here: a `Counter` component that eased "40 hours saved per
    week", "60% less admin time" and "2× more deadlines hit" upward over 1.4
@@ -98,8 +99,13 @@ export default function Business() {
           from you, and whether it’s running today or built to order.
         </p>
 
+
         <section className="bz-section" aria-labelledby="removes">
-          <h2 id="removes" className="section-heading">What a system takes off your desk</h2>
+          <PageImage name="roots">
+            <h2 id="removes" className="page-image-heading serif-display">
+              What a system takes off your&nbsp;desk
+            </h2>
+          </PageImage>
           <Removes />
           <p className="bz-note">
             We don’t publish hours-saved numbers, because we’d be making them up — we have no

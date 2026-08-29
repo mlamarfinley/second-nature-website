@@ -15,65 +15,70 @@ button { background: none; border: 0; padding: 0; cursor: pointer; }
 p, h1, h2, h3, h4 { overflow-wrap: break-word; }
 ul, ol { list-style: none; padding: 0; }
 
-/* ─── Second Nature design tokens ─────────────────────────────── */
+/* ─── Second Nature design tokens ─────────────────────────────
+   "Petrichor". The ground carries ~4% green chroma, so every neutral on
+   the page sits quietly in key with the tree mark — without a leaf
+   appearing anywhere. Derived from pigment (green earth, umber, ochre)
+   rather than foliage, which is the difference between "natural" and
+   "wellness brand".
+
+   The gold is unchanged. The diagnosis was never the accent colour — it
+   was the pure-black ground beneath it and the frequency of its use. */
 :root {
-  /* Ink — three values. */
-  --ink: #F0F0EC;
-  --ink-dim: rgba(240, 240, 236, 0.68);   /* raised from .62 for small text */
-  --ink-faint: rgba(240, 240, 236, 0.56); /* labels only, never body copy */
+  /* Ground — a base plus two real surfaces. Pure black (#050505) cannot
+     express elevation: shadows are invisible on it, so every section sat
+     on the same flat plane. */
+  --base: #0C1210;
+  --surface-1: #131A17;
+  --surface-2: #1B2420;
 
-  /* Ground — ONE black, ONE raised surface. There were five: #050505,
-     #0a0d0a, #0b0f0b, #0a0f0c and an unused --forest token, which left
-     visible seams between panels on a bright display. */
-  --base: #050505;
-  --base-2: #0B0C0A;
+  /* Ink. High is deliberately NOT maximum contrast — the old #F0F0EC on
+     #050505 was 17.8:1, above the band where users report halation
+     (white smearing) on dark grounds. This sits at 16.2:1 and body copy
+     runs lower still. */
+  --ink: #E9EFEA;
+  --ink-dim: #A9B5AE;     /* 8.9:1 on base */
+  --ink-faint: #7E8A84;   /* 5.3:1 on base — base only */
+  --ink-faint-raised: #8A958E;  /* on --surface-2, where the above drops to 4.4:1 */
 
-  /* Accent — ONE. The three-accent system (gold/purple/green, one per
-     section) never actually rendered: --accent was read by a single
-     selector on a page that has since been deleted, so purple never
-     appeared on the "purple" page at all. One accent applied consistently
-     is more distinctive than three that don't work. */
-  --gold: #E8A84C;
+  /* Accent — ONE, unchanged, and rationed. An accent's power is inversely
+     proportional to how often it appears (von Restorff). Target: under 2%
+     of pixels. Primary action, one rule per page, live status. Nowhere else. */
+  --gold: #E8A84C;        /* 9.1:1 on base */
   --gold-soft: rgba(232, 168, 76, 0.55);
 
   /* Status — only ever on something genuinely live. */
-  --pulse: #59D9A0;
+  --pulse: #6FBF8B;
 
-  /* Rules — TWO. There were sixteen distinct alpha values on the same ink
-     colour, for the one motif this brand claims as its signature. */
-  --rule: rgba(240, 240, 236, 0.14);       /* structural: section tops */
-  --rule-soft: rgba(240, 240, 236, 0.08);  /* separators: list rows */
+  /* Rules — two weights. */
+  --rule: rgba(233, 239, 234, 0.14);
+  --rule-soft: rgba(233, 239, 234, 0.08);
 
-  /* Type families — three, down from four. */
-  --serif: "Playfair Display", "Playfair Fallback", Georgia, serif;
+  /* Type. Playfair is documented as past its cliché horizon — by the
+     mid-2010s the default for wedding sites and boutique hotels. Fraunces
+     is variable with a real optical-size axis plus SOFT/WONK. */
+  --serif: "Fraunces", "Serif Fallback", Georgia, serif;
   --body: "Schibsted Grotesk", "Schibsted Fallback", system-ui, sans-serif;
-  --grotesk: var(--body);   /* was Space Grotesk: a second grotesk doing the
-                               same job, indistinguishable at text sizes */
+  --grotesk: var(--body);
   --mono: "Martian Mono", ui-monospace, monospace;
 
-  /* Type scale — 1.25 from a 17px base. Replaces 25 ad-hoc font sizes,
-     among them four near-identical body sizes (.92/.93/.95/.98rem) and an
-     h3 that outweighed its h2. Nothing below --step--2 ships: the old floor
-     was 9.6px uppercase letterspaced mono on the primary mobile CTA. */
-  --step--2: 0.75rem;    /* 12px — labels, captions, footer */
-  --step--1: 0.875rem;   /* 14px — secondary text, buttons, nav */
-  --step-0:  1.0625rem;  /* 17px — body */
-  --step-1:  1.3125rem;  /* 21px — leads */
-  --step-2:  1.625rem;   /* 26px — h3 */
-  --step-3:  2.0625rem;  /* 33px — h2 */
-  --step-4:  clamp(2.2rem, 1.5rem + 3.4vw, 3.6rem);  /* h1 */
-  --step-5:  clamp(2.6rem, 1.8rem + 4.6vw, 4.4rem);  /* one statement per page */
+  --step--2: 0.75rem;
+  --step--1: 0.875rem;
+  --step-0:  1.0625rem;
+  --step-1:  1.3125rem;
+  --step-2:  1.625rem;
+  --step-3:  2.0625rem;
+  --step-4:  clamp(2.2rem, 1.5rem + 3.4vw, 3.6rem);
+  --step-5:  clamp(2.6rem, 1.8rem + 4.6vw, 4.4rem);
 
   --lh-display: 1.06;
   --lh-heading: 1.3;
   --lh-body: 1.65;
 
-  /* Tracking — three values, down from eleven. */
   --track-tight: -0.015em;
   --track-0: 0;
-  --track-label: 0.1em;
+  --track-label: 0.06em;   /* was .1em — tight tracking reads less templated */
 
-  /* Space — 4px base. */
   --s1: 0.25rem; --s2: 0.5rem;  --s3: 0.75rem;
   --s4: 1rem;    --s5: 1.5rem;  --s6: 2rem;
   --s7: 3rem;    --s8: 4.5rem;  --s9: 7rem;
@@ -89,6 +94,9 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 h1, h2, h3 { font-family: var(--grotesk); font-weight: 600; line-height: var(--lh-heading); }
+/* Every h1 is the display serif — it used to flip between serif and grotesk
+   depending on which page you were on, which is not a typographic voice. */
+h1, .bz-headline, .pp-headline { font-family: var(--serif); font-weight: 400; font-variation-settings: "opsz" 120, "SOFT" 0, "WONK" 1; }
 h1 { line-height: var(--lh-display); letter-spacing: var(--track-tight); }
 a { color: inherit; }
 ::selection { background: rgba(232,168,76,.35); }
@@ -99,19 +107,24 @@ a { color: inherit; }
   letter-spacing: 0.005em;
   line-height: 1.06;
 }
+/* Was: uppercase letterspaced MONO. That combination is the single strongest
+   template tell in the old system — the "eyebrow epidemic", sections stacked
+   like receipts — and it is simultaneously a catalogued AI-slop marker.
+   Now: the text face, sentence case, tight tracking, no mono. */
 .mono-label {
-  font-family: var(--mono);
-  font-size: 0.685rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
+  font-family: var(--body);
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: var(--track-label);
+  text-transform: none;
+  color: var(--ink-dim);
 }
-.thin-rule { border: 0; border-top: 1px solid rgba(240,240,236,0.12); }
+.thin-rule { border: 0; border-top: 1px solid var(--rule); }
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 .skip-link {
   position: fixed; top: -100px; left: 1rem; z-index: 100;
   padding: .7rem 1.1rem; background: var(--base); color: var(--ink);
-  border: 1px solid rgba(240,240,236,.4); font-family: var(--mono);
+  border: 1px solid var(--ink-dim); font-family: var(--mono);
   font-size: .75rem; letter-spacing: .18em; text-transform: uppercase; text-decoration: none;
   transition: top .2s ease;
 }
@@ -119,7 +132,7 @@ a { color: inherit; }
 .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 40; }
 .site-header::before {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: linear-gradient(180deg, rgba(5,5,5,.94) 0%, rgba(5,5,5,.7) 60%, transparent 100%);
+  background: linear-gradient(180deg, rgba(12,18,16,.94) 0%, rgba(12,18,16,.7) 60%, transparent 100%);
 }
 .topnav {
   display: flex; align-items: center; justify-content: space-between;
@@ -151,10 +164,13 @@ a { color: inherit; }
   .topnav { padding: 1rem 1.25rem; }
 }
 main:focus { outline: none; }
+/* The full-bleed image bands break out of the content column with negative
+   margins; this stops any sub-pixel overshoot becoming a sideways scroll. */
+.page { overflow-x: clip; }
 .site-footer {
   position: relative; z-index: 2;
   padding: clamp(2.5rem, 6vh, 4rem) clamp(1.25rem, 5vw, 4.5rem) calc(2rem + env(safe-area-inset-bottom));
-  border-top: 1px solid rgba(240,240,236,.14); background: var(--base);
+  border-top: 1px solid var(--rule); background: var(--base);
   color: var(--ink-dim);
 }
 .footer-inner {
@@ -178,7 +194,7 @@ main:focus { outline: none; }
 .footer-note { margin: .4rem 0 0; font-size: .8rem; color: var(--ink-faint); max-width: 17rem; line-height: 1.6; }
 .footer-base {
   max-width: 1460px; margin: clamp(2rem, 5vh, 3rem) auto 0;
-  padding-top: 1.4rem; border-top: 1px solid rgba(240,240,236,.08);
+  padding-top: 1.4rem; border-top: 1px solid var(--rule-soft);
   font-size: .8rem; color: var(--ink-faint);
   display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; align-items: center;
 }
@@ -206,8 +222,8 @@ main:focus { outline: none; }
 .sticky-cta {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
   padding: .75rem clamp(1rem, 4vw, 1.5rem) calc(.75rem + env(safe-area-inset-bottom));
-  background: linear-gradient(180deg, rgba(5,5,5,.86), var(--base) 55%);
-  border-top: 1px solid rgba(240,240,236,.14);
+  background: linear-gradient(180deg, rgba(12,18,16,.86), var(--base) 55%);
+  border-top: 1px solid var(--rule);
 }
 .sticky-cta a {
   display: flex; align-items: center; justify-content: center;
@@ -226,7 +242,7 @@ main:focus { outline: none; }
   color: var(--ink-faint); margin-bottom: .5rem;
 }
 .sn-field input, .sn-field textarea {
-  background: rgba(240,240,236,.04); border: 1px solid rgba(240,240,236,.18);
+  background: rgba(240,240,236,.04); border: 1px solid var(--rule);
   color: var(--ink); padding: .8rem .9rem;
   /* 16px minimum: anything smaller makes iOS Safari zoom the page on focus. */
   font-family: var(--body); font-size: 16px; line-height: 1.5;
@@ -240,13 +256,13 @@ main:focus { outline: none; }
 .sn-form .cta-button { margin-top: .4rem; }
 .sn-form .cta-button[disabled] { opacity: .55; cursor: default; }
 .response-promise {
-  margin: 1.6rem 0 0; padding-top: 1.2rem; border-top: 1px solid rgba(240,240,236,.14);
+  margin: 1.6rem 0 0; padding-top: 1.2rem; border-top: 1px solid var(--rule);
   font-size: .9rem; line-height: 1.7; color: var(--ink);
 }
 
 /* ─── FAQ ─────────────────────────────────────────────────────── */
-.faq-list { margin-top: 2.5rem; border-top: 1px solid rgba(240,240,236,.14); }
-.faq { border-bottom: 1px solid rgba(240,240,236,.09); }
+.faq-list { margin-top: 2.5rem; border-top: 1px solid var(--rule); }
+.faq { border-bottom: 1px solid var(--rule-soft); }
 .faq > summary {
   display: flex; justify-content: space-between; align-items: center; gap: 1rem;
   min-height: 60px; cursor: pointer; list-style: none;
@@ -259,7 +275,7 @@ main:focus { outline: none; }
 .faq p { margin: 0; max-width: 44rem; color: var(--ink-dim); line-height: 1.75; }
 
 /* ─── Builds (the honest case studies) ────────────────────────── */
-.build { margin-top: clamp(3rem, 7vh, 4.5rem); padding-top: 2rem; border-top: 1px solid rgba(240,240,236,.14); }
+.build { margin-top: clamp(3rem, 7vh, 4.5rem); padding-top: 2rem; border-top: 1px solid var(--rule); }
 .build-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem 1.2rem; }
 .build-name { font-size: clamp(1.5rem, 2.8vw, 2.1rem); margin: 0; }
 .build-status {
@@ -270,7 +286,7 @@ main:focus { outline: none; }
 .build-row {
   display: grid; grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
   gap: .3rem clamp(1.5rem, 4vw, 3rem);
-  padding: 1rem 0; border-top: 1px solid rgba(240,240,236,.08);
+  padding: 1rem 0; border-top: 1px solid var(--rule-soft);
 }
 .build-row h3 {
   font-family: var(--mono); font-size: .68rem; font-weight: 500; letter-spacing: .14em;
@@ -287,14 +303,14 @@ main:focus { outline: none; }
 .thanks-steps { list-style: none; margin: 2.5rem 0 0; padding: 0; }
 .thanks-steps li {
   display: grid; grid-template-columns: 3rem 1fr; gap: 1rem;
-  padding: 1.4rem 0; border-top: 1px solid rgba(240,240,236,.09);
+  padding: 1.4rem 0; border-top: 1px solid var(--rule-soft);
 }
 .thanks-num { font-family: var(--mono); font-size: .72rem; letter-spacing: .14em; color: var(--gold); }
 .thanks-steps h2 { font-size: 1.05rem; margin: 0 0 .4rem; }
 .thanks-steps p { margin: 0; color: var(--ink-dim); line-height: 1.7; }
-.thanks-meanwhile { margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid rgba(240,240,236,.14); }
-.nf-links { list-style: none; margin: 2rem 0; padding: 0; border-top: 1px solid rgba(240,240,236,.14); }
-.nf-links li { display: flex; flex-direction: column; padding: .9rem 0; border-bottom: 1px solid rgba(240,240,236,.08); }
+.thanks-meanwhile { margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid var(--rule); }
+.nf-links { list-style: none; margin: 2rem 0; padding: 0; border-top: 1px solid var(--rule); }
+.nf-links li { display: flex; flex-direction: column; padding: .9rem 0; border-bottom: 1px solid var(--rule-soft); }
 .nf-links a { color: var(--ink); text-decoration: none; font-size: 1.05rem; }
 .nf-links a:hover { color: var(--gold); }
 .nf-links span { color: var(--ink-faint); font-size: .85rem; margin-top: .15rem; }
@@ -311,7 +327,7 @@ main:focus { outline: none; }
 
 /* About page contact list */
 .about-contact { list-style: none; margin: 0 0 1.6rem; padding: 0; }
-.about-contact li { display: flex; flex-direction: column; padding: .8rem 0; border-top: 1px solid rgba(240,240,236,.09); }
+.about-contact li { display: flex; flex-direction: column; padding: .8rem 0; border-top: 1px solid var(--rule-soft); }
 .about-contact a { color: var(--ink); text-decoration: none; font-size: 1.05rem; }
 .about-contact a:hover { color: var(--gold); }
 .about-contact span { color: var(--ink-faint); font-size: .85rem; margin-top: .2rem; }
@@ -344,17 +360,15 @@ main:focus { outline: none; }
 }
 /* On narrow screens the hero is type on black — it needs no image height. */
 @media (max-width: 1024px) {
-  .hero-band { min-height: 0; padding-top: 6.5rem; padding-bottom: 2.5rem; }
-  .hero-band::before, .hero-band::after { content: none; }
-  .hero-overlay { text-shadow: none; }
+  .hero-band { min-height: min(88vh, 760px); padding-top: 7rem; padding-bottom: 2.5rem; }
 }
 .hero-band::before {
   content: ""; position: absolute; inset: 0; z-index: 5; pointer-events: none;
-  background: linear-gradient(100deg, rgba(5,5,5,.74) 10%, rgba(5,5,5,.44) 34%, transparent 58%);
+  background: linear-gradient(100deg, rgba(12,18,16,.74) 10%, rgba(12,18,16,.44) 34%, transparent 58%);
 }
 .hero-band::after {
   content: ""; position: absolute; inset: 40% 0 0 0; z-index: 5; pointer-events: none;
-  background: linear-gradient(180deg, transparent, rgba(5,5,5,.82) 78%, var(--base) 100%);
+  background: linear-gradient(180deg, transparent, rgba(12,18,16,.82) 78%, var(--base) 100%);
 }
 .hero-overlay {
   position: relative; z-index: 6; max-width: 46rem;
@@ -372,7 +386,7 @@ main:focus { outline: none; }
 }
 .hero-secondary:hover { color: var(--ink); }
 .home-body { position: relative; z-index: 2; max-width: 1460px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 4.5rem) 4rem; }
-.hb-section { padding: clamp(3rem, 7vh, 5rem) 0; border-top: 1px solid rgba(240,240,236,.08); }
+.hb-section { padding: clamp(3rem, 7vh, 5rem) 0; border-top: 1px solid var(--rule-soft); }
 .hb-section:first-child { border-top: 0; }
 .hb-eyebrow { color: var(--gold); display: block; margin-bottom: 1.6rem; }
 .hb-line { font-size: clamp(1.9rem, 3.6vw, 3rem); margin: 0 0 1rem; }
@@ -380,17 +394,17 @@ main:focus { outline: none; }
 /* Three ruled rows, not a two-column grid holding three items — which
    orphaned the third onto its own row in the site's core merchandising
    section. Rows also read better on a phone than wrapped columns. */
-.hb-tracks { display: block; border-top: 1px solid rgba(240,240,236,.14); }
+.hb-tracks { display: block; border-top: 1px solid var(--rule); }
 .hb-track {
   display: grid;
   grid-template-columns: minmax(0, 16rem) minmax(0, 1fr);
   gap: .4rem clamp(1.5rem, 5vw, 4rem);
   padding: 1.8rem 0;
-  border-bottom: 1px solid rgba(240,240,236,.08);
+  border-bottom: 1px solid var(--rule-soft);
 }
 .hb-track h3 { grid-column: 1; font-size: 1.25rem; margin: 0; }
 .hb-track ul { grid-column: 2; list-style: none; margin: 0 0 1rem; padding: 0; }
-.hb-track li { padding: .5rem 0; border-top: 1px solid rgba(240,240,236,.08); color: var(--ink-dim); }
+.hb-track li { padding: .5rem 0; border-top: 1px solid var(--rule-soft); color: var(--ink-dim); }
 .hb-track li:first-child { border-top: 0; padding-top: 0; }
 .hb-track .crosslink { grid-column: 2; }
 @media (max-width: 900px) {
@@ -405,7 +419,7 @@ main:focus { outline: none; }
 .hb-proof-screens { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.4rem, 3vw, 2.5rem); }
 .hb-screen { aspect-ratio: 16/9; border: 1px solid rgba(232,168,76,.28); position: relative; overflow: hidden; }
 .hb-truths { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem clamp(2rem, 5vw, 5rem); }
-.hb-truth { border-top: 1px solid rgba(240,240,236,.08); padding-top: 1rem; }
+.hb-truth { border-top: 1px solid var(--rule-soft); padding-top: 1rem; }
 .hb-truth h3 { font-size: 1.02rem; margin-bottom: .35rem; }
 .hb-truth p { color: var(--ink-dim); font-size: .92rem; margin: 0; }
 .hb-close { text-align: center; }
@@ -482,7 +496,8 @@ main:focus { outline: none; }
 
 /* ─── Interior pages ─────────────────────────────────────────── */
 .page { min-height: 100vh; min-height: 100dvh; position: relative; overflow-x: clip; }
-.page-inner { position: relative; z-index: 2; max-width: 1460px; margin: 0 auto; padding: clamp(5.5rem, 10vh, 8rem) clamp(1.25rem, 5vw, 4.5rem) 6rem; }
+.page-inner { --column-inset: max(var(--gutter), calc((100vw - 1460px) / 2 + var(--gutter)));
+  position: relative; z-index: 2; max-width: 1460px; margin: 0 auto; padding: clamp(5.5rem, 10vh, 8rem) clamp(1.25rem, 5vw, 4.5rem) 6rem; }
 /* A stray lone "/" sat here and corrupted parsing, silently swallowing the
    rule that followed it (.wordmark::before — itself dead, referenced by no
    JSX). Both are gone. */
@@ -498,12 +513,14 @@ main:focus { outline: none; }
   min-height: 48px; padding: .9rem 1.6rem;
   font-family: var(--mono); font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
   color: var(--ink); text-decoration: none;
-  border: 1px solid rgba(240,240,236,.28);
+  border: 1px solid var(--rule);
   transition: border-color .35s ease, background .35s ease, color .35s ease;
 }
 .cta-button:hover { border-color: var(--gold); background: rgba(240,240,236,.05); }
 .pp-eyebrow { color: var(--gold); display: inline-flex; align-items: center; gap: .8rem; }
-.pp-eyebrow::after { content: ""; width: 44px; height: 1px; background: rgba(240,240,236,.25); }
+/* The 44px trailing hairline after every eyebrow was a repeated motif on
+   every page — exactly the thing the brief says reads as generated. */
+.pp-eyebrow::after { content: none; }
 .pp-headline { font-size: clamp(2.6rem, 4vw, 4.4rem); margin: 1.3rem 0 1.6rem; }
 .pp-lead { font-size: 1.02rem; line-height: 1.75; color: var(--ink); opacity: .92; margin: 0 0 1.15rem; }
 .pp-prompt { font-size: 1.12rem; font-weight: 500; margin: 0 0 .9rem; }
@@ -513,13 +530,13 @@ main:focus { outline: none; }
   background: var(--gold); box-shadow: 0 0 12px 2px rgba(232,168,76,.5);
   animation: sn-tick 2.6s ease-in-out infinite;
 }
-.feature-row { display: flex; gap: 1rem; padding: .78rem 0; border-top: 1px solid rgba(240,240,236,.09); font-size: .92rem; }
+.feature-row { display: flex; gap: 1rem; padding: .78rem 0; border-top: 1px solid var(--rule-soft); font-size: .92rem; }
 .feature-row strong { font-family: var(--grotesk); font-weight: 500; min-width: 11.2rem; color: var(--ink); }
 .feature-row span { color: var(--ink-dim); }
 .bz-headline { font-size: clamp(2.2rem, 4.4vw, 3.5rem); margin: 1.3rem 0 1.5rem; max-width: 46rem; }
 .bz-lead { font-size: 1.02rem; line-height: 1.75; color: var(--ink); opacity: .92; margin: 0 0 1.15rem; max-width: 42rem; }
 .bz-dim { font-size: .95rem; line-height: 1.75; color: var(--ink-dim); margin: 0; max-width: 42rem; }
-.bz-section { margin-top: 3.6rem; padding-top: 2rem; border-top: 1px solid rgba(240,240,236,.10); }
+.bz-section { margin-top: 3.6rem; padding-top: 2rem; border-top: 1px solid var(--rule-soft); }
 
 .bz-pillar { min-width: 0; }
 
@@ -539,15 +556,15 @@ main:focus { outline: none; }
   transition: color .3s ease;
 }
 .bz-item:hover { color: var(--ink); }
-.bz-items li:last-child .bz-item, .bz-items li:last-child.bz-item { border-bottom: 1px solid rgba(240,240,236,.08); }
+.bz-items li:last-child .bz-item, .bz-items li:last-child.bz-item { border-bottom: 1px solid var(--rule-soft); }
 
 .bz-transition, .page-transition { margin-top: clamp(4.5rem, 10vh, 7rem); text-align: center; position: relative; z-index: 2; }
 .bz-transition-rule, .page-transition-rule { width: 64px; margin: 0 auto 1.8rem; }
 .bz-transition-headline, .page-transition-headline { font-size: clamp(2rem, 4.4vw, 3.2rem); margin: 0 0 1.2rem; }
 .bz-transition-body, .page-transition-body { max-width: 38rem; margin: 0 auto 2.2rem; font-size: .95rem; line-height: 1.75; color: var(--ink-dim); }
 .page-quiet { background: radial-gradient(800px 560px at 90% -4%, rgba(232,168,76,.05), transparent 70%); }
-.detail-inner { max-width: 860px; }
-.detail-block { margin-top: clamp(2.6rem, 6vh, 4rem); padding-top: clamp(1.8rem, 4vh, 2.6rem); border-top: 1px solid rgba(240,240,236,.09); }
+.detail-inner { max-width: 860px; --column-inset: max(var(--gutter), calc((100vw - 860px) / 2 + var(--gutter))); }
+.detail-block { margin-top: clamp(2.6rem, 6vh, 4rem); padding-top: clamp(1.8rem, 4vh, 2.6rem); border-top: 1px solid var(--rule-soft); }
 .detail-label { color: var(--gold); }
 .detail-headline { font-size: clamp(1.5rem, 2.6vw, 2rem); margin: .7rem 0 .8rem; }
 .detail-body { color: var(--ink-dim); max-width: 42rem; margin: 0 0 1.2rem; }
@@ -557,20 +574,17 @@ main:focus { outline: none; }
 
 /* Mobile home — the image as its own band beneath the copy, never behind it.
    No scrim stack, no text-shadow, nothing fighting the type for contrast. */
-.mobile-home {
-  position: relative; display: block;
-  height: min(46vh, 380px); overflow: hidden;
-  border-top: 1px solid rgba(240,240,236,.14);
-  border-bottom: 1px solid rgba(240,240,236,.14);
-}
+.mobile-home { position: absolute; inset: 0; overflow: hidden; z-index: 0; }
 .mh-bg {
   position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; object-position: 50% 26%;
+  object-fit: cover; object-position: 62% 30%;
 }
 /* A gentle vignette only — nothing is read on top of this now. */
+/* Enough scrim to read type over, not so much the picture disappears —
+   the previous version buried it entirely. */
 .mh-scrim {
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(5,5,5,.35) 0%, rgba(5,5,5,.06) 40%, rgba(5,5,5,.45) 100%);
+  background: linear-gradient(180deg, rgba(12,18,16,.72) 0%, rgba(12,18,16,.46) 34%, rgba(12,18,16,.80) 78%, var(--base) 100%);
 }
 .mh-ambient { position: absolute; inset: 0; pointer-events: none; }
 .mh-screen-logo {
@@ -601,16 +615,16 @@ main:focus { outline: none; }
 /* Business: three families stacked, separated by thin rules. */
 .biz-stack { margin-top: 4rem; display: grid; gap: clamp(3rem, 6vw, 4.5rem); }
 .biz-stack > .bz-pillar + .bz-pillar {
-  border-top: 1px solid rgba(240,240,236,.09);
+  border-top: 1px solid var(--rule-soft);
   padding-top: clamp(3rem, 6vw, 4.5rem);
 }
 
 /* Systems: ruled rows, no boxes. */
-.sys-list { margin-top: 4rem; border-top: 1px solid rgba(240,240,236,.14); }
+.sys-list { margin-top: 4rem; border-top: 1px solid var(--rule); }
 .sys-row {
   display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
   gap: clamp(1rem, 4vw, 3rem); align-items: baseline;
-  padding: 1.5rem 0; border-bottom: 1px solid rgba(240,240,236,.09);
+  padding: 1.5rem 0; border-bottom: 1px solid var(--rule-soft);
 }
 .sys-name { font-size: 1.18rem; font-weight: 500; margin: 0; letter-spacing: -.01em; }
 .sys-body { font-size: .93rem; line-height: 1.72; color: var(--ink-dim); margin: 0; max-width: 46rem; }
@@ -622,15 +636,18 @@ main:focus { outline: none; }
 /* "What we build", "How it works" etc. were <span class="mono-label">, so the
    document outline ran h1 → h2 → h3 with the section titles invisible to
    screen readers. They're real headings now, styled to look identical. */
+/* The accent is rationed now (under ~2% of pixels), so section headings
+   are ink rather than gold. Gold is reserved for the primary action, one
+   rule per page, and live status. */
 .section-heading {
-  font-family: var(--mono);
-  font-size: .75rem;
-  font-weight: 500;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--gold);
+  font-family: var(--body);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: var(--track-label);
+  text-transform: none;
+  color: var(--ink-dim);
   display: block;
-  margin: 0 0 1.6rem;
+  margin: 0 0 var(--s5);
 }
 
 /* ─── CTA block: visible digits + AI disclosure ───────────────── */
@@ -654,36 +671,37 @@ main:focus { outline: none; }
 /* ─── Proof: the dialable number as the evidence ──────────────── */
 .hb-proof-body { margin-bottom: 2rem; }
 .proof-dial {
-  display: inline-flex; flex-direction: column; gap: .4rem;
-  padding: 1.4rem 0 0; border-top: 1px solid rgba(240,240,236,.14);
+  display: inline-flex; align-items: baseline; gap: .65rem; flex-wrap: wrap;
   text-decoration: none;
 }
 .proof-dial-num {
-  font-family: var(--serif); font-size: clamp(2rem, 4.5vw, 3.2rem);
-  line-height: 1; color: var(--ink); letter-spacing: .01em;
+  font-family: var(--body); font-size: var(--step-1); font-weight: 500;
+  color: var(--ink); letter-spacing: var(--track-0);
+  border-bottom: 1px solid var(--rule); padding-bottom: 1px;
+  transition: color .25s, border-color .25s;
 }
 .proof-dial-cap {
-  font-family: var(--mono); font-size: .72rem; letter-spacing: .14em;
-  text-transform: uppercase; color: var(--gold);
+  font-family: var(--body); font-size: var(--step--1);
+  letter-spacing: var(--track-label); text-transform: none; color: var(--ink-dim);
 }
-.proof-dial:hover .proof-dial-num { color: var(--gold); }
+.proof-dial:hover .proof-dial-num { color: var(--gold); border-bottom-color: var(--gold-soft); }
 
 /* ─── Business: what a system removes, + build status ─────────── */
 .bz-removes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem clamp(2rem, 5vw, 4rem); margin-top: 1rem; }
-.bz-remove { border-top: 1px solid rgba(240,240,236,.14); padding-top: 1rem; }
+.bz-remove { border-top: 1px solid var(--rule); padding-top: 1rem; }
 .bz-remove-task { font-size: 1.02rem; font-weight: 500; margin: 0 0 .5rem; }
 .bz-remove-result { font-size: .93rem; line-height: 1.7; color: var(--ink-dim); margin: 0; }
 .bz-note, .bz-status-note {
   margin: 2.4rem 0 0; max-width: 44rem;
   font-size: .9rem; line-height: 1.7; color: var(--ink-faint);
 }
-.bz-status-note { margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(240,240,236,.14); }
+.bz-status-note { margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid var(--rule); }
 .bz-item {
   display: flex; align-items: baseline; justify-content: space-between; gap: 1.2rem;
-  padding: .85rem .1rem; border-top: 1px solid rgba(240,240,236,.08);
+  padding: .85rem .1rem; border-top: 1px solid var(--rule-soft);
   font-family: var(--grotesk); font-size: .98rem; color: var(--ink-dim);
 }
-.bz-items li:last-child { border-bottom: 1px solid rgba(240,240,236,.08); }
+.bz-items li:last-child { border-bottom: 1px solid var(--rule-soft); }
 .bz-item-name { min-width: 0; }
 .bz-status {
   flex: none; font-family: var(--mono); font-size: .62rem; letter-spacing: .14em;
@@ -712,12 +730,12 @@ main:focus { outline: none; }
   overflow-y: auto;
 }
 @keyframes index-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-.index-list { border-top: 1px solid rgba(240,240,236,.08); }
+.index-list { border-top: 1px solid var(--rule-soft); }
 .index-row {
   display: grid; grid-template-columns: 2.4rem 1fr;
   grid-template-areas: "num title" ". blurb";
   gap: .15rem .8rem; padding: 1.1rem 0;
-  border-bottom: 1px solid rgba(240,240,236,.08); text-decoration: none;
+  border-bottom: 1px solid var(--rule-soft); text-decoration: none;
 }
 .index-num { grid-area: num; font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; color: var(--ink-faint); line-height: 1.7; }
 .index-title { grid-area: title; font-family: var(--serif); font-size: 2rem; line-height: 1.05; color: var(--ink); }
@@ -759,7 +777,7 @@ main:focus { outline: none; }
    the page buttons share the screen. The nav is a persistent utility and
    stays quiet; the gold accent belongs to the page-end CTA, once. */
 .topnav-cta {
-  border-color: rgba(240,240,236,.28);
+  border-color: var(--rule);
   color: var(--ink-dim) !important;
 }
 .topnav-cta:hover { border-color: var(--gold); background: transparent; color: var(--gold) !important; }
@@ -856,3 +874,217 @@ main:focus { outline: none; }
 
 /* Personal page: feature rows nested inside a disclosure group */
 .personal-features { margin-top: var(--s4); }
+
+/* ─── Per-page imagery ────────────────────────────────────────────
+   Full-bleed, borderless, and masked so it dissolves into the page colour
+   at both edges. The first version was inset inside the text column with
+   rules top and bottom, which made it a rectangle pasted onto the page. */
+.page-image {
+  position: relative;
+  /* Escape the centred content column, whatever its width. `width: auto` plus
+     negative side margins is used rather than `width: 100vw`, because 100vw
+     counts the scrollbar and would give every one of these pages a horizontal
+     scrollbar on any platform that reserves gutter space for it. */
+  width: auto;
+  margin-inline: calc(50% - 50vw);
+  min-height: min(64vh, 520px);
+  display: flex; align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+}
+.page-image img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  /* Shared grade, so four different pictures read as one family. */
+  filter: saturate(.8) contrast(1.04) brightness(.9);
+  z-index: -2;
+}
+/* Dissolves top and bottom into the page rather than ending on a hard edge. */
+.page-image-veil {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    linear-gradient(180deg, var(--base) 0%, rgba(12,18,16,.45) 26%, rgba(12,18,16,.35) 52%, rgba(12,18,16,.86) 88%, var(--base) 100%),
+    linear-gradient(90deg, rgba(12,18,16,.72) 0%, rgba(12,18,16,.12) 46%, rgba(12,18,16,.30) 100%);
+}
+.page-image-body {
+  position: relative;
+  width: 100%;
+  padding-block: var(--s9) var(--s8);
+  padding-inline: var(--column-inset, var(--gutter));
+}
+.page-image-heading {
+  font-size: var(--step-4);
+  line-height: var(--lh-display);
+  max-width: 18ch;
+  margin: 0;
+  text-shadow: 0 2px 22px rgba(12,18,16,.85);
+}
+.page-image-credit {
+  position: absolute; right: var(--column-inset, var(--gutter)); bottom: var(--s4);
+  font-size: var(--step--2);
+  color: rgba(233,239,234,.42);
+  letter-spacing: var(--track-label);
+}
+/* Per-image exposure. The four pictures come from different sources and the
+   leaf is intrinsically two stops brighter than the rest; without this it
+   reads as a different brand from the other three. Correcting exposure per
+   image is what keeps the shared grade actually shared. */
+.page-image-veins img { filter: saturate(.55) contrast(1.02) brightness(.6); }
+.page-image-dunes img { filter: saturate(.72) contrast(1.04) brightness(.82); }
+
+@media (max-width: 700px) {
+  .page-image { min-height: min(56vh, 420px); }
+  .page-image-body { padding-block: var(--s8) var(--s7); }
+  .page-image-credit { left: var(--column-inset, var(--gutter)); right: auto; }
+}
+
+/* ─── Product strip ───────────────────────────────────────────────
+   Four captures as one full-bleed run of interface. No frames, no cards —
+   the screenshots are near-black, so feathering the edges lets the app's
+   ground dissolve into the page's instead of sitting on it as thumbnails.
+
+   This is full-bleed art, so it is set to the page gutter rather than to the
+   prose column: it is deliberately wider than the text it sits under. */
+.strip {
+  width: auto;
+  margin: var(--s8) 0 var(--s7);
+  margin-inline: calc(50% - 50vw);
+}
+.strip-frame { position: relative; }
+.strip-rail {
+  display: flex;
+  gap: clamp(.75rem, 2vw, 1.75rem);
+  padding-inline: var(--gutter);
+  /* Below ~900px four screens can't fit without becoming stamps, so the rail
+     scrolls instead of shrinking. */
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+  /* Without this the first snap point aligns to the scrollport edge and the
+     browser silently scrolls the left padding away, clipping the first shot. */
+  scroll-padding-inline: var(--gutter);
+}
+.strip-rail::-webkit-scrollbar { display: none; }
+.strip-shot { flex: 1 1 0; min-width: 190px; max-width: 340px; scroll-snap-align: start; }
+.strip-shot img {
+  width: 100%; height: auto;
+  /* Cropped by a mask, not a hard edge — the screen fades out mid-scroll,
+     which reads as "there is more of this" rather than "this was cut off". */
+  mask-image: linear-gradient(180deg, #000 0%, #000 62%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 62%, transparent 100%);
+}
+.strip-label {
+  display: block;
+  margin-top: var(--s3);
+  font-size: var(--step--2);
+  color: var(--ink-faint);
+  letter-spacing: var(--track-label);
+}
+/* Feathers the run off both edges so it has no left or right border either —
+   the strip enters and leaves the page rather than starting and stopping.
+   Scoped to the frame, not the whole figure, so it never washes the caption. */
+.strip-veil {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(90deg, var(--base) 0%, transparent clamp(1.5rem, 4vw, 4rem)),
+    linear-gradient(270deg, var(--base) 0%, transparent clamp(1.5rem, 4vw, 4rem));
+}
+.strip-caption {
+  display: block;
+  margin-top: var(--s5);
+  /* Margin, not padding. As padding on a border-box element it fought the
+     max-width — the box can never be narrower than its own padding, so the
+     text column collapsed to zero and wrapped one word per line. */
+  margin-inline: var(--column-inset, var(--gutter));
+  font-size: var(--step--1);
+  color: var(--ink-faint);
+  max-width: 62ch;
+}
+@media (max-width: 700px) {
+  .strip-shot { flex: 0 0 62vw; max-width: none; }
+}
+
+/* ─── Pricing ─────────────────────────────────────────────────────
+   Rows on rules, never cards in boxes. A pricing page is the most
+   card-shaped page on any agency site, which is exactly why this one isn't:
+   the figure hangs in its own column and the rule does the separating. */
+.price-group {
+  font-family: var(--body); font-size: var(--step--1); font-weight: 500;
+  letter-spacing: var(--track-label); color: var(--ink-dim);
+  margin: var(--s7) 0 var(--s4);
+}
+.price-list { border-top: 1px solid var(--rule); }
+.price-row { padding: var(--s5) 0; border-bottom: 1px solid var(--rule-soft); }
+.price-row-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: var(--s5); margin-bottom: .55rem;
+}
+.price-row-name { font-size: var(--step-1); font-weight: 500; margin: 0; }
+/* Tabular figures so the column of prices aligns on the digit, not the glyph. */
+.price-row-figure {
+  font-size: var(--step-1); font-weight: 500; color: var(--ink);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.price-row-body { color: var(--ink-dim); margin: 0; max-width: 54ch; font-size: var(--step--1); }
+.price-row-note {
+  margin: .5rem 0 0; font-size: var(--step--2); color: var(--ink-faint);
+  letter-spacing: var(--track-label);
+}
+.price-gate {
+  border-left: 1px solid var(--gold-soft);
+  padding-left: var(--s4);
+}
+.price-gate code {
+  font-family: var(--mono); font-size: .85em; color: var(--ink);
+}
+.price-extras { border-top: 1px solid var(--rule); margin-top: var(--s4); }
+.price-extras li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: .2rem var(--s5);
+  padding: var(--s4) 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.price-extra-name { font-weight: 500; }
+.price-extra-figure { font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; }
+.price-extra-body {
+  grid-column: 1 / -1; color: var(--ink-dim);
+  font-size: var(--step--1); max-width: 54ch;
+}
+.price-fine {
+  margin: var(--s5) 0 0; color: var(--ink-faint);
+  font-size: var(--step--1); max-width: 60ch;
+}
+.price-steps { counter-reset: step; margin-top: var(--s4); }
+.price-steps li {
+  display: flex; gap: var(--s5);
+  padding: var(--s4) 0; border-top: 1px solid var(--rule-soft);
+}
+.price-step-n {
+  font-variant-numeric: tabular-nums; color: var(--ink-faint);
+  font-size: var(--step--1); padding-top: .2rem; flex: none;
+}
+.price-step-name { font-size: var(--step-0); font-weight: 500; margin: 0 0 .3rem; }
+.price-step-body { color: var(--ink-dim); font-size: var(--step--1); margin: 0; max-width: 54ch; }
+
+@media (max-width: 560px) {
+  .price-row-head { flex-direction: column; gap: .2rem; }
+}
+
+/* ─── Founder portrait ────────────────────────────────────────────
+   Placed in the left margin column, which on this page is 290px of space
+   doing nothing at desktop widths. Masked on every edge so the studio
+   backdrop dissolves rather than ending on a straight bright border. */
+.about-portrait { margin: 0 0 var(--s5); max-width: 320px; }
+.about-portrait img { width: 100%; height: auto; }
+/* Only once the margin column is genuinely wider than the gutter is there
+   room to put it there; below this the maths goes negative. */
+@media (min-width: 1150px) {
+  .about-portrait {
+    float: left;
+    width: calc(var(--column-inset) - var(--gutter) - 2.5rem);
+    max-width: none;
+    margin-left: calc(var(--gutter) - var(--column-inset));
+    margin-top: .4rem;
+  }
+}

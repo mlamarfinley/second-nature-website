@@ -6,6 +6,7 @@ export const ROUTES = [
   '/',
   '/business',
   '/systems',
+  '/pricing',
   '/work',
   '/faq',
   '/contact',

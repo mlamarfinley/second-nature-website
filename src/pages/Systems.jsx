@@ -1,6 +1,7 @@
 import { SYSTEMS } from '../data/content.js'
 import CallToAction from '../components/CallToAction.jsx'
 import { useReveal } from '../lib/useReveal.js'
+import PageImage from '../components/PageImage.jsx'
 
 function SystemRow({ name, body, i }) {
   const ref = useReveal({ delay: Math.min(i * 50, 300) })
@@ -24,6 +25,11 @@ export default function Systems() {
           with spreadsheets. We build it around how you actually work, hand you the keys, and stay
           on for as long as you want us.
         </p>
+
+
+        <PageImage name="grid">
+          <p className="page-image-heading serif-display">What we&nbsp;build.</p>
+        </PageImage>
 
         <div className="sys-list">
           {SYSTEMS.items.map(([name, body], i) => (

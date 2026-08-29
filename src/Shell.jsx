@@ -7,6 +7,7 @@ import Home from './pages/Home.jsx'
 import Personal from './pages/Personal.jsx'
 import Business from './pages/Business.jsx'
 import Systems from './pages/Systems.jsx'
+import Pricing from './pages/Pricing.jsx'
 import About from './pages/About.jsx'
 import Work from './pages/Work.jsx'
 import Faq from './pages/Faq.jsx'
@@ -24,8 +25,15 @@ import { PAGE_META, DEFAULT_META, NOT_FOUND_META, STAGING, NOINDEX_ROUTES } from
    The title and meta work here is now a fallback for client-side navigation:
    the first load already arrives with correct tags baked into the HTML by the
    prerenderer, which is what crawlers and share previews actually read. */
+/* GitHub Pages serves /business/ with a trailing slash, but the route keys
+   have none — so an unnormalised lookup missed on every sub-page and retitled
+   it "Page not found" the moment React hydrated. */
+export const normalisePath = (p) => (p.length > 1 ? p.replace(/\/+$/, '') : p)
+
 function RouteEffects() {
-  const { pathname, hash } = useLocation()
+  const location = useLocation()
+  const pathname = normalisePath(location.pathname)
+  const { hash } = location
   const first = useRef(true)
 
   useEffect(() => {
@@ -72,6 +80,7 @@ export default function Shell() {
         <Route path="/personal" element={<Personal />} />
         <Route path="/business" element={<Business />} />
         <Route path="/systems" element={<Systems />} />
+        <Route path="/pricing" element={<Pricing />} />
         <Route path="/work" element={<Work />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/contact" element={<Contact />} />

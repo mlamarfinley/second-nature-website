@@ -1,6 +1,8 @@
 import { BUILDS, SAVANNAH_PHONE, SAVANNAH_PHONE_DISPLAY } from '../data/content.js'
 import CallToAction from '../components/CallToAction.jsx'
 import Breadcrumbs from '../components/Breadcrumbs.jsx'
+import PageImage from '../components/PageImage.jsx'
+import ProductStrip from '../components/ProductStrip.jsx'
 
 /* The case-study section, done honestly. With no outside clients there are no
    client results to report, so these are our own builds, labelled as our own.
@@ -47,13 +49,20 @@ export default function Work() {
             </div>
 
             <p className="build-honest">{b.honest}</p>
+
+            {/* Savannah's proof is a phone number you can dial. Odessa's is
+                what it looks like, so it gets the screens. */}
+            {b.slug === 'odessa' && <ProductStrip />}
           </article>
         ))}
 
         {/* Deliberately not a testimonial carousel with placeholder quotes in
             it. The section appears when there is something true to put in it. */}
+
         <section className="detail-block" aria-labelledby="reviews">
-          <h2 className="detail-headline" id="reviews">Customer reviews</h2>
+          <PageImage name="veins">
+            <h2 className="page-image-heading serif-display" id="reviews">Customer&nbsp;reviews</h2>
+          </PageImage>
           <p className="detail-body">
             There aren’t any yet, and you won’t find invented ones here. When a client is willing
             to put their name to what we built for them, their words go in this space with their

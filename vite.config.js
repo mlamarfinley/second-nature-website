@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import preact from '@preact/preset-vite'
 
 
 /* BASE PATH.
@@ -19,13 +19,22 @@ export default defineConfig(({ command, isSsrBuild }) => ({
   // the Pages subpath. The router reads import.meta.env.BASE_URL, so it follows
   // whichever one is in play without a second config to keep in sync.
   base: command === 'build' ? base : '/',
-  plugins: [react()],
+  plugins: [preact()],
   server: { port: 5190 },
+  // The SSR build must resolve react/react-dom through preact/compat too.
+  // Externalised, Node picks the real react-dom while components were compiled
+  // with Preact's JSX runtime, and renderToString silently returns nothing.
+  ssr: { noExternal: true },
+  resolve: {
+    alias: {
+      'react-dom/server': 'preact/compat/server',
+    },
+  },
   build: {
     // Vendor splitting is a client-side concern. In the SSR build React is an
     // external, and asking Rollup to chunk an external is a build error.
     rollupOptions: isSsrBuild
       ? {}
-      : { output: { manualChunks: { react: ['react', 'react-dom', 'react-router-dom'] } } },
+      : { output: { manualChunks: { vendor: ['preact', 'preact/compat', 'react-router-dom'] } } },
   },
 }))

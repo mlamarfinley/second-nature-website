@@ -12,17 +12,17 @@
  * Headings now use the same family as body text, at different weights.
  */
 
+/* Fraunces replaces Playfair Display, which is documented as past its
+   cliché horizon — by the mid-2010s the default for wedding sites, boutique
+   hotels and lifestyle blogs, so choosing it reads as "the first nice-looking
+   Google serif I found". Fraunces is variable with a real optical-size axis
+   (opsz), so display sizes get finer detail and small sizes get sturdier
+   strokes automatically from font-size. */
 @font-face {
-  font-family: "Playfair Display";
-  src: url("/fonts/playfair-display-latin-500-normal.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Playfair Display";
-  src: url("/fonts/playfair-display-latin-600-normal.woff2") format("woff2");
-  font-weight: 600;
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-latin-opsz-normal.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-stretch: 100%;
   font-style: normal;
   font-display: swap;
 }
@@ -61,7 +61,7 @@
   line-gap-override: 0%;
 }
 @font-face {
-  font-family: "Playfair Fallback";
+  font-family: "Serif Fallback";
   src: local("Georgia"), local("Times New Roman");
   size-adjust: 96%;
   ascent-override: 88%;
