@@ -38,7 +38,9 @@ export default function About() {
         <section className="detail-block" aria-labelledby="why">
           <figure className="about-portrait">
             <picture>
+              <source media="(max-width: 700px)" type="image/webp" srcSet="/img/miles-450.webp" />
               <source media="(max-width: 700px)" srcSet="/img/miles-450.jpg" />
+              <source type="image/webp" srcSet="/img/miles-900.webp" />
               <img
                 src="/img/miles-900.jpg"
                 width="900"

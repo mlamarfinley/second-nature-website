@@ -26,7 +26,10 @@ export default function ProductStrip() {
         <div className="strip-rail">
         {SHOTS.map((s) => (
           <div className="strip-shot" key={s.src}>
-            <img src={`/img/${s.src}.jpg`} alt={s.alt} width="880" height="1500" loading="lazy" decoding="async" />
+            <picture>
+              <source type="image/webp" srcSet={`/img/${s.src}.webp`} />
+              <img src={`/img/${s.src}.jpg`} alt={s.alt} width="660" height="1125" loading="lazy" decoding="async" />
+            </picture>
             <span className="strip-label">{s.label}</span>
           </div>
           ))}

@@ -57,7 +57,7 @@ ul, ol { list-style: none; padding: 0; }
   /* Type. Playfair is documented as past its cliché horizon — by the
      mid-2010s the default for wedding sites and boutique hotels. Fraunces
      is variable with a real optical-size axis plus SOFT/WONK. */
-  --serif: "Fraunces", "Playfair Fallback", Georgia, serif;
+  --serif: "Fraunces", "Serif Fallback", Georgia, serif;
   --body: "Schibsted Grotesk", "Schibsted Fallback", system-ui, sans-serif;
   --grotesk: var(--body);
   --mono: "Martian Mono", ui-monospace, monospace;

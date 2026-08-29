@@ -61,7 +61,7 @@
   line-gap-override: 0%;
 }
 @font-face {
-  font-family: "Playfair Fallback";
+  font-family: "Serif Fallback";
   src: local("Georgia"), local("Times New Roman");
   size-adjust: 96%;
   ascent-override: 88%;

@@ -43,8 +43,17 @@ export default function PageImage({ name, heading, children }) {
   return (
     <div className={`page-image page-image-${name}`}>
       <picture>
+        <source media="(max-width: 800px)" type="image/webp" srcSet={`/img/${img.src}-800.webp`} />
         <source media="(max-width: 800px)" srcSet={`/img/${img.src}-800.jpg`} />
-        <img src={`/img/${img.src}-1600.jpg`} alt={img.alt} loading="lazy" decoding="async" />
+        <source type="image/webp" srcSet={`/img/${img.src}-1600.webp`} />
+        <img
+          src={`/img/${img.src}-1600.jpg`}
+          width="1600"
+          height="896"
+          alt={img.alt}
+          loading="lazy"
+          decoding="async"
+        />
       </picture>
       <div className="page-image-veil" aria-hidden="true" />
       {(heading || children) && (

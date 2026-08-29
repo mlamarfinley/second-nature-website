@@ -18,31 +18,33 @@ mkdirSync(out, { recursive: true })
 const { PAGE_META } = await import(join(root, 'src/data/seo.js'))
 
 const CARDS = {
-  '/': ['AI reception + automation', 'The calls you miss are the jobs you lose.'],
+  '/': ['AI reception and automation', 'The calls you miss are the jobs you lose.'],
   '/business': ['Business systems', 'The gaps are where the money goes.'],
   '/systems': ['Custom software', 'The software your spreadsheet is pretending to be.'],
   '/work': ['What we’ve built', 'Two systems, both running now.'],
   '/faq': ['Questions', 'The things you’d ask on the call.'],
   '/contact': ['Get a friction map', 'Tell me where the work backs up.'],
+  '/pricing': ['Pricing', 'The number you see is the number you pay.'],
+  '/personal': ['Personal systems', 'By referral only.'],
   '/about': ['About', 'One person, in Atlanta.'],
   '/privacy': ['Privacy', 'What we do with your data.'],
   '/terms': ['Terms', 'The deal, in plain language.'],
 }
 
 const html = (eyebrow, line) => `<!doctype html><html><head><meta charset="utf-8"><style>
-@font-face{font-family:"Playfair";src:url("file://${root}/public/fonts/playfair-display-latin-500-normal.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"Fraunces";src:url("file://${root}/public/fonts/fraunces-latin-opsz-normal.woff2") format("woff2-variations");font-weight:400 700}
 @font-face{font-family:"Schibsted";src:url("file://${root}/public/fonts/schibsted-grotesk-latin-wght-normal.woff2") format("woff2-variations");font-weight:400 700}
 *{margin:0;box-sizing:border-box}
-body{width:1200px;height:630px;background:#050505;color:#F0F0EC;
+body{width:1200px;height:630px;background:#0C1210;color:#E9EFEA;
  font-family:"Schibsted",system-ui;display:flex;flex-direction:column;justify-content:space-between;
  padding:76px 80px;position:relative;overflow:hidden}
 .glow{position:absolute;top:-220px;right:-140px;width:680px;height:680px;border-radius:50%;
- background:radial-gradient(circle,rgba(232,168,76,.20),transparent 68%)}
-.eyebrow{font-size:22px;letter-spacing:.16em;text-transform:uppercase;color:#E8A84C;position:relative}
-.line{font-family:"Playfair",Georgia,serif;font-size:78px;line-height:1.04;max-width:15ch;position:relative}
+ background:radial-gradient(circle,rgba(232,168,76,.14),transparent 68%)}
+.eyebrow{font-size:23px;letter-spacing:.06em;color:#A9B5AE;position:relative}
+.line{font-family:"Fraunces",Georgia,serif;font-weight:400;font-variation-settings:"opsz" 120,"SOFT" 0,"WONK" 1;font-size:78px;line-height:1.06;max-width:15ch;position:relative}
 .foot{display:flex;justify-content:space-between;align-items:baseline;font-size:22px;
- color:rgba(240,240,236,.62);border-top:1px solid rgba(240,240,236,.14);padding-top:26px;position:relative}
-.mark{letter-spacing:.28em;text-transform:uppercase;color:#F0F0EC;font-size:20px}
+ color:rgba(233,239,234,.60);border-top:1px solid rgba(233,239,234,.14);padding-top:26px;position:relative}
+.mark{letter-spacing:.28em;text-transform:uppercase;color:#E9EFEA;font-size:20px}
 </style></head><body>
 <div class="glow"></div>
 <div class="eyebrow">${eyebrow}</div>
