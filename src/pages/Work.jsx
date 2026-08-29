@@ -2,6 +2,7 @@ import { BUILDS, SAVANNAH_PHONE, SAVANNAH_PHONE_DISPLAY } from '../data/content.
 import CallToAction from '../components/CallToAction.jsx'
 import Breadcrumbs from '../components/Breadcrumbs.jsx'
 import PageImage from '../components/PageImage.jsx'
+import ProductStrip from '../components/ProductStrip.jsx'
 
 /* The case-study section, done honestly. With no outside clients there are no
    client results to report, so these are our own builds, labelled as our own.
@@ -48,6 +49,10 @@ export default function Work() {
             </div>
 
             <p className="build-honest">{b.honest}</p>
+
+            {/* Savannah's proof is a phone number you can dial. Odessa's is
+                what it looks like, so it gets the screens. */}
+            {b.slug === 'odessa' && <ProductStrip />}
           </article>
         ))}
 

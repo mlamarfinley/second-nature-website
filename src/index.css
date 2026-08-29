@@ -937,3 +937,69 @@ main:focus { outline: none; }
   .page-image-body { padding-block: var(--s8) var(--s7); }
   .page-image-credit { left: var(--column-inset, var(--gutter)); right: auto; }
 }
+
+/* ─── Product strip ───────────────────────────────────────────────
+   Four captures as one full-bleed run of interface. No frames, no cards —
+   the screenshots are near-black, so feathering the edges lets the app's
+   ground dissolve into the page's instead of sitting on it as thumbnails.
+
+   This is full-bleed art, so it is set to the page gutter rather than to the
+   prose column: it is deliberately wider than the text it sits under. */
+.strip {
+  width: auto;
+  margin: var(--s8) 0 var(--s7);
+  margin-inline: calc(50% - 50vw);
+}
+.strip-frame { position: relative; }
+.strip-rail {
+  display: flex;
+  gap: clamp(.75rem, 2vw, 1.75rem);
+  padding-inline: var(--gutter);
+  /* Below ~900px four screens can't fit without becoming stamps, so the rail
+     scrolls instead of shrinking. */
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+  /* Without this the first snap point aligns to the scrollport edge and the
+     browser silently scrolls the left padding away, clipping the first shot. */
+  scroll-padding-inline: var(--gutter);
+}
+.strip-rail::-webkit-scrollbar { display: none; }
+.strip-shot { flex: 1 1 0; min-width: 190px; max-width: 340px; scroll-snap-align: start; }
+.strip-shot img {
+  width: 100%; height: auto;
+  /* Cropped by a mask, not a hard edge — the screen fades out mid-scroll,
+     which reads as "there is more of this" rather than "this was cut off". */
+  mask-image: linear-gradient(180deg, #000 0%, #000 62%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 62%, transparent 100%);
+}
+.strip-label {
+  display: block;
+  margin-top: var(--s3);
+  font-size: var(--step--2);
+  color: var(--ink-faint);
+  letter-spacing: var(--track-label);
+}
+/* Feathers the run off both edges so it has no left or right border either —
+   the strip enters and leaves the page rather than starting and stopping.
+   Scoped to the frame, not the whole figure, so it never washes the caption. */
+.strip-veil {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(90deg, var(--base) 0%, transparent clamp(1.5rem, 4vw, 4rem)),
+    linear-gradient(270deg, var(--base) 0%, transparent clamp(1.5rem, 4vw, 4rem));
+}
+.strip-caption {
+  display: block;
+  margin-top: var(--s5);
+  /* Margin, not padding. As padding on a border-box element it fought the
+     max-width — the box can never be narrower than its own padding, so the
+     text column collapsed to zero and wrapped one word per line. */
+  margin-inline: var(--column-inset, var(--gutter));
+  font-size: var(--step--1);
+  color: var(--ink-faint);
+  max-width: 62ch;
+}
+@media (max-width: 700px) {
+  .strip-shot { flex: 0 0 62vw; max-width: none; }
+}
