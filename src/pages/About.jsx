@@ -11,9 +11,14 @@ import CallToAction from '../components/CallToAction.jsx'
    hide behind, so the founder's name, face, city and work ARE the trust
    asset. This page restores them.
 
-   TODO before launch: add a real photograph. IMG_9140 2.JPG in the project
-   root is a real, high-resolution portrait and can carry this page today;
-   a working shot (at the desk, on a job site) is the stronger version. */
+   The portrait is real and it is Miles. It was shot on a light studio
+   backdrop, so it is cropped tight, desaturated and vignetted into the site's
+   key — otherwise it lands on a near-black page as a bright rectangle. It
+   sits in the left margin column on wide screens, which is the one place on
+   this site that empty space was already doing nothing.
+
+   A working shot — at the desk, on a job site — would still be stronger than
+   a suit against seamless, and is worth taking when there's a chance. */
 export default function About() {
   return (
     <main id="main" tabIndex={-1} className="page page-quiet">
@@ -31,6 +36,19 @@ export default function About() {
         </p>
 
         <section className="detail-block" aria-labelledby="why">
+          <figure className="about-portrait">
+            <picture>
+              <source media="(max-width: 700px)" srcSet="/img/miles-450.jpg" />
+              <img
+                src="/img/miles-900.jpg"
+                width="900"
+                height="1135"
+                alt="Miles Finley"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+          </figure>
           <h2 className="detail-headline" id="why">Why I built this</h2>
           <p className="detail-body">
             I built the first one for myself. My own days leaked — the follow-up I meant to send,

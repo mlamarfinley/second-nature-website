@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { SAVANNAH_PHONE, SAVANNAH_PHONE_DISPLAY } from '../data/content.js'
+import { SAVANNAH_PHONE } from '../data/content.js'
 import { track } from '../lib/analytics.js'
 
 /* One action, docked to the bottom of the viewport on phones once the hero has
@@ -36,7 +36,7 @@ export default function StickyCta() {
         tabIndex={show ? 0 : -1}
         onClick={() => track('Call Click', { position: 'sticky' })}
       >
-        Call our AI · {SAVANNAH_PHONE_DISPLAY}
+        Call our AI
       </a>
     </div>
   )

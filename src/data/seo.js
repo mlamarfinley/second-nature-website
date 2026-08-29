@@ -30,6 +30,11 @@ export const PAGE_META = {
     description:
       'When the tool you need doesn’t exist yet: websites, dashboards, client portals, booking platforms and internal software, built around how you actually work.',
   },
+  '/pricing': {
+    title: 'Pricing — Websites from $149, Systems from $750 — Second Nature',
+    description:
+      'Flat published prices for websites, student and business, plus the floors for automations and AI employees. The number you see is the number you pay, in writing before anything starts.',
+  },
   '/personal': {
     title: 'Personal Systems — Second Nature (by referral)',
     description:

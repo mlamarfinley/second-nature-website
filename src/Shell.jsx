@@ -7,6 +7,7 @@ import Home from './pages/Home.jsx'
 import Personal from './pages/Personal.jsx'
 import Business from './pages/Business.jsx'
 import Systems from './pages/Systems.jsx'
+import Pricing from './pages/Pricing.jsx'
 import About from './pages/About.jsx'
 import Work from './pages/Work.jsx'
 import Faq from './pages/Faq.jsx'
@@ -79,6 +80,7 @@ export default function Shell() {
         <Route path="/personal" element={<Personal />} />
         <Route path="/business" element={<Business />} />
         <Route path="/systems" element={<Systems />} />
+        <Route path="/pricing" element={<Pricing />} />
         <Route path="/work" element={<Work />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/contact" element={<Contact />} />

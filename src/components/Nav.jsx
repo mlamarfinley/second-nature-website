@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { CALENDLY_URL, SAVANNAH_PHONE, SAVANNAH_PHONE_DISPLAY } from '../data/content.js'
+import { CALENDLY_URL, SAVANNAH_PHONE } from '../data/content.js'
 import { formatPhone } from './CallToAction.jsx'
 import SiteIndex from './SiteIndex.jsx'
 
@@ -7,6 +7,7 @@ const LINKS = [
   ['/business', 'Business'],
   ['/systems', 'Software'],
   ['/work', 'Our work'],
+  ['/pricing', 'Pricing'],
   ['/faq', 'FAQ'],
   ['/about', 'About'],
 ]
@@ -35,7 +36,7 @@ export default function Nav() {
               href={`tel:${SAVANNAH_PHONE}`}
               aria-label={`Call our AI receptionist at ${formatPhone(SAVANNAH_PHONE)}`}
             >
-              Call our AI · {SAVANNAH_PHONE_DISPLAY}
+              Call our AI
             </a>
           )}
           <a className="topnav-cta topnav-cta-book" href={CALENDLY_URL} target="_blank" rel="noopener">

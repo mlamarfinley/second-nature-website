@@ -70,7 +70,6 @@ ul, ol { list-style: none; padding: 0; }
   --step-3:  2.0625rem;
   --step-4:  clamp(2.2rem, 1.5rem + 3.4vw, 3.6rem);
   --step-5:  clamp(2.6rem, 1.8rem + 4.6vw, 4.4rem);
-  --step-6:  clamp(3rem, 2rem + 5.4vw, 5.2rem);   /* the phone number */
 
   --lh-display: 1.06;
   --lh-heading: 1.3;
@@ -672,19 +671,20 @@ main:focus { outline: none; }
 /* ─── Proof: the dialable number as the evidence ──────────────── */
 .hb-proof-body { margin-bottom: 2rem; }
 .proof-dial {
-  display: inline-flex; flex-direction: column; gap: .4rem;
-  padding: 1.4rem 0 0; border-top: 1px solid var(--rule);
+  display: inline-flex; align-items: baseline; gap: .65rem; flex-wrap: wrap;
   text-decoration: none;
 }
 .proof-dial-num {
-  font-family: var(--serif); font-size: clamp(2rem, 4.5vw, 3.2rem);
-  line-height: 1; color: var(--ink); letter-spacing: .01em;
+  font-family: var(--body); font-size: var(--step-1); font-weight: 500;
+  color: var(--ink); letter-spacing: var(--track-0);
+  border-bottom: 1px solid var(--rule); padding-bottom: 1px;
+  transition: color .25s, border-color .25s;
 }
 .proof-dial-cap {
-  font-family: var(--mono); font-size: .72rem; letter-spacing: .14em;
-  text-transform: uppercase; color: var(--gold);
+  font-family: var(--body); font-size: var(--step--1);
+  letter-spacing: var(--track-label); text-transform: none; color: var(--ink-dim);
 }
-.proof-dial:hover .proof-dial-num { color: var(--gold); }
+.proof-dial:hover .proof-dial-num { color: var(--gold); border-bottom-color: var(--gold-soft); }
 
 /* ─── Business: what a system removes, + build status ─────────── */
 .bz-removes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem clamp(2rem, 5vw, 4rem); margin-top: 1rem; }
@@ -1002,4 +1002,89 @@ main:focus { outline: none; }
 }
 @media (max-width: 700px) {
   .strip-shot { flex: 0 0 62vw; max-width: none; }
+}
+
+/* ─── Pricing ─────────────────────────────────────────────────────
+   Rows on rules, never cards in boxes. A pricing page is the most
+   card-shaped page on any agency site, which is exactly why this one isn't:
+   the figure hangs in its own column and the rule does the separating. */
+.price-group {
+  font-family: var(--body); font-size: var(--step--1); font-weight: 500;
+  letter-spacing: var(--track-label); color: var(--ink-dim);
+  margin: var(--s7) 0 var(--s4);
+}
+.price-list { border-top: 1px solid var(--rule); }
+.price-row { padding: var(--s5) 0; border-bottom: 1px solid var(--rule-soft); }
+.price-row-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: var(--s5); margin-bottom: .55rem;
+}
+.price-row-name { font-size: var(--step-1); font-weight: 500; margin: 0; }
+/* Tabular figures so the column of prices aligns on the digit, not the glyph. */
+.price-row-figure {
+  font-size: var(--step-1); font-weight: 500; color: var(--ink);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.price-row-body { color: var(--ink-dim); margin: 0; max-width: 54ch; font-size: var(--step--1); }
+.price-row-note {
+  margin: .5rem 0 0; font-size: var(--step--2); color: var(--ink-faint);
+  letter-spacing: var(--track-label);
+}
+.price-gate {
+  border-left: 1px solid var(--gold-soft);
+  padding-left: var(--s4);
+}
+.price-gate code {
+  font-family: var(--mono); font-size: .85em; color: var(--ink);
+}
+.price-extras { border-top: 1px solid var(--rule); margin-top: var(--s4); }
+.price-extras li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: .2rem var(--s5);
+  padding: var(--s4) 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.price-extra-name { font-weight: 500; }
+.price-extra-figure { font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; }
+.price-extra-body {
+  grid-column: 1 / -1; color: var(--ink-dim);
+  font-size: var(--step--1); max-width: 54ch;
+}
+.price-fine {
+  margin: var(--s5) 0 0; color: var(--ink-faint);
+  font-size: var(--step--1); max-width: 60ch;
+}
+.price-steps { counter-reset: step; margin-top: var(--s4); }
+.price-steps li {
+  display: flex; gap: var(--s5);
+  padding: var(--s4) 0; border-top: 1px solid var(--rule-soft);
+}
+.price-step-n {
+  font-variant-numeric: tabular-nums; color: var(--ink-faint);
+  font-size: var(--step--1); padding-top: .2rem; flex: none;
+}
+.price-step-name { font-size: var(--step-0); font-weight: 500; margin: 0 0 .3rem; }
+.price-step-body { color: var(--ink-dim); font-size: var(--step--1); margin: 0; max-width: 54ch; }
+
+@media (max-width: 560px) {
+  .price-row-head { flex-direction: column; gap: .2rem; }
+}
+
+/* ─── Founder portrait ────────────────────────────────────────────
+   Placed in the left margin column, which on this page is 290px of space
+   doing nothing at desktop widths. Masked on every edge so the studio
+   backdrop dissolves rather than ending on a straight bright border. */
+.about-portrait { margin: 0 0 var(--s5); max-width: 320px; }
+.about-portrait img { width: 100%; height: auto; }
+/* Only once the margin column is genuinely wider than the gutter is there
+   room to put it there; below this the maths goes negative. */
+@media (min-width: 1150px) {
+  .about-portrait {
+    float: left;
+    width: calc(var(--column-inset) - var(--gutter) - 2.5rem);
+    max-width: none;
+    margin-left: calc(var(--gutter) - var(--column-inset));
+    margin-top: .4rem;
+  }
 }
