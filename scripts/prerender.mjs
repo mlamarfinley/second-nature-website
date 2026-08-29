@@ -116,6 +116,26 @@ const notFoundHtml = cleanTemplate
 writeFileSync(join(dist, '404.html'), notFoundHtml)
 console.log(`  404          -> 404.html`)
 
+/* The sitemap is generated from ROUTES rather than hand-maintained. It was a
+   static file in public/, and it had already drifted: /pricing was missing the
+   day it was added, which is exactly the failure a hand-kept list invites. */
+const SITEMAP_EXCLUDE = new Set([
+  '/personal',  // deliberately unlisted — sold by referral, not searched for
+  '/privacy',
+  '/terms',
+])
+const sitemapRoutes = ROUTES.filter((r) => !SITEMAP_EXCLUDE.has(r))
+writeFileSync(
+  join(dist, 'sitemap.xml'),
+  `<?xml version="1.0" encoding="UTF-8"?>\n` +
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+    sitemapRoutes
+      .map((r) => `  <url><loc>${SITE_URL}${r === '/' ? '/' : r}</loc></url>`)
+      .join('\n') +
+    `\n</urlset>\n`,
+)
+console.log(`  sitemap      -> ${sitemapRoutes.length} urls`)
+
 // The SSR bundle is a build artifact, not something to publish.
 if (existsSync(join(dist, 'server'))) rmSync(join(dist, 'server'), { recursive: true, force: true })
 
