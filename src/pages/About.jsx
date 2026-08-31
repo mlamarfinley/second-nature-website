@@ -72,27 +72,14 @@ export default function About() {
           </p>
         </section>
 
-        {/* This was "Where I actually am", which had become a defence of working
-            remotely rather than a reason to hire anyone — and the page already
-            says Atlanta in the headline. What it lacked was any account of what
-            the engagement feels like, so that's what stands here now. Location
-            is a detail inside it instead of the subject of it. */}
-        <section className="detail-block" aria-labelledby="how">
-          <h2 className="detail-headline" id="how">How this actually goes</h2>
-          <p className="detail-body">
-            It starts with a call where you do most of the talking. I ask a lot of questions about
-            where your week goes and what you keep meaning to get to, and by the end of it we both
-            know whether there’s something here worth building. Plenty of those calls end with me
-            saying you don’t need me yet.
-          </p>
-          <p className="detail-body">
-            From there it’s video, phone and email. You see the thing early and often — half-built,
-            while it’s still cheap to change — you tell me what’s wrong with it, and I fix it. I’m
-            in {LOCALITY}, so I’m awake when you are, and when something goes sideways at four on a
-            Tuesday you’re not filing a ticket. You’re talking to the person who built it.
-          </p>
-        </section>
+        {/* A section describing what the engagement is actually like belongs
+            here — between why he built it and the straight-talk disclosures.
+            Two drafts were written and both rejected; Miles is writing it.
+            The brief is in ABOUT-SECTION-BRIEF.md in the project root.
 
+            Deliberately left absent rather than filled with something weak:
+            the page reads fine without it, and placeholder copy on a live
+            business site is worse than a shorter page. */}
         {/* Saying the uncomfortable thing first is the whole strategy. A
             prospect who finds out later feels misled; one who reads it here
             feels respected. */}
