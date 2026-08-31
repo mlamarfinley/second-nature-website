@@ -100,21 +100,15 @@ export const ORG_JSON_LD = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'ProfessionalService',
+      '@type': 'Organization',
       '@id': `${SITE_URL}/#business`,
       name: SITE_NAME,
       description:
         'Second Nature builds custom AI systems for small businesses in Atlanta: AI phone reception, automated follow-up and invoicing, business dashboards, client portals, and custom internal software.',
       url: `${SITE_URL}/`,
-      image: `${SITE_URL}/og.jpg`,
+      image: `${SITE_URL}/og/home.jpg`,
       email: CONTACT_EMAIL,
       telephone: SAVANNAH_PHONE ? '+1-470-748-9278' : undefined,
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Atlanta',
-        addressRegion: 'GA',
-        addressCountry: 'US',
-      },
       areaServed: [
         { '@type': 'City', name: 'Atlanta' },
         { '@type': 'State', name: 'Georgia' },

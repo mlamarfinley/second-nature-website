@@ -75,9 +75,10 @@ export default function About() {
         <section className="detail-block" aria-labelledby="where">
           <h2 className="detail-headline" id="where">Where I actually am</h2>
           <p className="detail-body">
-            {LOCALITY}. I work with metro Atlanta businesses in person — I’d rather sit in your
-            shop for an hour and watch the phone ring than guess at your process from a
-            questionnaire — and everywhere else over video.
+            {LOCALITY}. The work itself happens over video and phone, wherever you are —
+            which is the honest version of what I do: if I’m building you a system that runs
+            without anyone standing over it, the build shouldn’t need me standing in your shop
+            either. Being in Atlanta means I keep the hours you keep and I answer in them.
           </p>
         </section>
 

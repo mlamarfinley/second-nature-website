@@ -115,7 +115,7 @@ export default function Contact() {
             </li>
           </ul>
           <p className="response-promise">{RESPONSE_PROMISE}</p>
-          <p className="sn-hint">{LOCALITY} — in person around metro Atlanta, video everywhere else.</p>
+          <p className="sn-hint">{LOCALITY} — the work happens over video and phone.</p>
         </section>
       </div>
     </main>
