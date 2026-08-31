@@ -72,13 +72,24 @@ export default function About() {
           </p>
         </section>
 
-        <section className="detail-block" aria-labelledby="where">
-          <h2 className="detail-headline" id="where">Where I actually am</h2>
+        {/* This was "Where I actually am", which had become a defence of working
+            remotely rather than a reason to hire anyone — and the page already
+            says Atlanta in the headline. What it lacked was any account of what
+            the engagement feels like, so that's what stands here now. Location
+            is a detail inside it instead of the subject of it. */}
+        <section className="detail-block" aria-labelledby="how">
+          <h2 className="detail-headline" id="how">How this actually goes</h2>
           <p className="detail-body">
-            {LOCALITY}. The work itself happens over video and phone, wherever you are —
-            which is the honest version of what I do: if I’m building you a system that runs
-            without anyone standing over it, the build shouldn’t need me standing in your shop
-            either. Being in Atlanta means I keep the hours you keep and I answer in them.
+            It starts with a call where you do most of the talking. I ask a lot of questions about
+            where your week goes and what you keep meaning to get to, and by the end of it we both
+            know whether there’s something here worth building. Plenty of those calls end with me
+            saying you don’t need me yet.
+          </p>
+          <p className="detail-body">
+            From there it’s video, phone and email. You see the thing early and often — half-built,
+            while it’s still cheap to change — you tell me what’s wrong with it, and I fix it. I’m
+            in {LOCALITY}, so I’m awake when you are, and when something goes sideways at four on a
+            Tuesday you’re not filing a ticket. You’re talking to the person who built it.
           </p>
         </section>
 
