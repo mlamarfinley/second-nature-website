@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import {
-  CALENDLY_URL,
+  BOOKING_URL,
   CONTACT_EMAIL,
   LOCALITY,
   SAVANNAH_PHONE,
@@ -24,7 +24,7 @@ export default function Footer() {
         <div className="footer-col">
           <h2 className="footer-head">Reach a human</h2>
           <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-          <a href={CALENDLY_URL} target="_blank" rel="noopener">Book 30 minutes</a>
+          <a href={BOOKING_URL} target="_blank" rel="noopener">Book 30 minutes</a>
           <p className="footer-note">Miles answers email within one business day.</p>
         </div>
 

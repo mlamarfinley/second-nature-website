@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
-  CALENDLY_URL,
+  BOOKING_URL,
   SAVANNAH_PHONE,
   SAVANNAH_PHONE_DISPLAY,
   CONTACT_EMAIL,
@@ -92,7 +92,7 @@ export default function SiteIndex({ links = [] }) {
             {SAVANNAH_PHONE && (
               <a href={`tel:${SAVANNAH_PHONE}`}>Call our AI · {SAVANNAH_PHONE_DISPLAY}</a>
             )}
-            <a href={CALENDLY_URL} target="_blank" rel="noopener">Book 30 minutes</a>
+            <a href={BOOKING_URL} target="_blank" rel="noopener">Book 30 minutes</a>
             <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
             <span>{LOCALITY}</span>
           </div>

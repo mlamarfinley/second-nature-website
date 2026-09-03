@@ -168,7 +168,13 @@ export const SYSTEMS = {
   ],
 }
 
-export const CALENDLY_URL = 'https://calendly.com/mlamarfinley/30min'
+/* The booking destination, named for the job rather than the vendor — it was
+   CALENDLY_URL, which meant switching scheduler touched six files instead of
+   this line. Every CTA on the site reads from here.
+
+   Moving to a Google Calendar appointment schedule: replace this string with
+   the booking page URL and nothing else changes. */
+export const BOOKING_URL = 'https://calendly.com/mlamarfinley/30min'
 
 // Savannah, our AI receptionist, went live on this line 2026-08-10 (Retell +
 // Calendly + Supabase all green). It is a real, callable product.

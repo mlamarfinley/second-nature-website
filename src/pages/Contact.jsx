@@ -7,7 +7,7 @@ import {
   SAVANNAH_PHONE,
   SAVANNAH_PHONE_DISPLAY,
   AGENT_DISCLOSURE,
-  CALENDLY_URL,
+  BOOKING_URL,
 } from '../data/content.js'
 import Breadcrumbs from '../components/Breadcrumbs.jsx'
 
@@ -110,7 +110,7 @@ export default function Contact() {
               <span>Straight to Miles.</span>
             </li>
             <li>
-              <a href={CALENDLY_URL} target="_blank" rel="noopener">Book thirty minutes</a>
+              <a href={BOOKING_URL} target="_blank" rel="noopener">Book thirty minutes</a>
               <span>If you’d rather just talk it through.</span>
             </li>
           </ul>

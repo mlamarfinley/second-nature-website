@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { CALENDLY_URL, SAVANNAH_PHONE } from '../data/content.js'
+import { BOOKING_URL, SAVANNAH_PHONE } from '../data/content.js'
 import { formatPhone } from './CallToAction.jsx'
 import SiteIndex from './SiteIndex.jsx'
 
@@ -39,7 +39,7 @@ export default function Nav() {
               Call our AI
             </a>
           )}
-          <a className="topnav-cta topnav-cta-book" href={CALENDLY_URL} target="_blank" rel="noopener">
+          <a className="topnav-cta topnav-cta-book" href={BOOKING_URL} target="_blank" rel="noopener">
             Book 30 min
           </a>
         </div>

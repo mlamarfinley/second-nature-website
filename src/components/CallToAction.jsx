@@ -1,5 +1,5 @@
 import {
-  CALENDLY_URL,
+  BOOKING_URL,
   SAVANNAH_PHONE,
   SAVANNAH_PHONE_DISPLAY,
   AGENT_DISCLOSURE,
@@ -35,7 +35,7 @@ export default function CallToAction({ className = '', disclose = true }) {
         )}
         <a
           className="cta-button"
-          href={CALENDLY_URL}
+          href={BOOKING_URL}
           target="_blank"
           rel="noopener"
           onClick={() => track('Booking Click')}
