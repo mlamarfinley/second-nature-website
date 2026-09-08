@@ -10,7 +10,15 @@
 
 export const SITE_URL = 'https://aisecondnature.com'
 export const SITE_NAME = 'Second Nature'
-export const CONTACT_EMAIL = 'miles@aisecondnature.com'
+/* TEMPORARY — a working address beats a branded one that bounces.
+   miles@aisecondnature.com does not exist: the domain has no MX records, so
+   every message sent to it was silently discarded while the site published it
+   as the way to reach a human. Swapped for an inbox that actually receives.
+
+   Restore the domain address ONLY after the mailbox is live AND a test send
+   has landed — see MAILBOX-SETUP.md. Changing this line back before then
+   re-breaks the only working contact route on the site. */
+export const CONTACT_EMAIL = 'mlamarfinley@gmail.com'
 export const LOCALITY = 'Atlanta, Georgia'
 
 // Screen quads measured from the actual hero render (percent of image),
