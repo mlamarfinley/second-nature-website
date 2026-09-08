@@ -43,7 +43,7 @@ export default function Terms() {
           <p className="detail-body">
             Projects are half up front and half at launch; smaller builds are paid up front.
             Recurring plans are billed monthly in advance and can be cancelled with 30 days’
-            notice. Card or bank through Stripe. Current prices are on the{' '}
+            notice. Card or bank through Square. Current prices are on the{' '}
             <Link className="inline-link" to="/contact">contact page</Link> or available on
             request.
           </p>

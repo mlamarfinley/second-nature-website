@@ -10,7 +10,15 @@
 
 export const SITE_URL = 'https://aisecondnature.com'
 export const SITE_NAME = 'Second Nature'
-export const CONTACT_EMAIL = 'miles@aisecondnature.com'
+/* TEMPORARY — a working address beats a branded one that bounces.
+   miles@aisecondnature.com does not exist: the domain has no MX records, so
+   every message sent to it was silently discarded while the site published it
+   as the way to reach a human. Swapped for an inbox that actually receives.
+
+   Restore the domain address ONLY after the mailbox is live AND a test send
+   has landed — see MAILBOX-SETUP.md. Changing this line back before then
+   re-breaks the only working contact route on the site. */
+export const CONTACT_EMAIL = 'mlamarfinley@gmail.com'
 export const LOCALITY = 'Atlanta, Georgia'
 
 // Screen quads measured from the actual hero render (percent of image),
@@ -190,7 +198,7 @@ export const SAVANNAH_PHONE_DISPLAY = '(470) 748-9278'
 // The AI is disclosed at the point of action, every time. Nobody should learn
 // they're talking to software after they've already started talking.
 export const AGENT_DISCLOSURE =
-  'It’s an AI receptionist, not a person — it says so when it picks up. It answers 24/7, books appointments, and hands you to Miles if you ask.'
+  'It’s an AI receptionist, not a person, and it will tell you so if you ask. It answers 24/7, books consultations, and takes a message for Miles.'
 
 // Published so it can be held to. Speed-to-lead is the one promise a company
 // selling follow-up automation cannot afford to break.
@@ -251,17 +259,17 @@ export const FAQS = [
   ],
   [
     'Do you have clients I can talk to?',
-    'Not yet, and I would rather say so than imply otherwise. Second Nature has no outside clients — you would be among the first, which is exactly what founding-client terms are for. What I can offer instead is a product you can test without asking me: call the AI receptionist and judge the work directly.',
+    'Second Nature is early — the first client work is under way, and I’m not going to name anyone or publish results before they’ve agreed to it. You would be among the first, which is exactly what founding-client terms are for. What I can offer instead is a product you can test without asking me: call the AI receptionist and judge the work directly.',
   ],
 ]
 
 export const HOME_COPY = {
   hero: {
-    eyebrow: 'Atlanta · AI reception + business automation',
-    h1: 'The calls you miss are the jobs you lose.',
+    eyebrow: 'Atlanta · AI agents and automations',
+    h1: 'AI built around the way your business already works.',
     sub:
-      'Second Nature builds the AI receptionist that answers your phone 24/7, books the job into your calendar, and texts back everyone who hangs up. Then we automate the paperwork behind it — and build the software when the tool you need doesn’t exist yet.',
-    proofLine: 'Call it from your own phone and hear exactly what your customers would hear.',
+      'Second Nature is an AI consultancy. We work out where your business leaks time and money, then build the agents and automations that close those gaps — the phone that always gets answered, the invoice that chases itself, the handoff that stops living in someone’s head, and the custom software for the parts no off-the-shelf tool fits.',
+    proofLine: 'One of them answers our own phone. Call it and hear the work before you speak to me.',
   },
   reframe: {
     line: 'You don’t need more apps. You need a system.',
@@ -297,7 +305,7 @@ export const HOME_COPY = {
   proof: {
     title: 'Proof you can check',
     body:
-      'We have no outside clients yet — that’s the honest starting point, and everything we show is built to be checked rather than believed. What we do have is running. An AI receptionist answers our own line every hour of the day: call it, and you’ll hear the same build we install for a client, pointed at us. A personal system has run our mornings for months, and three more run for our family.',
+      'We’re early — the first client work is under way, and nothing here is published before the people involved agree to it. What we do have is running. An AI receptionist answers our own line every hour of the day: call it, and you’ll hear the same build we install for a client, pointed at us. A personal system has run our mornings for months, and was cloned onto four more phones for our family.',
     cta: 'Call it and see',
   },
   truths: [
