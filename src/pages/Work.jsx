@@ -16,8 +16,9 @@ export default function Work() {
         <span className="pp-eyebrow mono-label">What we’ve built</span>
         <h1 className="serif-display pp-headline">Two systems, both running&nbsp;now.</h1>
         <p className="pp-lead">
-          These aren’t client case studies, because there aren’t any clients yet — and a case study
-          with an invented company on it is worth less than nothing. These are the two systems we
+          These aren’t client case studies. The first client work is under way, and nothing goes on
+          this page until the people involved have agreed to it — a case study with an invented
+          company on it is worth less than nothing. These are the two systems we
           built and run ourselves. One of them you can test from your own phone without giving me
           your name.
         </p>

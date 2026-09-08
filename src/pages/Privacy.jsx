@@ -45,7 +45,7 @@ export default function Privacy() {
           <ul className="policy-list">
             <li><strong>Your data stays in your accounts</strong> wherever it can. We connect through official APIs using access you grant and can revoke in one click.</li>
             <li><strong>Nothing is used to train models.</strong> Not by us, and not by our providers on data submitted through their APIs.</li>
-            <li><strong>Calls are recorded and transcribed</strong> where a voice agent is deployed, and the agent says so when it answers. Recordings and transcripts are yours.</li>
+            <li><strong>Calls are recorded and transcribed</strong> where a voice agent is deployed. Recordings and transcripts are yours. Ask us for the disclosure your state requires and we’ll build it into the agent’s opening line.</li>
             <li><strong>Access is one person.</strong> Second Nature is Miles Finley; no one else touches your systems without your written say-so.</li>
             <li><strong>On termination we delete or return everything within 30 days</strong> and revoke every credential and OAuth grant. You can ask for deletion at any time.</li>
             <li><strong>If your data is ever exposed</strong> we tell you within 72 hours of finding out, with what we know, what we’ve done, and what we recommend.</li>
@@ -55,11 +55,12 @@ export default function Privacy() {
         <section className="detail-block" aria-labelledby="p-sub">
           <h2 className="detail-headline" id="p-sub">3. Who else touches it</h2>
           <p className="detail-body">
-            The services a build may run on, named rather than described vaguely: Anthropic (model
+            The services a client build may run on, named rather than described vaguely: Anthropic (model
             inference), Retell (voice and SMS), Supabase (database), Vercel (hosting), Resend
             (email), Stripe (payments), Calendly (scheduling), and — only where the build needs
             them — Google Workspace APIs, QuickBooks, or Plaid. We tell you before adding one to
-            your build.
+            your build. Second Nature’s own invoices are issued through Square; Stripe appears
+            above only where a build you commission needs to take card payments.
           </p>
         </section>
 

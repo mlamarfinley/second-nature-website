@@ -16,9 +16,9 @@ export const STAGING = true
    shared link described the site identically. */
 export const PAGE_META = {
   '/': {
-    title: 'AI Receptionist & Business Automation in Atlanta — Second Nature',
+    title: 'AI Agents & Automations for Business — Second Nature, Atlanta',
     description:
-      'We build the AI receptionist that answers your phone 24/7, books the job, and texts back every missed call — plus the automations and custom software behind it. Call ours: (470) 748-9278.',
+      'An Atlanta AI consultancy. We find where your business leaks time and money, then build the agents, automations and custom software that close those gaps. Hear one working: (470) 748-9278.',
   },
   '/business': {
     title: 'Business Automations & AI Employees — Second Nature, Atlanta',

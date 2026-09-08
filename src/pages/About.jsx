@@ -60,7 +60,7 @@ export default function About() {
             months.
           </p>
           <p className="detail-body">
-            Then my family wanted it. Three more instances now run for them, on their own numbers,
+            Then my family wanted it. It was cloned onto four more phones for them, on their own numbers,
             in their own time zones. That’s when it stopped being a personal project: the thing
             cloned onto three other lives without me hovering over it, which is the only real test
             of whether something is a system or a script you’re personally propping up.
@@ -86,7 +86,7 @@ export default function About() {
         <section className="detail-block" aria-labelledby="straight">
           <h2 className="detail-headline" id="straight">What I’ll tell you before you ask</h2>
           <p className="detail-body">
-            <strong>I’m early.</strong> Second Nature has no outside clients yet. That’s why
+            <strong>I’m early.</strong> The first client work is under way, and I won’t name anyone or publish results until they’ve agreed to it. That’s why
             founding-client terms exist, and it’s why I’d rather show you a running system than a
             slide deck.
           </p>
@@ -119,7 +119,7 @@ export default function About() {
             {SAVANNAH_PHONE && (
               <li>
                 <a href={`tel:${SAVANNAH_PHONE}`}>{SAVANNAH_PHONE_DISPLAY}</a>
-                <span>Our AI receptionist, 24/7. It’ll hand you to me if you ask.</span>
+                <span>Our AI receptionist, 24/7. Ask for me and it takes a message.</span>
               </li>
             )}
           </ul>
