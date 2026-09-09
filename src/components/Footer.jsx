@@ -50,7 +50,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-base">
-        <span>© 2026 Second Nature — built and run by Miles Finley in Atlanta.</span>
+        <span>© 2026 Second Nature — built and run by Miles Finley in Georgia.</span>
         <Link className="footer-legal" to="/privacy">Privacy</Link>
         <Link className="footer-legal" to="/terms">Terms</Link>
       </div>

@@ -18,7 +18,7 @@ export default function Terms() {
         <span className="pp-eyebrow mono-label">Terms</span>
         <h1 className="serif-display pp-headline">The deal, in plain&nbsp;language.</h1>
         <p className="pp-lead">
-          These terms cover work done by Second Nature, operated by Miles Finley in Atlanta,
+          These terms cover work done by Second Nature, operated by Miles Finley in Rome,
           Georgia. They’re written to be read rather than survived. Where a specific engagement
           has a signed scope, that scope wins over anything general said here.
         </p>

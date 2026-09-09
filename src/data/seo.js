@@ -16,12 +16,12 @@ export const STAGING = true
    shared link described the site identically. */
 export const PAGE_META = {
   '/': {
-    title: 'AI Agents & Automations for Business — Second Nature, Atlanta',
+    title: 'AI Agents & Automations for Business — Second Nature, Georgia',
     description:
-      'An Atlanta AI consultancy. We find where your business leaks time and money, then build the agents, automations and custom software that close those gaps. Hear one working: (470) 748-9278.',
+      'A Georgia AI consultancy. We find where your business leaks time and money, then build the agents, automations and custom software that close those gaps. Hear one working: (470) 748-9278.',
   },
   '/business': {
-    title: 'Business Automations & AI Employees — Second Nature, Atlanta',
+    title: 'Business Automations & AI Employees — Second Nature, Georgia',
     description:
       'Automations that carry the repeating work, communication that drops nothing, and AI employees with a real job description. Every offering carries an honest build status.',
   },
@@ -46,22 +46,22 @@ export const PAGE_META = {
       'Scope, payment, ownership, cancellation and the limits on what an AI employee does unsupervised. Written to be read, not to be survived.',
   },
   '/about': {
-    title: 'About Miles Finley — Second Nature, Atlanta',
+    title: 'About Miles Finley — Second Nature, Georgia',
     description:
-      'One person in Atlanta who builds AI systems for small businesses, and runs on them first. What’s live, what’s not, and how to reach me.',
+      'One person in Georgia who builds AI systems for small businesses, and runs on them first. What’s live, what’s not, and how to reach me.',
   },
   '/work': {
-    title: 'What We’ve Built — Second Nature, Atlanta',
+    title: 'What We’ve Built — Second Nature, Georgia',
     description:
       'Two systems running right now: an AI receptionist answering our own line, and a personal operations system running daily for months. Call one of them and judge it yourself.',
   },
   '/faq': {
-    title: 'Questions & Answers — Second Nature, Atlanta',
+    title: 'Questions & Answers — Second Nature, Georgia',
     description:
       'What it costs, how long it takes, what happens on the call, what we do with your data, and whether we have clients yet. Answered before you spend thirty minutes.',
   },
   '/contact': {
-    title: 'Get a Free Friction Map — Second Nature, Atlanta',
+    title: 'Get a Free Friction Map — Second Nature, Georgia',
     description:
       'Three questions, and within one business day you get a one-page map of where your time and leads are leaking. Yours to keep whether you hire us or not.',
   },
@@ -75,7 +75,7 @@ export const PAGE_META = {
       'What we do with your data on this site, and what we do with your business data during an engagement. Every subprocessor named.',
   },
   '/build': {
-    title: 'Start a Project — Second Nature, Atlanta',
+    title: 'Start a Project — Second Nature, Georgia',
     description: 'Tell us where the work backs up. You leave with the friction map whether you hire us or not.',
   },
 }
@@ -104,12 +104,13 @@ export const ORG_JSON_LD = {
       '@id': `${SITE_URL}/#business`,
       name: SITE_NAME,
       description:
-        'Second Nature builds custom AI systems for small businesses in Atlanta: AI phone reception, automated follow-up and invoicing, business dashboards, client portals, and custom internal software.',
+        'Second Nature builds custom AI systems for small businesses across Georgia: AI phone reception, automated follow-up and invoicing, business dashboards, client portals, and custom internal software.',
       url: `${SITE_URL}/`,
       image: `${SITE_URL}/og/home.jpg`,
       email: CONTACT_EMAIL,
       telephone: SAVANNAH_PHONE ? '+1-470-748-9278' : undefined,
       areaServed: [
+        { '@type': 'City', name: 'Rome' },
         { '@type': 'City', name: 'Atlanta' },
         { '@type': 'State', name: 'Georgia' },
       ],

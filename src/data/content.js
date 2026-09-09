@@ -19,7 +19,7 @@ export const SITE_NAME = 'Second Nature'
    has landed — see MAILBOX-SETUP.md. Changing this line back before then
    re-breaks the only working contact route on the site. */
 export const CONTACT_EMAIL = 'mlamarfinley@gmail.com'
-export const LOCALITY = 'Atlanta, Georgia'
+export const LOCALITY = 'Rome, Georgia'
 
 // Screen quads measured from the actual hero render (percent of image),
 // order: top-left, top-right, bottom-right, bottom-left.
@@ -265,7 +265,7 @@ export const FAQS = [
 
 export const HOME_COPY = {
   hero: {
-    eyebrow: 'Atlanta · AI agents and automations',
+    eyebrow: 'Georgia · AI agents and automations',
     h1: 'AI built around the way your business already works.',
     sub:
       'Second Nature is an AI consultancy. We work out where your business leaks time and money, then build the agents and automations that close those gaps — the phone that always gets answered, the invoice that chases itself, the handoff that stops living in someone’s head, and the custom software for the parts no off-the-shelf tool fits.',

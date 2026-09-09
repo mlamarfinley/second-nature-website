@@ -26,7 +26,7 @@ const CARDS = {
   '/contact': ['Get a friction map', 'Tell me where the work backs up.'],
   '/pricing': ['Pricing', 'The number you see is the number you pay.'],
   '/personal': ['Personal systems', 'By referral only.'],
-  '/about': ['About', 'One person, in Atlanta.'],
+  '/about': ['About', 'One person, in Georgia.'],
   '/privacy': ['Privacy', 'What we do with your data.'],
   '/terms': ['Terms', 'The deal, in plain language.'],
 }
@@ -49,7 +49,7 @@ body{width:1200px;height:630px;background:#0C1210;color:#E9EFEA;
 <div class="glow"></div>
 <div class="eyebrow">${eyebrow}</div>
 <div class="line">${line}</div>
-<div class="foot"><span class="mark">Second&nbsp;Nature</span><span>aisecondnature.com · Atlanta</span></div>
+<div class="foot"><span class="mark">Second&nbsp;Nature</span><span>aisecondnature.com · Georgia</span></div>
 </body></html>`
 
 const browser = await chromium.launch()

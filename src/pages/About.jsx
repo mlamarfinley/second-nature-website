@@ -25,7 +25,7 @@ export default function About() {
       <div className="page-inner detail-inner">
         <span className="pp-eyebrow mono-label">About</span>
         <h1 className="serif-display pp-headline">
-          Second Nature is one person: me, Miles&nbsp;Finley, in Atlanta.
+          Second Nature is one person: me, Miles&nbsp;Finley, in Georgia.
         </h1>
 
         <p className="pp-lead">
