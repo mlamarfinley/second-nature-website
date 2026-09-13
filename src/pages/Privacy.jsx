@@ -24,15 +24,17 @@ export default function Privacy() {
         <section className="detail-block" aria-labelledby="p-site">
           <h2 className="detail-headline" id="p-site">1. This website</h2>
           <p className="detail-body">
-            If you send the contact form we receive your name, the contact detail you gave us, and
-            what you wrote. It is used to answer you and nothing else. It is never sold, rented or
-            shared, and you are not added to any mailing list.
+            If you email us, we receive your email address and the information you choose to send.
+            Booking through Calendly also shares the details you enter with that service. We use
+            inquiry information to respond and arrange the conversation; contacting us does not
+            subscribe you to marketing. Email and scheduling providers process information to
+            deliver those services.
           </p>
           <p className="detail-body">
             Analytics, if enabled, are privacy-preserving and aggregate: page views and clicks on
             the call and booking links, with no cookies and no cross-site tracking. Fonts are
-            currently loaded from Google Fonts, which means Google receives your IP address when
-            the page loads; self-hosting them is a pending fix.
+            served with this website rather than requested from Google Fonts. Following an
+            external booking or payment link takes you to that provider’s service and policy.
           </p>
         </section>
 
@@ -43,12 +45,12 @@ export default function Privacy() {
             CRM, sometimes accounting. The rules are:
           </p>
           <ul className="policy-list">
-            <li><strong>Your data stays in your accounts</strong> wherever it can. We connect through official APIs using access you grant and can revoke in one click.</li>
-            <li><strong>Nothing is used to train models.</strong> Not by us, and not by our providers on data submitted through their APIs.</li>
-            <li><strong>Calls are recorded and transcribed</strong> where a voice agent is deployed. Recordings and transcripts are yours. Ask us for the disclosure your state requires and we’ll build it into the agent’s opening line.</li>
-            <li><strong>Access is one person.</strong> Second Nature is Miles Finley; no one else touches your systems without your written say-so.</li>
-            <li><strong>On termination we delete or return everything within 30 days</strong> and revoke every credential and OAuth grant. You can ask for deletion at any time.</li>
-            <li><strong>If your data is ever exposed</strong> we tell you within 72 hours of finding out, with what we know, what we’ve done, and what we recommend.</li>
+            <li><strong>Your data stays in your accounts</strong> wherever it can. We use scoped access you authorize; revocation steps are documented at handover.</li>
+            <li><strong>We do not use your data to train our own general-purpose models.</strong> Provider processing and training settings are verified and recorded in your data schedule before access is enabled.</li>
+            <li><strong>Voice recording and transcription are agreed before activation.</strong> The scope identifies the actual configuration, applicable disclosure and consent requirements, retention and a refusal path. We test these controls before live use.</li>
+            <li><strong>Access is limited to what the service needs.</strong> Miles operates Second Nature; approved providers may process data as listed in the project schedule. Additional human access requires authorization.</li>
+            <li><strong>On termination, we return or delete active client data within 30 days</strong> under the agreed schedule and revoke our access. Backup deletion follows the specified cycle; legally required records are retained only as necessary. You can request deletion at any time.</li>
+            <li><strong>If your data is ever exposed</strong> we notify you without undue delay, within 72 hours of awareness or sooner where required, with available facts and updates as the investigation develops.</li>
           </ul>
         </section>
 
@@ -59,8 +61,9 @@ export default function Privacy() {
             inference), Retell (voice and SMS), Supabase (database), Vercel (hosting), Resend
             (email), Stripe (payments), Calendly (scheduling), and — only where the build needs
             them — Google Workspace APIs, QuickBooks, or Plaid. We tell you before adding one to
-            your build. Second Nature’s own invoices are issued through Square; Stripe appears
-            above only where a build you commission needs to take card payments.
+            your build. Second Nature currently requests payment by bank transfer; invoice and
+            payment records are retained for bookkeeping. Stripe applies only where a commissioned
+            client build needs card payments.
           </p>
         </section>
 

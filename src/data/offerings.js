@@ -19,7 +19,7 @@ export const AUTOMATIONS = [
     name: 'Lead capture and routing',
     status: STATUS.ORDER,
     trigger: 'You’ve found a two-week-old inquiry nobody ever answered.',
-    does: 'Inquiries from your form, your DMs, your email and your phone land in one pipeline. Each one is qualified, acknowledged instantly, and assigned to a person — and if it sits untouched, it escalates instead of going quiet.',
+    does: 'Inquiries from your form, your DMs, your email and your phone land in one pipeline. Each one is qualified, acknowledged through the configured integration, and assigned to a person — and if it sits untouched, it escalates instead of going quiet.',
     needs: 'Wherever leads currently arrive, and a rule for who owns what.',
   },
   {
@@ -75,7 +75,7 @@ export const AUTOMATIONS = [
     name: 'Reviews and reputation',
     status: STATUS.ORDER,
     trigger: 'You have great customers and eleven Google reviews.',
-    does: 'A review request timed to job completion, unhappy responses routed privately to you first, and new public reviews monitored with replies drafted in your voice.',
+    does: 'An honest review request offered consistently after job completion, with a separate private support route for any customer. Public replies are drafted for your approval; negative feedback is not filtered out.',
     needs: 'Your review profiles, and how you want to handle an unhappy one.',
   },
 ]

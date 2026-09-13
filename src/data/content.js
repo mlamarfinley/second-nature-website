@@ -1,7 +1,7 @@
 // All site copy lives here. Voice: plain, direct, specific.
 //
 // ONE RULE GOVERNS THIS FILE: every number must survive the question
-// "measured on whom?" We have no outside clients yet, so there are no client
+// "measured on whom?" Client results require permission and evidence before publication; there are no verified client
 // results to report. Where a number comes from our own operations, it says so.
 // A label may read LIVE only if (1) the system is running right now, (2) the
 // page names whose system it is, and (3) the number is fetched at request time
@@ -91,7 +91,7 @@ export const CATEGORIES = [
 
 // Build status is published, not hidden. LIVE = running right now, ours or a
 // client's. BUILT TO ORDER = architecture designed and priced, not yet deployed
-// for an outside client, because there aren't any yet.
+// for that specific client workflow.
 export const STATUS = {
   LIVE: 'Live',
   ORDER: 'Built to order',
@@ -148,7 +148,7 @@ export const BIZ = {
   // What "built to order" actually means, said out loud. Honest implementation
   // status is a stronger signal than a perfect pitch.
   statusNote:
-    'Built to order means the architecture is designed, the price is set, and it hasn’t been deployed for an outside client yet — because there aren’t any yet. You’d be first, which is why founding-client terms exist.',
+    'Built to order means we scope and configure that workflow for your business. A live label identifies a working deployment; other offerings are proposed capabilities, not completed client case studies.',
   outcomes: ['Faster client follow-up', 'Fewer dropped tasks', 'Better team response time', 'Greater workflow visibility'],
 }
 
@@ -156,7 +156,7 @@ export const BIZ = {
 // claims, not metrics: what the system removes, not a number we can't source.
 export const BIZ_REMOVES = [
   ['Chasing an unpaid invoice', 'A reminder ladder that runs before and after the due date, and escalates to you only when an account is genuinely stuck.'],
-  ['Calling back a two-week-old lead', 'A reply inside sixty seconds, at any hour, that qualifies and books.'],
+  ['Calling back a two-week-old lead', 'A prompt reply that follows your qualification rules and offers a booking route.'],
   ['Retyping receipts into your books', 'Parsed, coded to your chart of accounts, and flagged when it isn’t sure.'],
   ['“So who’s doing what?” after every meeting', 'Decisions and action items extracted with owners and dates, sent to everyone who was in the room.'],
 ]
@@ -165,7 +165,7 @@ export const SYSTEMS = {
   lead:
     'Automations move work through the tools you already have. Sometimes the tool doesn’t exist yet — this is where we build it.',
   items: [
-    ['Websites', 'Your front door, built properly. Custom design, written with you, fast on a phone, with booking, intake, and payment wired in from day one.'],
+    ['Websites', 'Mobile-friendly websites with your branding and a working contact route. Booking, payments, copywriting, and custom design are included where your selected package or quote specifies them.'],
     ['Business dashboards', 'One screen that answers “how are we doing” — live numbers pulled from every tool you already use, built around the decisions you actually make.'],
     ['Client portals', 'A professional front door for your customers: status, documents, approvals, invoices, and messages in one place, so they stop emailing you for updates.'],
     ['Internal operations tools', 'The custom software your spreadsheet is pretending to be. Your real process, with roles, permissions, and a record of who did what.'],
@@ -198,12 +198,12 @@ export const SAVANNAH_PHONE_DISPLAY = '(470) 748-9278'
 // The AI is disclosed at the point of action, every time. Nobody should learn
 // they're talking to software after they've already started talking.
 export const AGENT_DISCLOSURE =
-  'It’s an AI receptionist, not a person, and it will tell you so if you ask. It answers 24/7, books consultations, and takes a message for Miles.'
+  'You’ll be speaking with an AI receptionist. It can answer questions about Second Nature, help book a consultation, or take a message for Miles.'
 
 // Published so it can be held to. Speed-to-lead is the one promise a company
 // selling follow-up automation cannot afford to break.
 export const RESPONSE_PROMISE =
-  'Email gets an answer within one business day, usually the same afternoon. The AI answers the phone on the first ring, always.'
+  'Miles aims to answer email within one business day. If the phone demo is unavailable, email or book a consultation.'
 
 /* "Case studies" with zero clients means one thing only: our own builds,
    labelled as our own. Nothing here is client work, and the copy says so —
@@ -217,23 +217,23 @@ export const BUILDS = [
     problem:
       'A call that rings out at 6pm on a Saturday is a job that goes to whoever picks up next. Small businesses lose work in the gap between the phone ringing and someone being free to answer it.',
     built:
-      'A voice agent that answers every call in the business’s own voice, handles the questions a front desk answers forty times a week, books straight into a real calendar, and texts back anyone who hangs up before it picks up. It says it’s an AI when it answers, and hands the caller to a human the moment they ask.',
+      'An AI receptionist configured to answer questions about our services, book consultations, and take a message for Miles. This demo does not promise an immediate transfer to a person. Phone booking and message delivery are separate functions that we test for each client before launch.',
     proof:
       'It answers our own business line right now. Call it — that is the demo, and it is the same build we install for a client, pointed at us.',
     stack: 'Retell · Claude · Supabase · Calendly',
     honest:
-      'Deployed for us. Not yet deployed for an outside client — you would be the first.',
+      'This is our own deployment. Client-specific installations are scoped and tested separately.',
   },
   {
     slug: 'odessa',
     name: 'The personal operations system',
-    status: 'Live — running daily for months, four instances',
+    status: 'Live — used by Miles and family',
     problem:
       'Plans rebuilt from scratch every morning, follow-ups that never got sent, and tasks that rolled over so many times they quietly stopped being real.',
     built:
       'A system that calls in the morning and sets the day, carries unfinished work forward instead of losing it, audits its own call transcripts afterwards, and calls back in the evening to ask how it went.',
     proof:
-      'It has run every day for months, and three more instances run for members of my family on their own numbers and their own schedules — which is how I know it clones onto someone else’s life without me hovering over it.',
+      'It has run every day for months, and instances also run for members of my family on their own numbers and their own schedules — which is how I know it clones onto someone else’s life without me hovering over it.',
     stack: 'Retell · Claude · Supabase · Vercel',
     honest:
       'A personal system on a business site on purpose: the machinery underneath is the machinery a business build runs on.',
@@ -243,7 +243,7 @@ export const BUILDS = [
 export const FAQS = [
   [
     'What does it cost?',
-    'Every number is published rather than quoted on a call. An AI receptionist is from $1,000 to build and $249/month including 400 minutes. Automations start at $750 to build. Custom software starts at $2,500. You get an exact number in writing before anything begins, and the number quoted is the number you pay.',
+    'Website package prices are published. Systems are scoped after a consultation; their listed prices are starting points. An AI receptionist is from $1,000 to build and $249/month including 400 minutes. Automations start at $750 to build. Custom website builds start at $2,000; other software is priced by scope. You get an exact number in writing before anything begins, and the number quoted is the number you pay.',
   ],
   [
     'How long does it take?',
@@ -255,7 +255,7 @@ export const FAQS = [
   ],
   [
     'Is my data safe?',
-    'Your data stays in your own accounts wherever possible — I connect to your calendar, your books and your inbox through official APIs, using access you grant and can revoke in one click. Call transcripts and task records live in a database I can name and you can request a copy of at any time. Nothing is used to train models. On termination I delete or return everything within 30 days and revoke every credential.',
+    'Your data stays in your accounts wherever practical. We agree access, approved providers, recording settings and retention before connecting your systems. We do not use client data to train our own general-purpose models; vendor settings are verified in the data schedule. Active data is returned or deleted within 30 days of termination, with the agreed backup cycle and legally required records handled separately.',
   ],
   [
     'Do you have clients I can talk to?',
@@ -268,7 +268,7 @@ export const HOME_COPY = {
     eyebrow: 'Georgia · AI agents and automations',
     h1: 'AI built around the way your business already works.',
     sub:
-      'Second Nature is an AI consultancy. We work out where your business leaks time and money, then build the agents and automations that close those gaps — the phone that always gets answered, the invoice that chases itself, the handoff that stops living in someone’s head, and the custom software for the parts no off-the-shelf tool fits.',
+      'Second Nature builds websites, AI receptionists, and automations for small businesses. We start with the work that takes too much of your time, then build a practical way to handle it.',
     proofLine: 'One of them answers our own phone. Call it and hear the work before you speak to me.',
   },
   reframe: {
@@ -299,18 +299,18 @@ export const HOME_COPY = {
   steps: [
     ['Map the friction', 'A short call. We find where your time actually goes, and which parts a system should carry. You keep the map whether you hire us or not.'],
     ['We build your system', 'Custom agents shaped to how you already work. You get an exact price and an exact date in writing before anything starts.'],
-    ['It runs with you', 'Your system works in the background every day, and we tune it as your life or business changes. The first 90 days of monitoring are included.'],
+    ['It runs with you', 'Your system works in the background every day, and we tune it as your life or business changes. AI builds require the quoted monthly monitoring plan for their first 90 days; its cost is shown separately from setup.'],
   ],
   // The one claim on this site a stranger can falsify in ninety seconds.
   proof: {
     title: 'Proof you can check',
     body:
-      'We’re early — the first client work is under way, and nothing here is published before the people involved agree to it. What we do have is running. An AI receptionist answers our own line every hour of the day: call it, and you’ll hear the same build we install for a client, pointed at us. A personal system has run our mornings for months, and was cloned onto four more phones for our family.',
+      'We’re early — the first client work is under way, and nothing here is published before the people involved agree to it. What we do have is running. An AI receptionist answers our own line every hour of the day: call it, and you’ll hear the same build we install for a client, pointed at us. A personal system has run our mornings for months, and is also used by members of our family.',
     cta: 'Call it and see',
   },
   truths: [
-    ['Fully custom', 'Built around how you actually work, not a template with your logo on it.'],
-    ['We run on our own systems', 'Every system we sell, we live on daily. We feel the rough edges before you do.'],
+    ['Built for your needs', 'Starter websites use a defined design foundation. Custom software is scoped around your process. Your quote makes the approach clear.'],
+    ['We run on our own systems', 'Our receptionist and personal planner run in our own operations. Other workflows are built and tested to the scope agreed with each client.'],
     ['Calm by design', 'Less noise, fewer dashboards. Systems that reduce pressure instead of adding it.'],
     ['You own it', 'The code and the data are yours. At handover you get the repository, the keys, and a walkthrough.'],
   ],
@@ -319,6 +319,6 @@ export const HOME_COPY = {
   founding: {
     title: 'Founding clients',
     body:
-      'We need case studies more than we need margin right now. The first businesses we build for get our rates held for twelve months in writing, direct access, and the work written up with their name on it — every word approved by them first. That’s the whole trade. The work is the same either way; the case study is what the terms buy.',
+      'Founding clients can agree a twelve-month rate hold for the named services and scope. A case study is optional and requires separate permission, including approval of the exact words, name and images before publication. Your service and cancellation rights do not depend on a positive review.',
   },
 }

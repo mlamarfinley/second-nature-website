@@ -23,18 +23,8 @@ export default function CallToAction({ className = '', disclose = true }) {
   return (
     <div className={`cta-block ${className}`.trim()}>
       <div className="cta-pair">
-        {SAVANNAH_PHONE && (
-          <a
-            className="cta-button cta-button-agent"
-            href={`tel:${SAVANNAH_PHONE}`}
-            aria-label={`Call our AI receptionist at ${formatPhone(SAVANNAH_PHONE)}`}
-            onClick={() => track('Call Click')}
-          >
-            Call our AI · {SAVANNAH_PHONE_DISPLAY}
-          </a>
-        )}
         <a
-          className="cta-button"
+          className="cta-button cta-button-agent"
           href={BOOKING_URL}
           target="_blank"
           rel="noopener"
@@ -42,6 +32,16 @@ export default function CallToAction({ className = '', disclose = true }) {
         >
           Book 30 minutes
         </a>
+        {SAVANNAH_PHONE && (
+          <a
+            className="cta-button"
+            href={`tel:${SAVANNAH_PHONE}`}
+            aria-label={`Call our AI receptionist at ${formatPhone(SAVANNAH_PHONE)}`}
+            onClick={() => track('Call Click')}
+          >
+            Call our AI · {SAVANNAH_PHONE_DISPLAY}
+          </a>
+        )}
       </div>
       {disclose && SAVANNAH_PHONE && (
         <p className="cta-disclosure">{AGENT_DISCLOSURE}</p>

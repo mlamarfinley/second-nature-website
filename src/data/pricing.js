@@ -40,7 +40,8 @@ export const STUDENT_EXTRAS = [
 /* Floors only — see the note at the top of this file. */
 export const SYSTEM_TIERS = [
   { name: 'One system', setup: 'from $750', monthly: 'monthly from $99', body: 'A single automation or communication system, live in one to three weeks. The missed-call text-back, the invoice that sends itself, the handoff that stops living in someone’s head.' },
-  { name: 'An AI employee', setup: 'from $1,000', monthly: 'monthly from $199', body: 'One role, scoped and trained — the receptionist being the common first one. It answers, books, qualifies, and hands you a transcript of every call.' },
+  { name: 'An AI employee', setup: 'from $1,000', monthly: 'monthly from $199', body: 'One non-voice role, scoped around approved tasks, with defined human review and usage limits. Voice reception has its own plan below.' },
+  { name: 'AI receptionist', setup: 'from $1,000', monthly: '$249/month including 400 minutes', body: 'A voice receptionist configured for your business. The quote states the billable-minute definition, any overage rate, a spending limit and the first 90 days of monitoring charges before activation.' },
   { name: 'A stack', setup: 'from $2,500', monthly: 'monthly from $249', body: 'Three or four connected systems that share context, so the thing that answers the phone and the thing that sends the invoice know about each other.' },
   { name: 'Business-wide', setup: 'from $6,000', monthly: 'monthly from $599', body: 'Ongoing build-out where we hold the roadmap and keep shipping against it. For when the answer is "most of this", not "this one thing".' },
 ]

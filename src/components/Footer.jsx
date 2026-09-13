@@ -3,6 +3,7 @@ import {
   BOOKING_URL,
   CONTACT_EMAIL,
   LOCALITY,
+  AGENT_DISCLOSURE,
   SAVANNAH_PHONE,
   SAVANNAH_PHONE_DISPLAY,
 } from '../data/content.js'
@@ -25,7 +26,7 @@ export default function Footer() {
           <h2 className="footer-head">Reach a human</h2>
           <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
           <a href={BOOKING_URL} target="_blank" rel="noopener">Book 30 minutes</a>
-          <p className="footer-note">Miles answers email within one business day.</p>
+          <p className="footer-note">Miles aims to answer email within one business day.</p>
         </div>
 
         {SAVANNAH_PHONE && (
@@ -33,7 +34,7 @@ export default function Footer() {
             <h2 className="footer-head">Reach the AI</h2>
             <a href={`tel:${SAVANNAH_PHONE}`}>{SAVANNAH_PHONE_DISPLAY}</a>
             <p className="footer-note">
-              Answers 24/7 and says it’s an AI when it picks up. You can text it too.
+              {AGENT_DISCLOSURE}
             </p>
           </div>
         )}
