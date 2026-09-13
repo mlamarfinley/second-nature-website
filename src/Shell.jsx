@@ -12,7 +12,6 @@ import About from './pages/About.jsx'
 import Work from './pages/Work.jsx'
 import Faq from './pages/Faq.jsx'
 import Contact from './pages/Contact.jsx'
-import Thanks from './pages/Thanks.jsx'
 import Privacy from './pages/Privacy.jsx'
 import Terms from './pages/Terms.jsx'
 import NotFound from './pages/NotFound.jsx'
@@ -84,7 +83,7 @@ export default function Shell() {
         <Route path="/work" element={<Work />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/thanks" element={<Thanks />} />
+        <Route path="/thanks" element={<Navigate to="/contact" replace />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/about" element={<About />} />
