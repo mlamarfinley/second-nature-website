@@ -129,7 +129,7 @@ export const ORG_JSON_LD = {
       name: 'Miles Finley',
       jobTitle: 'Founder',
       worksFor: { '@id': `${SITE_URL}/#business` },
-      url: `${SITE_URL}/#/about`,
+      url: `${SITE_URL}/about`,
     },
     {
       '@type': 'WebSite',
