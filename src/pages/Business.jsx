@@ -8,7 +8,7 @@ import PageImage from '../components/PageImage.jsx'
    week", "60% less admin time" and "2× more deadlines hit" upward over 1.4
    seconds, inside modules captioned "Live" with pulsing status dots, beside a
    fake workflow rail, fake client threads and a fake staff roster clocked in
-   24/7 — from a company with no clients. Animating a number is a claim that it
+   24/7 — without verified client measurements. Animating a number is a claim that it
    was measured. All of it is deleted.
 
    The 23 offerings were also plain text that linked nowhere. Each one now
@@ -108,9 +108,9 @@ export default function Business() {
           </PageImage>
           <Removes />
           <p className="bz-note">
-            We don’t publish hours-saved numbers, because we’d be making them up — we have no
-            client operations to measure yet. What we can tell you is exactly which task each
-            system removes, what it needs from you, and how long it takes to build.
+            Each workflow below identifies the task it handles and the information it needs from
+            you. We agree the scope, timing and success criteria before building, and publish
+            client results only when they are measured and approved.
           </p>
         </section>
 

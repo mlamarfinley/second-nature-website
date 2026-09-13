@@ -82,9 +82,9 @@ export default function Work() {
           <hr className="thin-rule bz-transition-rule" />
           <p className="serif-display bz-transition-headline">Be the first one on this page.</p>
           <p className="bz-transition-body">
-            Founding clients pay the published price, get their rates held for twelve months in
-            writing, and get the work written up with their name on it — every word approved by
-            them first.
+            Founding clients can agree a twelve-month rate hold for the named services and scope.
+            A case study is optional, with separate permission and approval of every word and
+            image before publication.
           </p>
           <CallToAction />
         </div>

@@ -44,8 +44,8 @@ export default function Faq() {
           <hr className="thin-rule bz-transition-rule" />
           <p className="serif-display bz-transition-headline">Still got a question?</p>
           <p className="bz-transition-body">
-            Ask the AI receptionist — it answers this kind of thing all day, and it will hand you
-            to me when it can’t.
+            Email Miles or book a consultation. The AI receptionist can also take a message when
+            it cannot answer your question.
           </p>
           <CallToAction />
         </div>

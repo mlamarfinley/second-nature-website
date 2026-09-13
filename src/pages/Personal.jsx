@@ -30,7 +30,7 @@ export default function Personal() {
           that turns itself into a task list, and a running picture of where the money is.
         </p>
         <p className="pp-lead">
-          I built mine for myself and it has run every day for months. Three more run for members
+          I built mine for myself and it has run every day for months. Versions also run for members
           of my family, on their own numbers and their own schedules.
         </p>
         <p className="pp-lead">
@@ -71,14 +71,14 @@ export default function Personal() {
         <section className="detail-block" aria-labelledby="p-next">
           <h2 className="detail-headline" id="p-next">If you want one</h2>
           <p className="detail-body">
-            Text or email me and say which of the four is the loudest right now. There’s no form
-            for this one and no booking link — a referral deserves a conversation, not a funnel.
+            Email me with the area you want help with and who referred you. We’ll discuss a
+            useful starting point before choosing a scope.
           </p>
           <ul className="about-contact">
             {SAVANNAH_PHONE && (
               <li>
                 <a href={`sms:${SAVANNAH_PHONE}`}>Text {SAVANNAH_PHONE_DISPLAY}</a>
-                <span>Same number as our AI receptionist — a text reaches me.</span>
+                <span>For a direct response from Miles, use email.</span>
               </li>
             )}
             <li>

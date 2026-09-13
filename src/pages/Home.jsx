@@ -17,7 +17,7 @@ import CallToAction from '../components/CallToAction.jsx'
 
    These used to display invented telemetry — "WORKFLOWS RUNNING 41",
    "FOLLOW-UPS SENT 128", "Invoice #204 · reminder sent" — under labels that
-   read LIVE, from a company with no clients. Every number is gone. What's
+   read LIVE, without verified client measurements. Every number is gone. What's
    left is ambient light with no claim attached: a screen that is on, not a
    screen that is lying. Real product screenshots replace these entirely once
    they're captured. */
@@ -165,7 +165,7 @@ function Stage() {
                 key={s.key}
                 className="screen-surface screen-link"
                 style={{ width: SURFACE_W, height: SURFACE_H, transform: s.matrix }}
-                href={`#${s.to}`}
+                href={s.to}
                 aria-label={s.label}
                 onClick={(e) => { e.preventDefault(); navigate(s.to) }}
               >

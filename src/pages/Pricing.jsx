@@ -54,16 +54,16 @@ export default function Pricing() {
 
           <h3 className="price-group">For students</h3>
           <p className="detail-body price-gate">
-            These are the same builds at a lower price, not a lesser product. They’re for current
-            students, grads within a year, and campus orgs — verified with a <code>.edu</code> email
-            or a photo of a student ID, which is the entire process. If you’re running a business
-            rather than studying, the prices above are the ones that apply to you.
+            Student rates cover current students, graduates within the past year, and campus
+            organizations, including eligible student-owned businesses. The same quality standards
+            apply; page counts and features follow the package below. Eligibility can be verified
+            with a school email or current enrollment evidence. Redact unrelated personal details.
           </p>
           <div className="price-list">
             {STUDENT_PACKAGES.map((p) => <PriceRow key={p.name} {...p} />)}
           </div>
 
-          <h3 className="price-group">Add anything</h3>
+          <h3 className="price-group">Student package extras</h3>
           <ul className="price-extras">
             {STUDENT_EXTRAS.map(([name, price, body]) => (
               <li key={name}>
@@ -99,15 +99,15 @@ export default function Pricing() {
           <p className="price-fine">
             Monthly covers hosting, model usage, monitoring, tuning and a report, with a usage
             ceiling and a stated overage rate written into the quote — voice minutes are the one
-            place a bill can quietly run away from you. Any build containing an AI employee includes
-            monitoring for its first 90 days.
+            place a bill can quietly run away from you. An AI build requires its quoted monthly monitoring plan for the first
+            90 days. Monthly charges are separate from setup and appear in your written quote.
           </p>
         </section>
 
         <section className="detail-block" aria-labelledby="care">
           <h2 className="detail-headline" id="care">After launch</h2>
           <p className="detail-body">
-            Every build can be handed over completely. Keeping us on is a choice, not a condition.
+            These care plans apply to starter websites. Website care is optional. AI systems have a separate quoted plan, required for their first 90 days before an agreed handover.
           </p>
           <ul className="price-extras">
             {CARE.map(([name, price, body]) => (
@@ -134,8 +134,8 @@ export default function Pricing() {
             ))}
           </ol>
           <p className="price-fine">
-            Builds under $500 are paid up front; larger builds are half to start, half at launch.
-            Your domain is bought in your name (about $12 a year) and stays yours — you are never
+            Builds under $500 are paid up front; builds of $500 or more are half to start and half after acceptance, before launch. Payment is by bank transfer.
+            Your domain is bought in your name at the registrar’s current price and stays yours — you are never
             locked in to us. See the <Link className="inline-link" to="/faq">questions page</Link> for
             what happens if you want to leave.
           </p>

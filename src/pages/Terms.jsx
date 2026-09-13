@@ -24,7 +24,7 @@ export default function Terms() {
         </p>
 
         <section className="detail-block" aria-labelledby="t-scope">
-          <h2 className="detail-headline" id="t-scope">1. Scope is what’s on the invoice</h2>
+          <h2 className="detail-headline" id="t-scope">1. Scope is what we agree in writing</h2>
           <p className="detail-body">
             Every project starts with a written scope: what’s being built, what it costs, and when
             it’s due. You get that in writing before anything begins, and the number quoted is the
@@ -41,10 +41,10 @@ export default function Terms() {
         <section className="detail-block" aria-labelledby="t-pay">
           <h2 className="detail-headline" id="t-pay">2. Payment</h2>
           <p className="detail-body">
-            Projects are half up front and half at launch; smaller builds are paid up front.
+            Builds under $500 are paid in full before work starts. Builds of $500 or more are 50% to start and 50% after acceptance, before launch.
             Recurring plans are billed monthly in advance and can be cancelled with 30 days’
-            notice. Card or bank through Square. Current prices are on the{' '}
-            <Link className="inline-link" to="/contact">contact page</Link> or available on
+            notice, subject to the minimum monitoring period stated in an AI scope. Payment is by bank transfer to the account on your invoice. Current prices are on the{' '}
+            <Link className="inline-link" to="/pricing">pricing page</Link> or available on
             request.
           </p>
           <p className="detail-body">
@@ -57,7 +57,7 @@ export default function Terms() {
         <section className="detail-block" aria-labelledby="t-own">
           <h2 className="detail-headline" id="t-own">3. You own what we build</h2>
           <p className="detail-body">
-            On final payment, the code and the data are yours. At handover you get the repository,
+            Your content and data remain yours. After payment, you own the custom work created for your scope; third-party materials remain subject to their licenses. At handover you get the repository,
             the credentials, and a walkthrough. Your domain is registered in your name. If you want
             to take the work to another developer, everything they need comes with it — there is no
             proprietary platform of mine sitting in the middle, and you are never locked in.
@@ -74,8 +74,7 @@ export default function Terms() {
           <p className="detail-body">
             Anything customer-facing starts under your review and earns its autonomy. An AI
             employee works from information you supply — your hours, services, prices, policies —
-            and is scoped to hand off to a human when a question falls outside that. It logs what
-            it does, and you get transcripts.
+            and is scoped to hand off to a human when a question falls outside that. Logging, transcripts and recording are configured under the agreed data schedule and applicable requirements.
           </p>
           <p className="detail-body">
             It will occasionally get something wrong, the way a new hire does. When that happens we
@@ -98,9 +97,7 @@ export default function Terms() {
         <section className="detail-block" aria-labelledby="t-end">
           <h2 className="detail-headline" id="t-end">6. Ending it</h2>
           <p className="detail-body">
-            You can stop a recurring plan with 30 days’ notice, and I’ll tell you plainly what stops
-            working when it ends. If a project is cancelled midway, you pay for the work completed
-            and you keep it. Data handling on termination — deletion, return, credential revocation
+            Recurring plans can end with 30 days’ notice, subject to the separately billed first 90 days of AI monitoring and the signed early-exit terms. We explain what stops working at handover. If a project is cancelled, you pay for completed work at the agreed milestone values plus approved nonrecoverable costs. Unearned advances are refunded within 14 days after reconciliation, and paid deliverables are handed over. Data handling on termination — deletion, return, credential revocation
             — is covered in the{' '}
             <Link className="inline-link" to="/privacy">privacy policy</Link>.
           </p>
@@ -111,13 +108,11 @@ export default function Terms() {
           <p className="detail-body">
             Software built on third-party services inherits their outages. We choose stable
             infrastructure and monitor it, but we don’t control it, and we can’t promise uptime we
-            don’t own. Liability is limited to the fees you’ve paid for the work in question.
-            Neither of us is liable for indirect or consequential losses. These terms are governed
+            don’t own. To the extent permitted by law, liability is limited to fees paid or payable for the project, or the preceding twelve months of fees for a claim solely about recurring support. Indirect or consequential losses are excluded where lawful. These limits do not exclude fraud, willful misconduct, payment obligations or liability that cannot legally be limited. These terms are governed
             by the law of the State of Georgia.
           </p>
           <p className="detail-body">
-            If something we built stops doing the job the scope describes, I fix it. That’s not an
-            upsell and it isn’t a legal question — it’s just the deal.
+            For 30 calendar days after acceptance, we correct reproducible defects that fail the signed acceptance criteria without an additional labor fee. New features and later third-party changes are separately scoped. Corrections do not consume revision rounds. This does not shorten rights that cannot legally be limited.
           </p>
         </section>
 

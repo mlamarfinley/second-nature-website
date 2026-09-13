@@ -60,9 +60,9 @@ export default function About() {
             months.
           </p>
           <p className="detail-body">
-            Then my family wanted it. It was cloned onto four more phones for them, on their own numbers,
+            Then my family wanted it. It was adapted for their phones, on their own numbers,
             in their own time zones. That’s when it stopped being a personal project: the thing
-            cloned onto three other lives without me hovering over it, which is the only real test
+            adapted to their lives without me hovering over it, which is the only real test
             of whether something is a system or a script you’re personally propping up.
           </p>
           <p className="detail-body">
