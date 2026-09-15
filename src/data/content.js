@@ -180,9 +180,9 @@ export const SYSTEMS = {
    CALENDLY_URL, which meant switching scheduler touched six files instead of
    this line. Every CTA on the site reads from here.
 
-   Moving to a Google Calendar appointment schedule: replace this string with
-   the booking page URL and nothing else changes. */
-export const BOOKING_URL = 'https://calendly.com/mlamarfinley/30min'
+   Google Calendar appointment schedule. Keep all website booking CTAs on
+   this shared destination. */
+export const BOOKING_URL = 'https://calendar.app.google/gys4H6vbURxAbBg1A'
 
 // Savannah, our AI receptionist, went live on this line 2026-08-10 (Retell +
 // Calendly + Supabase all green). It is a real, callable product.

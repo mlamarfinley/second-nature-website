@@ -25,7 +25,7 @@ export default function Privacy() {
           <h2 className="detail-headline" id="p-site">1. This website</h2>
           <p className="detail-body">
             If you email us, we receive your email address and the information you choose to send.
-            Booking through Calendly also shares the details you enter with that service. We use
+            Booking through Google Calendar shares the details you enter with Google. We use
             inquiry information to respond and arrange the conversation; contacting us does not
             subscribe you to marketing. Email and scheduling providers process information to
             deliver those services.
