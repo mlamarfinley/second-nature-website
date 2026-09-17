@@ -15,44 +15,21 @@ button { background: none; border: 0; padding: 0; cursor: pointer; }
 p, h1, h2, h3, h4 { overflow-wrap: break-word; }
 ul, ol { list-style: none; padding: 0; }
 
-/* ─── Second Nature design tokens ─────────────────────────────
-   "Petrichor". The ground carries ~4% green chroma, so every neutral on
-   the page sits quietly in key with the tree mark — without a leaf
-   appearing anywhere. Derived from pigment (green earth, umber, ochre)
-   rather than foliage, which is the difference between "natural" and
-   "wellness brand".
-
-   The gold is unchanged. The diagnosis was never the accent colour — it
-   was the pure-black ground beneath it and the frequency of its use. */
+/* Second Nature: sunlit forest greens, warm cream ink and sunset amber.
+   Keep the original forest artwork as the visual anchor. */
 :root {
-  /* Ground — a base plus two real surfaces. Pure black (#050505) cannot
-     express elevation: shadows are invisible on it, so every section sat
-     on the same flat plane. */
-  --base: #0C1210;
-  --surface-1: #131A17;
-  --surface-2: #1B2420;
-
-  /* Ink. High is deliberately NOT maximum contrast — the old #F0F0EC on
-     #050505 was 17.8:1, above the band where users report halation
-     (white smearing) on dark grounds. This sits at 16.2:1 and body copy
-     runs lower still. */
-  --ink: #E9EFEA;
-  --ink-dim: #A9B5AE;     /* 8.9:1 on base */
-  --ink-faint: #7E8A84;   /* 5.3:1 on base — base only */
-  --ink-faint-raised: #8A958E;  /* on --surface-2, where the above drops to 4.4:1 */
-
-  /* Accent — ONE, unchanged, and rationed. An accent's power is inversely
-     proportional to how often it appears (von Restorff). Target: under 2%
-     of pixels. Primary action, one rule per page, live status. Nowhere else. */
-  --gold: #E8A84C;        /* 9.1:1 on base */
-  --gold-soft: rgba(232, 168, 76, 0.55);
-
-  /* Status — only ever on something genuinely live. */
-  --pulse: #6FBF8B;
-
-  /* Rules — two weights. */
-  --rule: rgba(233, 239, 234, 0.14);
-  --rule-soft: rgba(233, 239, 234, 0.08);
+  --base: #143C30;
+  --surface-1: #1C4A3A;
+  --surface-2: #245744;
+  --ink: #FFF4DE;
+  --ink-dim: #CEDFD1;
+  --ink-faint: #ABC9B6;
+  --ink-faint-raised: #C0D8C7;
+  --gold: #FFCA72;
+  --gold-soft: rgba(255, 202, 114, 0.65);
+  --pulse: #87DBA1;
+  --rule: rgba(255, 244, 222, 0.23);
+  --rule-soft: rgba(255, 244, 222, 0.13);
 
   /* Type. Playfair is documented as past its cliché horizon — by the
      mid-2010s the default for wedding sites and boutique hotels. Fraunces
@@ -132,7 +109,7 @@ a { color: inherit; }
 .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 40; }
 .site-header::before {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: linear-gradient(180deg, rgba(12,18,16,.94) 0%, rgba(12,18,16,.7) 60%, transparent 100%);
+  background: linear-gradient(180deg, rgba(20,60,48,.94) 0%, rgba(20,60,48,.7) 60%, transparent 100%);
 }
 .topnav {
   display: flex; align-items: center; justify-content: space-between;
@@ -222,7 +199,7 @@ main:focus { outline: none; }
 .sticky-cta {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
   padding: .75rem clamp(1rem, 4vw, 1.5rem) calc(.75rem + env(safe-area-inset-bottom));
-  background: linear-gradient(180deg, rgba(12,18,16,.86), var(--base) 55%);
+  background: linear-gradient(180deg, rgba(20,60,48,.86), var(--base) 55%);
   border-top: 1px solid var(--rule);
 }
 .sticky-cta a {
@@ -364,11 +341,11 @@ main:focus { outline: none; }
 }
 .hero-band::before {
   content: ""; position: absolute; inset: 0; z-index: 5; pointer-events: none;
-  background: linear-gradient(100deg, rgba(12,18,16,.74) 10%, rgba(12,18,16,.44) 34%, transparent 58%);
+  background: linear-gradient(100deg, rgba(20,60,48,.74) 10%, rgba(20,60,48,.44) 34%, transparent 58%);
 }
 .hero-band::after {
   content: ""; position: absolute; inset: 40% 0 0 0; z-index: 5; pointer-events: none;
-  background: linear-gradient(180deg, transparent, rgba(12,18,16,.82) 78%, var(--base) 100%);
+  background: linear-gradient(180deg, transparent, rgba(20,60,48,.82) 78%, var(--base) 100%);
 }
 .hero-overlay {
   position: relative; z-index: 6; max-width: 46rem;
@@ -388,6 +365,15 @@ main:focus { outline: none; }
 .home-body { position: relative; z-index: 2; max-width: 1460px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 4.5rem) 4rem; }
 .hb-section { padding: clamp(3rem, 7vh, 5rem) 0; border-top: 1px solid var(--rule-soft); }
 .hb-section:first-child { border-top: 0; }
+/* A warm daylight break beneath the forest cover. */
+.hb-reframe {
+  --ink: #173C30;
+  --ink-dim: #345547;
+  background: #F5E6C8;
+  color: var(--ink);
+  box-shadow: 0 0 0 100vmax #F5E6C8;
+  clip-path: inset(0 -100vmax);
+}
 .hb-eyebrow { color: var(--gold); display: block; margin-bottom: 1.6rem; }
 .hb-line { font-size: clamp(1.9rem, 3.6vw, 3rem); margin: 0 0 1rem; }
 .hb-body { color: var(--ink-dim); max-width: 40rem; margin: 0; }
@@ -584,7 +570,7 @@ main:focus { outline: none; }
    the previous version buried it entirely. */
 .mh-scrim {
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(12,18,16,.72) 0%, rgba(12,18,16,.46) 34%, rgba(12,18,16,.80) 78%, var(--base) 100%);
+  background: linear-gradient(180deg, rgba(20,60,48,.72) 0%, rgba(20,60,48,.46) 34%, rgba(20,60,48,.80) 78%, var(--base) 100%);
 }
 .mh-ambient { position: absolute; inset: 0; pointer-events: none; }
 .mh-screen-logo {
@@ -896,15 +882,15 @@ main:focus { outline: none; }
   position: absolute; inset: 0;
   width: 100%; height: 100%; object-fit: cover;
   /* Shared grade, so four different pictures read as one family. */
-  filter: saturate(.8) contrast(1.04) brightness(.9);
+  filter: saturate(1.1) contrast(1.02) brightness(1.06);
   z-index: -2;
 }
 /* Dissolves top and bottom into the page rather than ending on a hard edge. */
 .page-image-veil {
   position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background:
-    linear-gradient(180deg, var(--base) 0%, rgba(12,18,16,.45) 26%, rgba(12,18,16,.35) 52%, rgba(12,18,16,.86) 88%, var(--base) 100%),
-    linear-gradient(90deg, rgba(12,18,16,.72) 0%, rgba(12,18,16,.12) 46%, rgba(12,18,16,.30) 100%);
+    linear-gradient(180deg, var(--base) 0%, rgba(20,60,48,.25) 26%, rgba(20,60,48,.18) 52%, rgba(20,60,48,.70) 88%, var(--base) 100%),
+    linear-gradient(90deg, rgba(20,60,48,.72) 0%, rgba(20,60,48,.12) 46%, rgba(20,60,48,.30) 100%);
 }
 .page-image-body {
   position: relative;
@@ -917,7 +903,7 @@ main:focus { outline: none; }
   line-height: var(--lh-display);
   max-width: 18ch;
   margin: 0;
-  text-shadow: 0 2px 22px rgba(12,18,16,.85);
+  text-shadow: 0 2px 22px rgba(20,60,48,.85);
 }
 .page-image-credit {
   position: absolute; right: var(--column-inset, var(--gutter)); bottom: var(--s4);
@@ -929,8 +915,8 @@ main:focus { outline: none; }
    leaf is intrinsically two stops brighter than the rest; without this it
    reads as a different brand from the other three. Correcting exposure per
    image is what keeps the shared grade actually shared. */
-.page-image-veins img { filter: saturate(.55) contrast(1.02) brightness(.6); }
-.page-image-dunes img { filter: saturate(.72) contrast(1.04) brightness(.82); }
+.page-image-veins img { filter: saturate(1.05) contrast(1.02) brightness(.88); }
+.page-image-dunes img { filter: saturate(1.08) contrast(1.02) brightness(1.03); }
 
 @media (max-width: 700px) {
   .page-image { min-height: min(56vh, 420px); }
@@ -1088,3 +1074,9 @@ main:focus { outline: none; }
     margin-top: .4rem;
   }
 }
+
+/* Warm booking actions, consistent with the sunset in the cover art. */
+.cta-button-agent, .topnav-links .topnav-cta-book { background: var(--gold); color: #143C30; border-color: var(--gold); }
+.cta-button-agent:hover, .topnav-links .topnav-cta-book:hover { background: #FFDA97; color: #143C30; border-color: #FFDA97; }
+
+.hero-actions a { text-shadow: none; }
