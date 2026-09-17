@@ -1,4 +1,4 @@
-import ForestBeams from '../components/ForestBeams.jsx'
+import RootNetwork from '../components/RootNetwork.jsx'
 import { CATEGORIES, CONTACT_EMAIL, SAVANNAH_PHONE, SAVANNAH_PHONE_DISPLAY } from '../data/content.js'
 import PageImage from '../components/PageImage.jsx'
 
@@ -19,7 +19,7 @@ import PageImage from '../components/PageImage.jsx'
 export default function Personal() {
   return (
     <main id="main" tabIndex={-1} className="page page-quiet">
-      <ForestBeams />
+      <RootNetwork />
       <div className="page-inner detail-inner">
         <span className="pp-eyebrow mono-label">Personal systems · by referral</span>
         <h1 className="serif-display pp-headline">

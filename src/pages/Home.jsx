@@ -1,4 +1,4 @@
-import ForestBeams from '../components/ForestBeams.jsx'
+import RootNetwork from '../components/RootNetwork.jsx'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
@@ -173,7 +173,6 @@ function Stage() {
                 <div className="screen-inner" style={{ '--pon-delay': `${s.pon}s` }}>{s.ui}</div>
                 {/* Label is always faintly visible, not hover-only: touch users
                     never discovered these were links. */}
-                <span className="screen-label">{s.label}</span>
               </a>
             ) : (
               <div key={s.key} className="screen-surface" style={{ width: SURFACE_W, height: SURFACE_H, transform: s.matrix }}>
@@ -255,7 +254,7 @@ export default function Home() {
 
   return (
     <main id="main" tabIndex={-1}>
-      <ForestBeams />
+      <RootNetwork />
       {/* Wide screens get the composed stage with the copy set into it.
           Narrow screens get type on solid black and the image below as its
           own band — text over a bright photograph needed a scrim, a second

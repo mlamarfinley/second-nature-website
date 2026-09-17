@@ -1,4 +1,4 @@
-import ForestBeams from '../components/ForestBeams.jsx'
+import RootNetwork from '../components/RootNetwork.jsx'
 import { BIZ, BIZ_REMOVES, STATUS } from '../data/content.js'
 import { FAMILIES } from '../data/offerings.js'
 import CallToAction from '../components/CallToAction.jsx'
@@ -85,7 +85,7 @@ function Detail({ item }) {
 export default function Business() {
   return (
     <main id="main" tabIndex={-1} className="page page-quiet">
-      <ForestBeams />
+      <RootNetwork />
       <div className="page-inner">
         <span className="pp-eyebrow mono-label">Business Systems</span>
         <h1 className="bz-headline">The gaps are where the money&nbsp;goes.</h1>

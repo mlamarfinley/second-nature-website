@@ -1,37 +1,21 @@
-/* One image per page, integrated as ground rather than inserted as a picture.
- *
- * The first version sat inside the text column with a border top and bottom,
- * which made it read as a rectangle pasted onto the page — the boxed-card
- * problem the brief explicitly rules out. This version is full-bleed, has no
- * borders at all, and is masked so it dissolves into the page colour at both
- * edges. It is the ground a section stands on, not an illustration dropped
- * into the prose.
- *
- * Every image is atmosphere, never evidence. The quiet credit is what keeps
- * that line legible — it is the device that stops an image being read as a
- * claim about the business.
- */
+/* Full-bleed atmospheric illustrations, with accessible descriptions. */
 
 export const IMAGES = {
   roots: {
     src: 'roots',
     alt: 'A branching root network picked out in gold across cracked dark earth',
-    credit: 'Root network · cover art, generated',
   },
   veins: {
     src: 'veins',
     alt: 'A leaf backlit so its vein structure reads as a network',
-    credit: 'Leaf veins · cover art, generated',
   },
   grid: {
     src: 'grid',
     alt: 'A city seen from high above at night, lit windows forming a grid',
-    credit: 'City grid at night · cover art, generated',
   },
   dunes: {
     src: 'dunes',
     alt: 'Wind-carved dunes at low sun, ridges running to the horizon',
-    credit: 'Dunes · cover art, generated',
   },
 }
 
@@ -50,7 +34,7 @@ export default function PageImage({ name, heading, children }) {
           src={`/img/${img.src}-1600.jpg`}
           width="1600"
           height="896"
-          alt={img.alt}
+          alt={`Illustration: ${img.alt}`}
           loading="lazy"
           decoding="async"
         />
@@ -62,7 +46,6 @@ export default function PageImage({ name, heading, children }) {
           {children}
         </div>
       )}
-      <span className="page-image-credit">{img.credit}</span>
     </div>
   )
 }
