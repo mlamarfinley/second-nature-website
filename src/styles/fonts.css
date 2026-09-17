@@ -35,20 +35,6 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: "Martian Mono";
-  src: url("/fonts/martian-mono-latin-400-normal.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Martian Mono";
-  src: url("/fonts/martian-mono-latin-500-normal.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
 
 /* Metric-matched fallbacks so the swap from system font to webfont doesn't
    move the layout — font swap is one of the commonest causes of layout shift. */
