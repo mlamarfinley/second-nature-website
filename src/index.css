@@ -71,6 +71,46 @@ body {
   line-height: var(--lh-body);
   -webkit-font-smoothing: antialiased;
 }
+/* Forest light: amber at the edges, charcoal between sections. The original
+   hero remains the focal image; this atmosphere sits behind readable content. */
+main {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  background:
+    radial-gradient(ellipse 75% 700px at 100% 1150px, rgba(180,125,47,.12), transparent 75%),
+    radial-gradient(ellipse 90% 850px at 0% 2350px, rgba(0,0,0,.58), transparent 85%),
+    linear-gradient(180deg, var(--base) 650px, #11170F 1250px, #090D09 2400px, var(--base));
+}
+main::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  top: 720px;
+  left: -10%;
+  width: 110%;
+  height: 900px;
+  background: radial-gradient(ellipse at 75% 40%, rgba(233,182,104,.13), transparent 65%);
+  opacity: .7;
+}
+main.page {
+  background:
+    radial-gradient(ellipse 85% 700px at 100% 200px, rgba(180,125,47,.11), transparent 75%),
+    linear-gradient(155deg, var(--base), #090D09 65%, #16170F);
+}
+main.page::before { top: 70px; }
+@media (prefers-reduced-motion: no-preference) {
+  main::before { animation: forest-light 24s ease-in-out infinite alternate; }
+}
+@keyframes forest-light {
+  from { transform: translate3d(-2%, 0, 0); opacity: .45; }
+  to { transform: translate3d(3%, 35px, 0); opacity: .85; }
+}
+@media (max-width: 640px) {
+  main::before { width: 120%; height: 650px; }
+}
+
 h1, h2, h3 { font-family: var(--grotesk); font-weight: 600; line-height: var(--lh-heading); }
 /* Every h1 is the display serif — it used to flip between serif and grotesk
    depending on which page you were on, which is not a typographic voice. */
