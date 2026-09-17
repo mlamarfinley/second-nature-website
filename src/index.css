@@ -1080,3 +1080,6 @@ main:focus { outline: none; }
 .cta-button-agent:hover, .topnav-links .topnav-cta-book:hover { background: #FFDA97; color: #143C30; border-color: #FFDA97; }
 
 .hero-actions a { text-shadow: none; }
+
+/* Legacy nav colors use !important; keep amber buttons legible. */
+.topnav-links .topnav-cta-book, .topnav-links .topnav-cta-book:hover { color: #143C30 !important; }
