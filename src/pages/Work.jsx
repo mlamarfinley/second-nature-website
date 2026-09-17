@@ -1,3 +1,4 @@
+import ForestBeams from '../components/ForestBeams.jsx'
 import { BUILDS, SAVANNAH_PHONE, SAVANNAH_PHONE_DISPLAY } from '../data/content.js'
 import CallToAction from '../components/CallToAction.jsx'
 import Breadcrumbs from '../components/Breadcrumbs.jsx'
@@ -11,6 +12,7 @@ import ProductStrip from '../components/ProductStrip.jsx'
 export default function Work() {
   return (
     <main id="main" tabIndex={-1} className="page page-quiet">
+      <ForestBeams />
       <div className="page-inner detail-inner">
         <Breadcrumbs />
         <span className="pp-eyebrow mono-label">What we’ve built</span>

@@ -1,3 +1,4 @@
+import ForestBeams from '../components/ForestBeams.jsx'
 import {
   CONTACT_EMAIL,
   LOCALITY,
@@ -22,6 +23,7 @@ import CallToAction from '../components/CallToAction.jsx'
 export default function About() {
   return (
     <main id="main" tabIndex={-1} className="page page-quiet">
+      <ForestBeams />
       <div className="page-inner detail-inner">
         <span className="pp-eyebrow mono-label">About</span>
         <h1 className="serif-display pp-headline">

@@ -1,3 +1,4 @@
+import ForestBeams from '../components/ForestBeams.jsx'
 import { SYSTEMS } from '../data/content.js'
 import CallToAction from '../components/CallToAction.jsx'
 import { useReveal } from '../lib/useReveal.js'
@@ -16,6 +17,7 @@ function SystemRow({ name, body, i }) {
 export default function Systems() {
   return (
     <main id="main" tabIndex={-1} className="page page-quiet">
+      <ForestBeams />
       <div className="page-inner">
         <span className="pp-eyebrow mono-label">Custom software</span>
         <h1 className="bz-headline">The software your spreadsheet is pretending to&nbsp;be.</h1>

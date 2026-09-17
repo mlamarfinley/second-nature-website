@@ -1,3 +1,4 @@
+import ForestBeams from '../components/ForestBeams.jsx'
 import { FAQS, RESPONSE_PROMISE } from '../data/content.js'
 import CallToAction from '../components/CallToAction.jsx'
 import Breadcrumbs from '../components/Breadcrumbs.jsx'
@@ -20,6 +21,7 @@ export default function Faq() {
 
   return (
     <main id="main" tabIndex={-1} className="page page-quiet">
+      <ForestBeams />
       <div className="page-inner detail-inner">
         <Breadcrumbs />
         <span className="pp-eyebrow mono-label">Questions</span>
