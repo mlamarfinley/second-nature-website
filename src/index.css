@@ -18,9 +18,10 @@ ul, ol { list-style: none; padding: 0; }
 /* Second Nature: forest-shadow greens, warm ivory ink and muted sunset amber.
    Keep the original forest artwork as the visual anchor. */
 :root {
-  --base: #10271F;
-  --surface-1: #173329;
-  --surface-2: #204236;
+  --base: #101810;
+  --base-rgb: 16, 24, 16;
+  --surface-1: #19241A;
+  --surface-2: #28352A;
   --ink: #F1ECDD;
   --ink-dim: #BFCFC3;
   --ink-faint: #9BB6A5;
@@ -109,7 +110,7 @@ a { color: inherit; }
 .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 40; }
 .site-header::before {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: linear-gradient(180deg, rgba(16,39,31,.94) 0%, rgba(16,39,31,.7) 60%, transparent 100%);
+  background: linear-gradient(180deg, rgba(var(--base-rgb),.94) 0%, rgba(var(--base-rgb),.7) 60%, transparent 100%);
 }
 .topnav {
   display: flex; align-items: center; justify-content: space-between;
@@ -199,7 +200,7 @@ main:focus { outline: none; }
 .sticky-cta {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
   padding: .75rem clamp(1rem, 4vw, 1.5rem) calc(.75rem + env(safe-area-inset-bottom));
-  background: linear-gradient(180deg, rgba(16,39,31,.86), var(--base) 55%);
+  background: linear-gradient(180deg, rgba(var(--base-rgb),.86), var(--base) 55%);
   border-top: 1px solid var(--rule);
 }
 .sticky-cta a {
@@ -341,11 +342,11 @@ main:focus { outline: none; }
 }
 .hero-band::before {
   content: ""; position: absolute; inset: 0; z-index: 5; pointer-events: none;
-  background: linear-gradient(100deg, rgba(16,39,31,.74) 10%, rgba(16,39,31,.44) 34%, transparent 58%);
+  background: linear-gradient(100deg, rgba(var(--base-rgb),.74) 10%, rgba(var(--base-rgb),.44) 34%, transparent 58%);
 }
 .hero-band::after {
   content: ""; position: absolute; inset: 40% 0 0 0; z-index: 5; pointer-events: none;
-  background: linear-gradient(180deg, transparent, rgba(16,39,31,.82) 78%, var(--base) 100%);
+  background: linear-gradient(180deg, transparent, rgba(var(--base-rgb),.82) 78%, var(--base) 100%);
 }
 .hero-overlay {
   position: relative; z-index: 6; max-width: 46rem;
@@ -561,7 +562,7 @@ main:focus { outline: none; }
    the previous version buried it entirely. */
 .mh-scrim {
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(16,39,31,.72) 0%, rgba(16,39,31,.46) 34%, rgba(16,39,31,.80) 78%, var(--base) 100%);
+  background: linear-gradient(180deg, rgba(var(--base-rgb),.72) 0%, rgba(var(--base-rgb),.46) 34%, rgba(var(--base-rgb),.80) 78%, var(--base) 100%);
 }
 .mh-ambient { position: absolute; inset: 0; pointer-events: none; }
 .mh-screen-logo {
@@ -880,8 +881,8 @@ main:focus { outline: none; }
 .page-image-veil {
   position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background:
-    linear-gradient(180deg, var(--base) 0%, rgba(16,39,31,.25) 26%, rgba(16,39,31,.18) 52%, rgba(16,39,31,.70) 88%, var(--base) 100%),
-    linear-gradient(90deg, rgba(16,39,31,.72) 0%, rgba(16,39,31,.12) 46%, rgba(16,39,31,.30) 100%);
+    linear-gradient(180deg, var(--base) 0%, rgba(var(--base-rgb),.25) 26%, rgba(var(--base-rgb),.18) 52%, rgba(var(--base-rgb),.70) 88%, var(--base) 100%),
+    linear-gradient(90deg, rgba(var(--base-rgb),.72) 0%, rgba(var(--base-rgb),.12) 46%, rgba(var(--base-rgb),.30) 100%);
 }
 .page-image-body {
   position: relative;
@@ -894,7 +895,7 @@ main:focus { outline: none; }
   line-height: var(--lh-display);
   max-width: 18ch;
   margin: 0;
-  text-shadow: 0 2px 22px rgba(16,39,31,.85);
+  text-shadow: 0 2px 22px rgba(var(--base-rgb),.85);
 }
 .page-image-credit {
   position: absolute; right: var(--column-inset, var(--gutter)); bottom: var(--s4);

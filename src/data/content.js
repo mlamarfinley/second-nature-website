@@ -243,7 +243,7 @@ export const BUILDS = [
 export const FAQS = [
   [
     'What does it cost?',
-    'Website package prices are published. Systems are scoped after a consultation; their listed prices are starting points. An AI receptionist is from $1,000 to build and $249/month including 400 minutes. Automations start at $750 to build. Custom website builds start at $2,000; other software is priced by scope. You get an exact number in writing before anything begins, and the number quoted is the number you pay.',
+    'Tell Miles what you need and how your business works. He’ll scope the project with you and send a written quote before any work begins.',
   ],
   [
     'How long does it take?',
