@@ -1,4 +1,3 @@
-import RootNetwork from '../components/RootNetwork.jsx'
 import { Link } from 'react-router-dom'
 import {
   CONTACT_EMAIL,
@@ -12,7 +11,6 @@ import {
 export default function Thanks() {
   return (
     <main id="main" tabIndex={-1} className="page page-quiet">
-      <RootNetwork />
       <div className="page-inner detail-inner">
         <span className="pp-eyebrow mono-label">Received</span>
         <h1 className="serif-display pp-headline">Got it. Here’s what happens now.</h1>

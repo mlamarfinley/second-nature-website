@@ -1,4 +1,3 @@
-import RootNetwork from '../components/RootNetwork.jsx'
 import { Link } from 'react-router-dom'
 import {
   STUDENT_PACKAGES, BUSINESS_PACKAGES, STUDENT_EXTRAS,
@@ -30,7 +29,6 @@ function PriceRow({ name, price, body, note }) {
 export default function Pricing() {
   return (
     <main id="main" tabIndex={-1} className="page page-quiet">
-      <RootNetwork />
       <div className="page-inner detail-inner">
         <Breadcrumbs />
         <span className="pp-eyebrow mono-label">Pricing</span>

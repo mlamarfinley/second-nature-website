@@ -1,4 +1,3 @@
-import RootNetwork from '../components/RootNetwork.jsx'
 import { CONTACT_EMAIL, LOCALITY } from '../data/content.js'
 import Breadcrumbs from '../components/Breadcrumbs.jsx'
 
@@ -12,7 +11,6 @@ import Breadcrumbs from '../components/Breadcrumbs.jsx'
 export default function Privacy() {
   return (
     <main id="main" tabIndex={-1} className="page page-quiet">
-      <RootNetwork />
       <div className="page-inner detail-inner">
         <Breadcrumbs />
         <span className="pp-eyebrow mono-label">Privacy</span>

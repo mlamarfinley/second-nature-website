@@ -1,4 +1,3 @@
-import RootNetwork from '../components/RootNetwork.jsx'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
@@ -254,7 +253,6 @@ export default function Home() {
 
   return (
     <main id="main" tabIndex={-1}>
-      <RootNetwork />
       {/* Wide screens get the composed stage with the copy set into it.
           Narrow screens get type on solid black and the image below as its
           own band — text over a bright photograph needed a scrim, a second

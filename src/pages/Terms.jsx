@@ -1,4 +1,3 @@
-import RootNetwork from '../components/RootNetwork.jsx'
 import { Link } from 'react-router-dom'
 import { CONTACT_EMAIL } from '../data/content.js'
 import Breadcrumbs from '../components/Breadcrumbs.jsx'
@@ -14,7 +13,6 @@ import Breadcrumbs from '../components/Breadcrumbs.jsx'
 export default function Terms() {
   return (
     <main id="main" tabIndex={-1} className="page page-quiet">
-      <RootNetwork />
       <div className="page-inner detail-inner">
         <Breadcrumbs />
         <span className="pp-eyebrow mono-label">Terms</span>

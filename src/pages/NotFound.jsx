@@ -1,4 +1,3 @@
-import RootNetwork from '../components/RootNetwork.jsx'
 import { Link } from 'react-router-dom'
 import { CONTACT_EMAIL } from '../data/content.js'
 import CallToAction from '../components/CallToAction.jsx'
@@ -8,7 +7,6 @@ import CallToAction from '../components/CallToAction.jsx'
 export default function NotFound() {
   return (
     <main id="main" tabIndex={-1} className="page page-quiet">
-      <RootNetwork />
       <div className="page-inner detail-inner">
         <span className="pp-eyebrow mono-label">404</span>
         <h1 className="serif-display pp-headline">That page doesn’t exist.</h1>
