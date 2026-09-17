@@ -4,6 +4,7 @@ import { formatPhone } from './CallToAction.jsx'
 import SiteIndex from './SiteIndex.jsx'
 
 const LINKS = [
+  ['/', 'Home'],
   ['/business', 'Business'],
   ['/systems', 'Software'],
   ['/work', 'Our work'],

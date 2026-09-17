@@ -18,6 +18,7 @@ import {
    hamburger does not. */
 
 const BLURBS = {
+  '/': 'Start here — Second Nature.',
   '/business': 'Automations, communication, and AI employees.',
   '/systems': 'Websites, dashboards, portals, internal tools.',
   '/work': 'The two systems running right now.',
