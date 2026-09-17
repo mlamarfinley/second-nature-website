@@ -85,7 +85,7 @@ export const PAGE_META = {
    was "not marketed cold" — so the page exists for people sent a direct link
    and should never turn up in a search result. /thanks is a post-submit page
    with no standalone value. */
-export const NOINDEX_ROUTES = new Set(['/personal', '/thanks'])
+export const NOINDEX_ROUTES = new Set(['/personal', '/thanks', '/pricing'])
 
 export const DEFAULT_META = PAGE_META['/']
 

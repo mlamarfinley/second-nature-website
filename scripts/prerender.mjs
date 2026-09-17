@@ -120,6 +120,7 @@ console.log(`  404          -> 404.html`)
    static file in public/, and it had already drifted: /pricing was missing the
    day it was added, which is exactly the failure a hand-kept list invites. */
 const SITEMAP_EXCLUDE = new Set([
+  '/pricing', // available by direct link only
   '/personal',  // deliberately unlisted — sold by referral, not searched for
   '/privacy',
   '/terms',

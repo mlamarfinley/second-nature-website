@@ -43,9 +43,7 @@ export default function Terms() {
           <p className="detail-body">
             Builds under $500 are paid in full before work starts. Builds of $500 or more are 50% to start and 50% after acceptance, before launch.
             Recurring plans are billed monthly in advance and can be cancelled with 30 days’
-            notice, subject to the minimum monitoring period stated in an AI scope. Payment is by bank transfer to the account on your invoice. Current prices are on the{' '}
-            <Link className="inline-link" to="/pricing">pricing page</Link> or available on
-            request.
+            notice, subject to the minimum monitoring period stated in an AI scope. Payment is by bank transfer to the account on your invoice. Current prices are available on request.
           </p>
           <p className="detail-body">
             Anything with usage-based costs behind it — voice minutes in particular — carries a
